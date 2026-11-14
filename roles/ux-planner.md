@@ -11,7 +11,7 @@
 - Cover loading, error, empty and edge states.
 - Check keyboard access, focus and labels.
 - Reuse existing patterns and components.
-- Say whether its part can be built as planned, the effort in concrete units, and any hidden work (there is no separate developer role).
+- Say whether its part can be built as planned, which files it touches, roughly how many lines change, and any unknowns or hidden work (there is no separate developer role).
 
 ## When to use
 User-facing features.

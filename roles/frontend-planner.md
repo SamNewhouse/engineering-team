@@ -11,7 +11,7 @@
 - Keep fetching, logic and presentation separate.
 - Keep state local unless a store is needed.
 - Use existing design tokens and styles.
-- Say whether its part can be built as planned, the effort in concrete units, and any hidden work (there is no separate developer role).
+- Say whether its part can be built as planned, which files it touches, roughly how many lines change, and any unknowns or hidden work (there is no separate developer role).
 
 ## When to use
 User-facing features.

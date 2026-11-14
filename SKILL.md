@@ -44,7 +44,7 @@ Apply the Ponytail rules throughout, in planning and in implementation, whether 
 - Always include QA. QA is a separate role, not a level.
 - Use at most two QA agents: one senior and one mid-level. No junior QA.
 - The lead is not counted in the team size (Lite 2, Medium 3 to 5, Large 6 to 9). With the lead, that is 3, 4 to 6 and 7 to 10.
-- There is no separate developer representative: every specialist says whether its part is buildable, how long it takes and what hidden work it involves.
+- There is no separate developer representative: every specialist says whether its part is buildable, which files it touches, roughly how many lines change, and what unknowns or hidden work it involves. No time estimates.
 - Include a reviewer for medium and large teams. The reviewer does not debate: it checks the draft decision, the tickets and the code.
 - The lead decides who debates together in round 2 and how many at once (around four is a sensible default).
 - Use at most two debate rounds.
@@ -136,7 +136,7 @@ Make sure nothing is lost on the way to and from the lead:
 
 ## Draft decision
 
-Take on every point: each specialist recommendation, the QA testability and risk assessment, everyone's build and effort notes, your own position, and all objections, agreements and revised positions. Where the team agrees, that is the decision. Where ideas still conflict, make the call, weighing reasoning quality, risk and relevance, not headcount, and record why. Then draft:
+Take on every point: each specialist recommendation, the QA testability and risk assessment, everyone's build notes, your own position, and all objections, agreements and revised positions. Where the team agrees, that is the decision. Where ideas still conflict, make the call, weighing reasoning quality, risk and relevance, not headcount, and record why. Then draft:
 
 - Final scope.
 - Final approach.

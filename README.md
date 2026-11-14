@@ -153,7 +153,7 @@ You start with that lineup, take the smaller one, or change it. Nothing runs unt
 
 **Everyone explores the code.** Each member, the lead included, digs into the parts of the codebase its role covers: security traces the auth flow, data checks what reads the table, frontend finds the components to reuse. Each starts from a map the lead hands over: the exact files and line ranges for its area. They read those lines first, and query Graphify or search only for what the map doesn't cover. Nobody changes anything yet.
 
-**Independent positions.** Everyone works alone, in parallel, and writes a recommendation, the reasoning, risks, assumptions, what would change their mind, any questions, whether their part can be built as planned and how long it will take, and the tickets they'd create. Every claim about existing code points to the file and line it comes from. The lead writes its own position before reading anyone else's, so it doesn't steer the others. If someone can't answer a question from the code, the lead finds out or asks you. Nobody guesses.
+**Independent positions.** Everyone works alone, in parallel, and writes a recommendation, the reasoning, risks, assumptions, what would change their mind, any questions, whether their part can be built as planned (which files it touches, roughly how many lines change, and what's still unknown), and the tickets they'd create. Every claim about existing code points to the file and line it comes from. The lead writes its own position before reading anyone else's, so it doesn't steer the others. If someone can't answer a question from the code, the lead finds out or asks you. Nobody guesses.
 
 **QA pass.** QA adds acceptance criteria and tests to every proposed ticket.
 
@@ -196,7 +196,7 @@ The lead chooses from these, based on the brief:
 
 A user-facing feature usually gets product, UX and frontend, and a payments change usually gets security, data and architecture, but these are starting points. The lead adds or drops roles based on what the code shows.
 
-There's no separate developer role, because the specialists are the developers. Each one says whether its part can be built as planned, how long it will take, and what hidden work it involves.
+There's no separate developer role, because the specialists are the developers. Each one says whether its part can be built as planned, which files it touches, roughly how many lines change, and what unknowns or hidden work it involves. It doesn't give time estimates: a model's guess at hours sounds precise but isn't.
 
 ### Fixed roles
 
