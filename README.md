@@ -1,20 +1,62 @@
 # engineering-team
 
-A [Claude Code](https://docs.claude.com/en/docs/claude-code) skill that plans software work the way a good engineering team does. The right specialists look at the problem, debate it briefly, one lead makes the call, an independent reviewer checks the result, and nothing is built until you've said yes.
+A [Claude Code](https://docs.claude.com/en/docs/claude-code) skill that runs your software planning like an engineering team.
 
-You give it a brief, such as *"add magic-link login"* or *"move reporting off the main database"*. It comes back with a decision you can act on: the scope, the approach, what was rejected and why, acceptance criteria, a test plan, the risks being accepted, and a set of tickets ready to build from.
+You bring a brief, such as *"add magic-link login"* or *"move reporting off the main database"*. A **team lead** takes it on. It learns your existing code, asks only what it still needs to know, and sums up what you want for you to confirm. Then it sizes the job and picks the right lineup of specialists, and you confirm that before anyone starts.
 
+Then the team gets to work, like a real engineering team in a planning session. Everyone, the lead included, digs into the code in their own area and brings their view, and they argue it out. Where the team agrees, that's the plan. Where ideas still conflict, the lead makes the call. An independent reviewer checks the result, and nothing is built until you approve the plan.
+
+What you get back is a decision you can act on: the scope, the approach, what was rejected and why, acceptance criteria, a test plan, the risks being accepted, and tickets ready to build from.
+
+## How it works
+
+```mermaid
+flowchart TD
+    subgraph P1["1. Brief"]
+        A["You give the lead a brief"] --> B{"Does the lead need anything else for an accurate result?"}
+        B -- "yes" --> C["Lead asks the questions this request needs, one at a time"]
+        C --> B
+        B -- "no" --> BC["Lead sums up what you want"]
+        BC --> BQ{{"Brief check: you confirm it"}}
+        BQ -- "correct it" --> B
+    end
+
+    subgraph P2["2. Lineup"]
+        D["Lead gets an overview of the codebase"] --> E{"Lead sizes the job: is a team worth it?"}
+        E -- "no" --> F["Lead does the work directly"]
+        E -- "yes: Lite, Medium or Large" --> G["Lead picks the lineup for that size"]
+        G --> H{{"Ready check: you confirm the lineup and its size"}}
+        H -- "change it" --> G
+    end
+
+    subgraph P3["3. Work"]
+        I["Everyone, lead included, explores the code in their area"] --> I2["Everyone writes an independent position"]
+        I2 --> J["QA adds tests to every proposed ticket"]
+        J --> K{"Ideas that conflict?"}
+        K -- "yes" --> L["Those involved, lead included, argue it out"]
+        L --> L2{"Still conflicting?"}
+        L2 -- "yes" --> L3["Lead makes the call"]
+        L2 -- "no" --> M
+        L3 --> M["Lead drafts the decision, taking on every point"]
+        K -- "no" --> M
+        M --> N["Reviewer checks the draft, lead fixes it"]
+        N --> O{{"Plan approval: you approve the plan"}}
+        O -- "change it" --> M
+        O -- "approve" --> Q["Lead writes the tickets, reviewer checks them"]
+        Q --> R["Build on a branch and run the tests"]
+        R --> S["Reviewer checks the pull request"]
+        S --> T["You review and merge"]
+    end
+
+    BQ -- "confirm" --> D
+    H -- "confirm" --> I
 ```
- Brief ─► Map the repo ─► Pick the team ─► ✋ Checkpoint 1
-                                                  │
-        ┌─────────────────────────────────────────┘
-        ▼
- Debate ─► Draft decision ─► Reviewer check ─► ✋ Checkpoint 2
-                                                  │
-        ┌─────────────────────────────────────────┘
-        ▼
- Tickets ─► Reviewer check ─► Build ─► Reviewer check ─► Pull request
-```
+
+There are three phases, and the lead runs all of them:
+
+1. **Brief.** The lead finds out what it needs for an accurate result, sums up what you want, and checks it with you.
+2. **Lineup.** The lead decides who is needed. At the ready check you confirm the lineup, and with it how big (and how costly) the run will be.
+3. **Work.** The team, lead included, explores the code and debates. The lead settles what's still in conflict, you approve, and it's built.
 
 ## The problem it solves
 
@@ -26,18 +68,7 @@ Ask an assistant to plan a feature and you get one confident answer. It usually 
 - **Decisions vanish.** The reasoning lives in a chat history. A week later, nobody remembers why an approach was chosen or what was ruled out.
 - **You either micromanage or rubber-stamp.** You review every step yourself, or you approve a plan you haven't really checked.
 
-This skill brings back what a good engineering team does in a planning session: the right specialists, a short, structured disagreement, one person accountable for the decision, an independent review, and a written record that becomes the tickets.
-
-## Why use it
-
-Asking one assistant for a plan gets you one point of view. Asking a crowd gets you noise. This sits in between.
-
-- **Distinct roles.** A security planner, a data planner and a UX planner each look for a different kind of failure, so each catches what the others miss.
-- **Mixed depth.** Senior members weigh long-term trade-offs, mid-level members keep it practical, and an optional junior asks the obvious question everyone skipped.
-- **One decision-maker.** The lead weighs the arguments instead of counting votes, and has to give every point raised an outcome.
-- **An independent reviewer.** The reviewer stays out of the debate, so it has no position to defend when it checks the plan, the tickets and the code.
-- **You stay in control.** Two checkpoints, and nothing moves past either without your yes.
-- **No overbuilding.** Every recommendation has to justify new code over reusing what's already there.
+This skill brings back what a good team does in a planning session: a lead who picks the right people and works alongside them, a short, structured disagreement grounded in the real code, one person accountable for the final call, an independent review, and a written record that becomes the tickets.
 
 ## Requirements
 
@@ -48,7 +79,7 @@ Asking one assistant for a plan gets you one point of view. Asking a crowd gets 
 
 Both are optional, but worth having in the projects where you use this skill:
 
-- **[Graphify](https://pypi.org/project/graphifyy/)** (`pip install graphifyy`) builds a map of the repository, so the team starts from how the code really fits together. Without it, the lead reads the code directly.
+- **[Graphify](https://pypi.org/project/graphifyy/)** (`pip install graphifyy`) builds a map of the repository, so the lead and the team start from how the code really fits together. Without it, they search and read the code directly.
 - **[Ponytail](https://github.com/DietrichGebert/ponytail)** pushes plans and code towards the smallest thing that works. Without it, the team still follows the same reuse-first rules, which are built into the skill.
 
 ## Install
@@ -69,78 +100,92 @@ git -C ~/.claude/skills/engineering-team pull
 
 ## Usage
 
-Open Claude Code in your project and start the skill with a brief:
+Open Claude Code in your project and hand the lead a brief:
 
 ```
 /engineering-team Add CSV export to the orders page, keeping the current filters
 ```
 
-You can also just describe the work. The skill picks up planning and design work that spans several areas or carries real risk.
+You can also just describe the work. The skill picks up planning and design work that has a real design choice.
 
-**When it's worth using:** a feature that touches several parts of the system, anything involving payments, personal data, permissions or migrations, or a change with more than one sensible approach.
+**When it's worth using:** anything with a real design choice. A small feature gets a Lite team (the lead, one specialist and QA). A feature that touches several parts of the system, or anything involving payments, personal data, permissions or migrations, gets a bigger lineup.
 
-**When it isn't:** a one-file fix, a clear bug or a small edit. The skill notices this, says so, and just does the work.
+**When it isn't:** a one-file fix, a clear bug or a small edit. The lead notices this, says so, and just does the work.
 
-## How it works, step by step
+## Each phase in detail
 
-### 1. Brief
+### Phase 1: Brief
 
-It reads your brief. If something important is unclear (the goal, a constraint, what "done" means), it asks, one question at a time.
+The lead starts by working out what it needs to know to get the most accurate result. It turns your request into a **team brief**: the single document every member of the team will work from. It isn't a questionnaire: it asks only what would change the result.
 
-### 2. Repository map
+- **It starts from what you've already said.** Anything your request, a linked ticket or earlier messages already answer goes straight into the brief.
+- **It learns your existing system first.** In a project that already has code, it works out the language, frameworks, structure, and what already exists in the area you're asking about, before asking anything. It never asks you what the code can answer.
+- **It asks what only you can answer.** It works out what you're really asking for, then asks about the intent and decisions the code can't settle, one at a time, most important first, usually with a suggested answer you can just accept.
+- **Anything still uncertain becomes a stated assumption**, which the team can challenge, rather than another question.
 
-It works out what the change touches: modules and boundaries, dependencies between services, data flow, API contracts, shared components, gaps in test coverage, and deployment. It uses Graphify if you have it, and reads the code if not.
+For example, ask for *"a new billing system"* in an existing app, and the lead first finds the current billing code, the payment provider and how plans and invoices are stored. Then it asks things like *"billing today is Stripe one-off charges in `src/billing/charge.ts`: are you adding subscriptions, or replacing this?"* and *"what should happen to existing customers' payment details?"*. It won't ask which language you use. In a brand-new project there's no code to read, so it asks about the stack as well.
 
-### 3. Team
+There's no fixed list of questions. The lead reads what you're really asking for and decides what it still needs to know. If you state a preference, such as "no outside packages", it goes into the brief and overrides the team's defaults.
 
-It picks only the specialists the brief needs, chooses a level for each member, and estimates the token cost.
+**Brief check: you confirm what you want.** When the lead has what it needs, it tells you in a few sentences what it understands you want: the goal, what done looks like, and anything important it has assumed. You confirm it or correct it. Then it writes up the full team brief.
 
-### ✋ Checkpoint 1: approve the team
+The brief covers your request in your own words, what the lead found in your existing system, your preferences, the goal, what "done" means, what's in and out of scope, the constraints, the risks, the assumptions made, and the answers you gave. Every member gets it word for word, and you can ask to see it at any point.
 
-You see the team size, each role and its levels, QA, the developer representative, the reviewer, and the estimated token cost. Approve it, or ask for changes. Nothing runs until you say yes.
+### Phase 2: Lineup
 
-### 4. Debate
+**The lead gets an overview of the codebase.** Just enough to see which areas the change touches (modules, services, data, APIs, shared components, tests, deployment), and so who it needs on the team. It notes the exact files and line ranges it finds, to hand out later. It uses Graphify if you have it, and searches the code if not. The detailed digging is the team's job.
 
-- **Round 1.** Every member writes an independent position, in parallel: a recommendation, the reasoning, risks, assumptions, what would change its mind, any questions, and the tickets it would create for its area.
-- **Questions.** If a member needs information, the lead finds the answer in the code or asks you. Members don't guess.
-- **QA pass.** QA adds acceptance criteria and tests to every proposed ticket.
-- **Round 2.** Only if members disagree on something that matters. Those members see each other's positions word for word and respond, at most four at a time.
+**The lead sizes the job.** From the brief you confirmed and what it found in the code, it decides how big the job is. If it's small with one obvious approach, it says so and does the work itself. Otherwise it picks a size: Lite, Medium or Large.
 
-### 5. Draft decision
+**The lead picks the lineup for that size.** This is the lead's call. Based on the brief and what it found in the code, it decides which specialists it needs, how many of each and at what level, and adds QA (and a reviewer for bigger teams).
 
-The lead weighs the arguments and drafts the decision. Every point raised in the debate gets exactly one outcome: **adopted**, **rejected** (with a reason), **risk accepted** (with a reason) or **open question**.
+**Ready check: you confirm the work can start.** This is where you decide how big the run should be. The lead shows you:
 
-### 6. Reviewer check
+- A one-line reminder of the brief you confirmed.
+- The size it picked, and why.
+- The lineup: each role, how many agents and at what level.
+- What drives the cost: how many agents, and how many run on each model (Opus, Sonnet, Haiku).
+- A smaller option, if one would still do the job, and what it would risk.
 
-The reviewer checks the draft for gaps, contradictions, overbuilding and points left without an outcome. The lead makes the fixes. If a fix reopens a specialist's area, the lead asks that specialist directly.
+You start with that lineup, take the smaller one, or change it. Nothing runs until you say yes.
 
-### ✋ Checkpoint 2: approve the plan
+### Phase 3: Work
 
-You see the final scope and approach, the rejected alternatives, the acceptance criteria, the test plan, the risks accepted, the open questions, any point where the reviewer and the lead still disagree, and the list of tickets it will create. Approve it, or push back. Your yes also covers creating those tickets.
+**Everyone explores the code.** Each member, the lead included, digs into the parts of the codebase its role covers: security traces the auth flow, data checks what reads the table, frontend finds the components to reuse. Each starts from a map the lead hands over: the exact files and line ranges for its area. They read those lines first, and query Graphify or search only for what the map doesn't cover. Nobody changes anything yet.
 
-### 7. Tickets
+**Independent positions.** Everyone works alone, in parallel, and writes a recommendation, the reasoning, risks, assumptions, what would change their mind, any questions, whether their part can be built as planned and how long it will take, and the tickets they'd create. Every claim about existing code points to the file and line it comes from. The lead writes its own position before reading anyone else's, so it doesn't steer the others. If someone can't answer a question from the code, the lead finds out or asks you. Nobody guesses.
 
-The lead writes each ticket in full: the problem, the plan, which files to change, acceptance criteria and tests, and what it depends on. The reviewer checks that nothing from the decision was lost, then the tickets are posted as GitHub issues. Open questions become tickets of their own. The debate itself never goes into a ticket, only the decision and its reasons.
+**QA pass.** QA adds acceptance criteria and tests to every proposed ticket.
 
-### 8. Build
+**Disagreements.** Where ideas conflict on something that matters, those involved, the lead included, see each other's positions word for word and argue it out. The lead decides who debates together and how many at once, and there's only one such round.
 
-The work is built on a new branch. The project's tests are run, and the reviewer checks the pull request against the acceptance criteria. You get the pull request link to review and merge.
+**The lead drafts the decision.** Where the team agrees, that's the decision. Where ideas still conflict, the lead makes the call, weighing the arguments rather than counting votes, and records why. The lead takes on every point raised, including ones it argued against. Every point gets exactly one outcome: **adopted**, **rejected** (with a reason), **risk accepted** (with a reason) or **open question**.
 
-## The team
+**The reviewer checks the draft.** The reviewer hasn't taken part in the debate, so it has no position to defend. It looks for gaps, contradictions, overbuilding and points left without an outcome. The lead makes the fixes. If a fix reopens a specialist's area, the lead asks that specialist directly.
+
+**Plan approval: you approve the plan.** You see the final scope and approach, the rejected alternatives, the acceptance criteria, the test plan, the risks accepted, the open questions, any point where the reviewer and the lead still disagree, and the list of tickets it will create. Approve it, or push back. Your yes also covers creating those tickets.
+
+**Tickets.** The lead writes each ticket in full: the problem, the plan, which files to change, acceptance criteria and tests, and what it depends on. The reviewer checks that nothing from the decision was lost, then the tickets are posted as GitHub issues. Open questions become tickets of their own. The debate itself never goes into a ticket, only the decision and its reasons.
+
+**Build.** The work is built on a new branch and the project's tests are run. The reviewer checks the pull request against the acceptance criteria. You get the pull request link to review and merge.
+
+On a Lite team there's no reviewer: the lead does the plan and ticket checks itself, and the project's tests check the code.
+
+## The lineup
 
 ### Sizes
 
-| Size | For | Members |
-|---|---|---:|
-| **Lite** | Small, low-risk changes with one real design choice | 3 |
-| **Medium** | Normal feature work | 5 to 7 |
-| **Large** | Complex, high-risk or multi-area work | 9 to 11 |
+| Size | For | Members | With the lead |
+|---|---|---:|---:|
+| **Lite** | Small features and low-risk changes | 2 | 3 |
+| **Medium** | Normal feature work | 3 to 5 | 4 to 6 |
+| **Large** | Complex, high-risk or multi-area work | 6 to 9 | 7 to 10 |
 
-The lead isn't counted. Sizes stay odd where possible.
+The lead picks the size that fits the brief. A Lite team is the lead, one specialist picked for the area the change sits in, and QA. That way the approach is always argued by two engineers, and QA tests and challenges it.
 
-### Roles
+### Specialists
 
-Specialists are chosen to fit the brief:
+The lead chooses from these, based on the brief:
 
 | Area | Specialists |
 |---|---|
@@ -149,13 +194,14 @@ Specialists are chosen to fit the brief:
 | Running it safely | Security planner, DevOps planner, performance planner |
 | After launch | Documentation planner, analytics planner |
 
-A user-facing feature gets product, UX and frontend. A payments change gets security, data and architecture.
+A user-facing feature usually gets product, UX and frontend, and a payments change usually gets security, data and architecture, but these are starting points. The lead adds or drops roles based on what the code shows.
 
-Three roles are fixed:
+There's no separate developer role, because the specialists are the developers. Each one says whether its part can be built as planned, how long it will take, and what hidden work it involves.
 
-- **QA** is always on the team: one or two members, never junior. It owns the acceptance criteria and the test plan.
-- **Developer representative** is always on the team. It speaks for whoever has to build and maintain the result.
-- **Reviewer** joins medium and large teams. It doesn't debate. It checks the draft decision, the tickets and the code.
+### Fixed roles
+
+- **QA** is always in the lineup: one or two members, never junior. It owns the acceptance criteria and the test plan.
+- **Reviewer** joins medium and large lineups. It doesn't debate. It checks the draft decision, the tickets and the code.
 
 ### Levels
 
@@ -167,31 +213,45 @@ Three roles are fixed:
 
 A role has one to three members. A junior is only ever the third member of a role, never on its own.
 
-### Example teams
+### Example lineups
 
-| Brief | Size | Team |
+| Brief | Size | Lineup |
 |---|---|---|
-| Simple UI change | Medium, 5 | UX, frontend, developer representative, QA, reviewer (all mid-level) |
-| New API endpoint with data changes | Medium, 7 | Product, architect, backend, data, developer representative, QA, reviewer |
-| Complex backend migration | Large, 9 | 2 architects, 2 backend, data, developer representative, 2 QA, reviewer |
-| Payments or personal data | Large, 9 | Product, architect, backend, data, security, developer representative, 2 QA, reviewer |
+| Add a filter to an existing list | Lite, 2 | Frontend, QA (both mid-level) |
+| UI change across several screens | Medium, 4 to 5 | UX, 1 to 2 frontend, QA, reviewer (all mid-level) |
+| New API endpoint with data changes | Medium, 4 to 5 | Backend, data, architect if needed, QA, reviewer |
+| Complex backend migration | Large, 6 to 9 | 1 to 2 architects, 1 to 2 backend, 1 to 2 data, 2 QA, reviewer |
+| Payments or personal data | Large, 7 to 9 | Product if needed, architect, backend, data, 1 to 2 security, 2 QA, reviewer |
+
+These are starting points. The lead picks where in each range to land, and can add or drop roles, based on what it finds in the code.
 
 ## Nothing gets lost
 
 - **Every point has an ID**, such as `SEC-S1` (security, senior, point 1), so you can follow it from the debate to a ticket.
-- **No second-hand summaries.** In round 2, members see the opposing positions word for word.
-- **Short notes, full facts.** Members write terse structured notes to save tokens, but every field is filled in, and file paths and numbers are copied exactly.
+- **Claims are backed by the code.** Anything said about existing code points to the file and line. Anything not checked is marked as unchecked.
+- **No second-hand summaries.** When specialists respond to each other, they see the opposing positions word for word.
+- **Short notes, full facts.** Specialists write terse structured notes to save tokens, but every field is filled in, and file paths and numbers are copied exactly.
 - **Every point ends with an outcome.** The decision isn't finished until it does, and the reviewer checks this.
 - **The reviewer only checks.** It reports what it finds, the lead makes the changes, and anything still disputed comes to you.
 
-## Cost
+## Token use
 
-A team run uses many more tokens than a single conversation. Lite is cheapest and Large costs the most. You see an estimate for your brief at checkpoint 1, before anything runs. The figures the estimate is based on are in `rules/team-composition.md` and are worth adjusting once you've done a few runs.
+A team run uses more tokens than a single conversation, and a bigger lineup uses more. The ready check is where you control this: you see how many agents will run and on which models, and you can take a smaller lineup before anything starts. The skill doesn't give token figures, because they can't be promised.
+
+The skill is built to keep token use down without losing anything:
+
+- **The lead hands out exact file paths.** Each member gets the files and line ranges for its area, instead of searching the codebase from scratch.
+- **Members read line ranges, not whole files**, and only search for what they weren't given.
+- **Prompts share the same opening.** Every member's prompt starts with an identical shared part, so repeated text can be served from the prompt cache.
+- **Members are continued, not restarted.** Follow-up rounds and the reviewer's checks pick up the same agents, so nothing is re-sent.
+- **Only the disputed points go round again.** Members who disagree see just those points, not everyone's full write-up.
+- **Notes, not essays.** Members report to the lead in short structured notes.
+- **Juniors stay focused.** A junior only checks the assumptions it challenges.
 
 ## Customising
 
 - **Roles** live in `roles/`, one short file each. Edit one to change its focus, or add a new role and list it in `SKILL.md`.
-- **Team rules** (sizes, levels, the debate format, reviewer checks, tickets, cost estimates) live in `rules/team-composition.md`.
+- **Team rules** (sizes, levels, the debate format, reviewer checks, tickets, token savings) live in `rules/team-composition.md`.
 
 ## Layout
 

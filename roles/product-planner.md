@@ -11,6 +11,7 @@
 - Define the smallest scope that meets the goal.
 - Write user-level acceptance criteria.
 - Flag scope creep.
+- Say whether its part can be built as planned, the effort in concrete units, and any hidden work (there is no separate developer role).
 
 ## When to use
 User-facing features, business logic or APIs, public documentation, success measurement.

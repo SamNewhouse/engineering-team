@@ -19,7 +19,7 @@ No junior QA, ever. At most two agents:
 - **Senior QA:** overall test strategy, high-risk areas, security, data integrity, regression risk.
 - **Mid-level QA:** practical test plan, edge cases, testability, acceptance criteria.
 
-Lite teams use one QA agent; medium teams one or two; large teams both.
+Lite teams use one QA agent; medium teams one or two; large teams both. On a Lite team, QA works alongside the lead and one specialist: it writes its own position, challenges the plan, and adds tests to the tickets.
 
 ## When to use
 Always.
