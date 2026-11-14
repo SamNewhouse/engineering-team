@@ -23,15 +23,16 @@ Shared rules (levels, panels, sizing, debate, ledger, tickets, reviewer checks, 
 
 1. **Read the brief.**
 2. **Clarify the brief:** build the team brief from what the user has already asked for, asking only the questions that get the most accurate result, one at a time. See Clarifying the brief below.
-3. **Get an overview of the repository**, with Graphify if installed: enough to pick the lineup. The team explores the detail in round 1. See [`companions/graphify.md`](companions/graphify.md).
-4. **Choose the lineup**: the roles you need, how many agents in each and at what level, plus QA and (medium and large teams) the reviewer. You decide; `rules/team-composition.md` gives the limits and some starting points.
-5. **Ready check (confirmation 1):** show the user the brief as you understand it and the lineup, so they can judge the size and likely token cost, and get their yes before any work begins.
-6. **Run the debate, taking part in it**: round 1 (everyone, you included, explores the code and writes a position), the QA ticket pass, then round 2 if needed. Terse notes, every point tracked by ID, every claim about code backed by `path:line`.
-7. **Draft the decision**: where the team agrees, take it on; where ideas conflict, make the call. Every point in the ledger gets an outcome.
-8. **Reviewer check 1:** the reviewer checks the draft decision; the lead fixes it.
-9. **Confirmation 2:** get the user's yes on the plan and the ticket list before anything is written or built.
-10. **Ticket stage**, ending with **reviewer check 2** on the drafts.
-11. **Implementation**, ending with **reviewer check 3** on the code.
+3. **Brief check:** once you have what you need, describe what the user wants in a few sentences and ask them to confirm it. See Brief check below.
+4. **Get an overview of the repository**, with Graphify if installed: enough to pick the lineup. The team explores the detail in round 1. See [`companions/graphify.md`](companions/graphify.md).
+5. **Choose the lineup**: the roles you need, how many agents in each and at what level, plus QA and (medium and large teams) the reviewer. You decide; `rules/team-composition.md` gives the limits and some starting points.
+6. **Ready check:** show the user the lineup, so they can judge the size and likely token cost, and get their yes before any work begins.
+7. **Run the debate, taking part in it**: round 1 (everyone, you included, explores the code and writes a position), the QA ticket pass, then round 2 if needed. Terse notes, every point tracked by ID, every claim about code backed by `path:line`.
+8. **Draft the decision**: where the team agrees, take it on; where ideas conflict, make the call. Every point in the ledger gets an outcome.
+9. **Reviewer check 1:** the reviewer checks the draft decision; the lead fixes it.
+10. **Plan approval:** get the user's yes on the plan and the ticket list before anything is written or built.
+11. **Ticket stage**, ending with **reviewer check 2** on the drafts.
+12. **Implementation**, ending with **reviewer check 3** on the code.
 
 Apply the Ponytail rules throughout, in planning and in implementation, whether or not the plugin is installed: [`companions/ponytail.md`](companions/ponytail.md).
 
@@ -79,7 +80,7 @@ Before choosing anyone, find out what you need to know to get the most accurate 
 1. **Take what the request already answers.** Read the user's request (and anything else they gave you: a ticket, a link, earlier messages) and fill in as much of the brief as it covers.
 2. **Learn the existing system before asking.** In a project that already has code, find out for yourself what the code can tell you: the language, frameworks and libraries, how the project is structured, what already exists in the area of the request (models, services, third-party providers, tests), and the patterns it follows. Never ask the user something the code answers. For "I want a new billing system", that means finding the current billing code, the payment provider, how plans and invoices are stored, and what depends on them, before saying a word.
 3. **Ask what only the user can answer.** Interpret what the user is really asking for, then decide for yourself what's still needed. There is no fixed list of questions: ask about the intent and decisions the code can't tell you, and only where the answer would change the plan. For the billing example: replace the current billing or extend it? Keep the same payment provider? What happens to existing customers and their subscriptions? Make each question specific to what you found (for example "billing today is Stripe one-off charges in `src/billing/charge.ts`: are you adding subscriptions, or replacing this?"). In a new or empty project there is nothing to read, so ask about the stack too. Ask one question at a time, most important first, and offer a likely answer or two short options so the user can just pick. Skip anything that wouldn't change what the team does.
-4. **Stop when the brief is clear enough to choose a lineup.** Anything still uncertain goes into the brief as a stated assumption, not another question.
+4. **Stop when you have what you need for an accurate result.** Anything still uncertain goes into the brief as a stated assumption, not another question.
 
 The brief must cover:
 
@@ -96,13 +97,22 @@ The brief must cover:
 | Assumptions | What you assumed instead of asking, one per line, so the team can challenge them |
 | Answers | Each question you asked and the user's answer, reworded into one short line |
 
-Write it in plain sentences. The user sees it at the ready check, and once they confirm it, **every agent gets it word for word** as the start of its prompt. Never paraphrase it per agent.
+Write it in plain sentences. Once the user has confirmed it at the brief check, **every agent gets it word for word** as the start of its prompt. Never paraphrase it per agent.
 
-## Ready check (confirmation 1): before any work
+## Brief check
+
+When you have what you need, tell the user in a few plain sentences what you understand they want: the goal, what done looks like, and anything important you've assumed. Then ask them to confirm it, as one yes/no question.
+
+- **If they confirm,** write up the full team brief from it and move on to choosing the lineup.
+- **If they correct something,** update your understanding (asking a follow-up only if the correction raises a new question) and confirm again.
+
+Keep it short: it's a check that you've understood, not the brief itself. The user can ask to see the full team brief at any point.
+
+## Ready check: before any work
 
 Once you have chosen the lineup, check the user is ready for the work to start. This is where they decide whether the size, and so the likely token cost, is right for the job. Show, in plain sentences:
 
-- **The team brief**, in full: this is exactly what every agent will be given, so the user can correct it before anyone starts.
+- **A one-line reminder of the confirmed brief**, and that the full team brief, exactly as every agent will get it, is available if they want to see it.
 - **The size** (Lite, Medium or Large) and why.
 - **The lineup:** each role, how many agents and at what level, including QA and the reviewer if there is one.
 - **What drives the cost:** the number of agents, how many run on each model (Opus, Sonnet, Haiku), and that round 2 only runs if there are conflicts. Do not give token figures: they can't be promised.
@@ -141,23 +151,23 @@ Give every point in the ledger exactly one outcome (adopted, rejected, risk acce
 
 ## Reviewer checks
 
-The reviewer checks the work three times, as one agent continued with SendMessage: the draft decision (before confirmation 2), the ticket drafts, and the code. At each check:
+The reviewer checks the work three times, as one agent continued with SendMessage: the draft decision (before plan approval), the ticket drafts, and the code. At each check:
 
 1. The reviewer reports findings with IDs (`REV-1`, `REV-2`), which go in the ledger.
 2. **The lead makes the changes** (the main session, for code), or rejects a finding with a one-line reason.
 3. If a finding reopens a specialist's area, the lead sends that one point to the specialists involved with SendMessage for a short answer. This is a question, not a new debate round.
 4. The reviewer checks once more, looking only at what changed.
-5. Anything still disputed goes to the user: at confirmation 2 for the decision, or as a ticket for the code.
+5. Anything still disputed goes to the user: at plan approval for the decision, or as a ticket for the code.
 
 One fix-and-recheck loop at most per check. On Lite teams, which have no reviewer, the lead does checks 1 and 2 itself and check 3 is the project's normal tests. Details: `rules/team-composition.md` (Reviewer checks).
 
-## Confirmation 2: before tickets and implementation
+## Plan approval: before tickets and implementation
 
 Show the user the decision items above, the ledger summary (count per outcome; rejected and accepted risks listed) and any reviewer disputes ("reviewer says X, lead says Y"), in plain sentences, and ask for a yes. That yes covers posting the listed tickets. If they change something, revise the decision and ask again.
 
 ## Ticket stage
 
-After confirmation 2, the lead drafts each ticket in full, the reviewer checks the drafts (check 2), and the lead posts them and gives the user the links. Only the lead writes to GitHub. Details: `rules/team-composition.md` (Ticket stage).
+After plan approval, the lead drafts each ticket in full, the reviewer checks the drafts (check 2), and the lead posts them and gives the user the links. Only the lead writes to GitHub. Details: `rules/team-composition.md` (Ticket stage).
 
 ## Implementation
 

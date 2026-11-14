@@ -182,7 +182,7 @@ The team reads the code, not just the lead. In round 1, every debater (the lead 
 1. **Start from the starting map.** From its overview, the lead gives each debater the exact file paths, line ranges and Graphify node or community names for its area (for example `src/auth/session.ts:20-80` and the `auth` community). Debaters begin there instead of searching.
 2. Query Graphify (if installed) or search only for what the map doesn't cover: `graphify query`, `graphify path`, `graphify explain`. [`../companions/graphify.md`](../companions/graphify.md) says which areas each role covers.
 3. **Read line ranges, not whole files.** Open the lines the map or the graph points to, and read further only when the argument needs it.
-4. **Read-only.** Nobody changes code during the debate. Building starts after confirmation 2.
+4. **Read-only.** Nobody changes code during the debate. Building starts after plan approval.
 5. **Evidence for every claim.** Any statement about existing code cites where it comes from, such as `src/auth.ts:42`. Anything not checked is marked `unchecked`, so the reviewer can see which claims have nothing behind them.
 
 ### Round 1: independent positions
@@ -251,7 +251,7 @@ The lead keeps one ledger of every point ID raised in either round. Each ends wi
 | Risk accepted | Known and left; one-line reason |
 | Open question | Still needs an answer; becomes a decision ticket |
 
-A point with no outcome means the decision is not finished. The ledger goes to the reviewer at each check, and to the user at confirmation 2 (as a count per outcome, with the rejected and accepted ones listed).
+A point with no outcome means the decision is not finished. The ledger goes to the reviewer at each check, and to the user at plan approval (as a count per outcome, with the rejected and accepted ones listed).
 
 ## Reviewer checks
 
@@ -259,7 +259,7 @@ The reviewer is the independent check. It never argues a position in the debate,
 
 | Check | When | Looks at | Who fixes |
 |---|---|---|---|
-| 1. Draft decision | After round 2, before confirmation 2 | Gaps, contradictions, overbuilding; every ledger point has an outcome | The lead |
+| 1. Draft decision | After round 2, before plan approval | Gaps, contradictions, overbuilding; every ledger point has an outcome | The lead |
 | 2. Tickets | Ticket stage, before posting | Every adopted point is in a ticket; each ticket stands on its own | The lead |
 | 3. Code | After implementation | The pull request against the acceptance criteria and test plan; overbuilding | The main session |
 
@@ -269,24 +269,25 @@ At each check:
 2. The lead makes the change, or rejects the finding with a one-line reason.
 3. If a finding reopens a specialist's area (for example a new security risk), the lead sends that one point to the specialists involved with SendMessage and gets a short answer. This is a question, not a third debate round.
 4. The reviewer checks once more, looking only at what changed.
-5. Anything still disputed goes to the user: listed at confirmation 2 as "reviewer says X, lead says Y" for checks 1 and 2, or as a ticket for check 3.
+5. Anything still disputed goes to the user: listed at plan approval as "reviewer says X, lead says Y" for checks 1 and 2, or as a ticket for check 3.
 
 **One fix-and-recheck loop at most per check.** On Lite teams, which have no reviewer, the lead does checks 1 and 2 itself, and check 3 is the project's normal tests and checks.
 
 ## Ticket stage
 
-Runs after confirmation 2, before implementation. Only the lead writes to GitHub. Agents only draft.
+Runs after plan approval, before implementation. Only the lead writes to GitHub. Agents only draft.
 
 1. **The lead drafts each approved ticket in full**, in plain sentences: the problem and the plan, the files or component to change, acceptance criteria and tests (from QA), risks accepted, "Needs first" for tickets that depend on another, and a link to the main ticket that holds the decision. The main ticket is the one the brief came from; if there wasn't one, the lead creates it first, holding the decision and its reasons.
 2. **The lead searches the open tickets** first and updates a matching one instead of creating a copy. One task per ticket.
 3. **Reviewer check 2:** the reviewer checks the drafts against the decision and the point ledger, and the lead fixes them (see Reviewer checks).
-4. **The lead posts the tickets** to the repo approved at confirmation 2, turns each open question into a decision ticket, and gives the user the links.
+4. **The lead posts the tickets** to the repo approved at plan approval, turns each open question into a decision ticket, and gives the user the links.
 
 The debate itself never goes into a ticket: only the decision and its reasons. If the project does not use GitHub issues, the tickets stay in chat as the final plan.
 
 ## Confirmation gates
 
-1. **Ready check, before any work:** the team brief in full, the size, the lineup (roles, agents per role, levels, QA, reviewer), what drives the cost (agent count and models), and a smaller option where one fits. No token figures.
-2. **Before the ticket stage and implementation:** the decision items above (after reviewer check 1), the point ledger summary, any reviewer disputes, and the ticket list (titles, one line each, and the repo they go to). This yes also covers posting those tickets.
+1. **Brief check, before choosing the lineup:** a few sentences on what the user wants (goal, done, key assumptions), confirmed as a yes/no.
+2. **Ready check, before any work:** a reminder of the confirmed brief, the size, the lineup (roles, agents per role, levels, QA, reviewer), what drives the cost (agent count and models), and a smaller option where one fits. No token figures.
+3. **Plan approval, before the ticket stage and implementation:** the decision items above (after reviewer check 1), the point ledger summary, any reviewer disputes, and the ticket list (titles, one line each, and the repo they go to). This yes also covers posting those tickets.
 
 Nothing starts without the user's yes at each gate.

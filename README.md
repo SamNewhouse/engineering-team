@@ -16,13 +16,16 @@ flowchart TD
         A["You give the lead a brief"] --> B{"Does the lead need anything else for an accurate result?"}
         B -- "yes" --> C["Lead asks the questions this request needs, one at a time"]
         C --> B
+        B -- "no" --> BC["Lead sums up what you want"]
+        BC --> BQ{{"Brief check: you confirm it"}}
+        BQ -- "correct it" --> B
     end
 
     subgraph P2["2. Lineup"]
         D["Lead gets an overview of the codebase"] --> E{"Is a team worth it?"}
         E -- "no" --> F["Lead does the work directly"]
         E -- "yes" --> G["Lead picks the lineup"]
-        G --> H{{"Ready check: you confirm the brief, the lineup and its size"}}
+        G --> H{{"Ready check: you confirm the lineup and its size"}}
         H -- "change it" --> G
     end
 
@@ -37,7 +40,7 @@ flowchart TD
         L3 --> M["Lead drafts the decision, taking on every point"]
         K -- "no" --> M
         M --> N["Reviewer checks the draft, lead fixes it"]
-        N --> O{{"Checkpoint 2: you approve the plan"}}
+        N --> O{{"Plan approval: you approve the plan"}}
         O -- "change it" --> M
         O -- "approve" --> Q["Lead writes the tickets, reviewer checks them"]
         Q --> R["Build on a branch and run the tests"]
@@ -45,13 +48,13 @@ flowchart TD
         S --> T["You review and merge"]
     end
 
-    B -- "no" --> D
+    BQ -- "confirm" --> D
     H -- "confirm" --> I
 ```
 
 There are three phases, and the lead runs all of them:
 
-1. **Brief.** The lead finds out what it needs for an accurate result, and turns your request into a team brief that everyone works from.
+1. **Brief.** The lead finds out what it needs for an accurate result, sums up what you want, and checks it with you.
 2. **Lineup.** The lead decides who is needed. At the ready check you confirm the lineup, and with it how big (and how costly) the run will be.
 3. **Work.** The team, lead included, explores the code and debates. The lead settles what's still in conflict, you approve, and it's built.
 
@@ -124,7 +127,9 @@ For example, ask for *"a new billing system"* in an existing app, and the lead f
 There's no fixed list of questions. The lead reads what you're really asking for and decides what it still needs to know. If you state a preference, such as "no outside packages", it goes into the brief and overrides the team's defaults.
 - **Anything still uncertain becomes a stated assumption**, which the team can challenge, rather than another question.
 
-The brief covers your request in your own words, what the lead found in your existing system, your preferences, the goal, what "done" means, what's in and out of scope, the constraints, the risks, the assumptions made, and the answers you gave. You see it in full at the ready check, and once you confirm it, every member gets it word for word.
+**Brief check: you confirm what you want.** When the lead has what it needs, it tells you in a few sentences what it understands you want: the goal, what done looks like, and anything important it has assumed. You confirm it or correct it. Then it writes up the full team brief.
+
+The brief covers your request in your own words, what the lead found in your existing system, your preferences, the goal, what "done" means, what's in and out of scope, the constraints, the risks, the assumptions made, and the answers you gave. Every member gets it word for word, and you can ask to see it at any point.
 
 ### Phase 2: Lineup
 
@@ -136,7 +141,7 @@ The brief covers your request in your own words, what the lead found in your exi
 
 **Ready check: you confirm the work can start.** This is where you decide how big the run should be. The lead shows you:
 
-- The team brief, in full: exactly what every member will be given, so you can correct it first.
+- A one-line reminder of the brief you confirmed.
 - The size it picked, and why.
 - The lineup: each role, how many agents and at what level.
 - What drives the cost: how many agents, and how many run on each model (Opus, Sonnet, Haiku).
@@ -158,7 +163,7 @@ You start with that lineup, take the smaller one, or change it. Nothing runs unt
 
 **The reviewer checks the draft.** The reviewer hasn't taken part in the debate, so it has no position to defend. It looks for gaps, contradictions, overbuilding and points left without an outcome. The lead makes the fixes. If a fix reopens a specialist's area, the lead asks that specialist directly.
 
-**Checkpoint 2: you approve the plan.** You see the final scope and approach, the rejected alternatives, the acceptance criteria, the test plan, the risks accepted, the open questions, any point where the reviewer and the lead still disagree, and the list of tickets it will create. Approve it, or push back. Your yes also covers creating those tickets.
+**Plan approval: you approve the plan.** You see the final scope and approach, the rejected alternatives, the acceptance criteria, the test plan, the risks accepted, the open questions, any point where the reviewer and the lead still disagree, and the list of tickets it will create. Approve it, or push back. Your yes also covers creating those tickets.
 
 **Tickets.** The lead writes each ticket in full: the problem, the plan, which files to change, acceptance criteria and tests, and what it depends on. The reviewer checks that nothing from the decision was lost, then the tickets are posted as GitHub issues. Open questions become tickets of their own. The debate itself never goes into a ticket, only the decision and its reasons.
 
