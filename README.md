@@ -16,6 +16,18 @@ You give it a brief, such as *"add magic-link login"* or *"move reporting off th
  Tickets ─► Reviewer check ─► Build ─► Reviewer check ─► Pull request
 ```
 
+## The problem it solves
+
+Ask an assistant to plan a feature and you get one confident answer. It usually runs with however you framed the request, and it rarely pushes back. The gaps show up later, when they cost more to fix:
+
+- **Blind spots surface during the build.** The migration that can't be rolled back, the permission check nobody thought of, the edge case with no test. A real team catches these in planning, because someone in the room is paid to worry about each one.
+- **Plans overbuild.** A single planner tends to add layers, abstractions and dependencies "for later", when reusing what's already in the codebase would have done.
+- **Nobody argues.** One viewpoint means no one asks "what if we didn't?" or "what breaks if this is slow?", so weak assumptions go unchallenged.
+- **Decisions vanish.** The reasoning lives in a chat history. A week later, nobody remembers why an approach was chosen or what was ruled out.
+- **You either micromanage or rubber-stamp.** You review every step yourself, or you approve a plan you haven't really checked.
+
+This skill brings back what a good engineering team does in a planning session: the right specialists, a short, structured disagreement, one person accountable for the decision, an independent review, and a written record that becomes the tickets.
+
 ## Why use it
 
 Asking one assistant for a plan gets you one point of view. Asking a crowd gets you noise. This sits in between.
