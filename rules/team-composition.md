@@ -285,6 +285,16 @@ Runs after plan approval, before implementation. Only the lead writes to GitHub.
 
 The debate itself never goes into a ticket: only the decision and its reasons. If the project does not use GitHub issues, the tickets stay in chat as the final plan.
 
+## Implementation
+
+Runs after the ticket stage. The main session builds; agents do not write code.
+
+- **Order:** build the tickets in "Needs first" order. Tickets that don't depend on each other can go in any order.
+- **Tests come with each ticket:** the main session writes QA's tests for a ticket while building that ticket, not afterwards. A ticket is done when its acceptance criteria pass.
+- **Failing tests:** fix the code. If the fix would change the approved scope or approach, stop and tell the user before going further.
+- **Scope drift goes to the user:** anything the build turns up that the plan doesn't cover is put to the user, or becomes a ticket. It is never absorbed silently.
+- **Reviewer check 3** comes last (see Reviewer checks).
+
 ## Confirmation gates
 
 1. **Brief check, before choosing the lineup:** a few sentences on what the user wants (goal, done, key assumptions), confirmed as a yes/no.

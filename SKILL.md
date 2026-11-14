@@ -171,7 +171,7 @@ After plan approval, the lead drafts each ticket in full, the reviewer checks th
 
 ## Implementation
 
-The main session builds the plan, ticket by ticket:
+The main session builds the plan, ticket by ticket, in "Needs first" order. Tests, failing tests and scope changes: `rules/team-composition.md` (Implementation).
 
 1. Work on a new branch and open a pull request, if the project uses git and GitHub. Otherwise build in the working tree.
 2. Run the project's tests and checks against the test plan.
