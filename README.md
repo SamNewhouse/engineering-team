@@ -2,7 +2,9 @@
 
 A [Claude Code](https://docs.claude.com/en/docs/claude-code) skill that runs your software planning like an engineering team.
 
-You bring a brief, such as *"add magic-link login"* or *"move reporting off the main database"*. A **lead** takes it on, the way an engineering manager would. It asks you only what the brief leaves open, reads your codebase, and picks the right lineup of specialists for the job. You confirm the lineup before anyone starts. Then the team gets to work: the specialists debate, the lead decides, and an independent reviewer checks the result. Nothing is built until you approve the plan.
+You bring a brief, such as *"add magic-link login"* or *"move reporting off the main database"*. A **team lead** takes it on. It asks you only what the brief leaves open, looks over your codebase, and picks the right lineup of specialists for the job. You confirm the lineup before anyone starts.
+
+Then the team gets to work, like a real engineering team in a planning session. Everyone, the lead included, digs into the code in their own area and brings their view, and they argue it out. Where the team agrees, that's the plan. Where ideas still conflict, the lead makes the call. An independent reviewer checks the result, and nothing is built until you approve the plan.
 
 What you get back is a decision you can act on: the scope, the approach, what was rejected and why, acceptance criteria, a test plan, the risks being accepted, and tickets ready to build from.
 
@@ -17,7 +19,7 @@ flowchart TD
     end
 
     subgraph P2["2. Lineup"]
-        D["Lead reads the codebase"] --> E{"Is a team worth it?"}
+        D["Lead gets an overview of the codebase"] --> E{"Is a team worth it?"}
         E -- "no" --> F["Lead does the work directly"]
         E -- "yes" --> G["Lead picks the lineup and estimates the cost"]
         G --> H{{"Checkpoint 1: you confirm the lineup"}}
@@ -25,10 +27,14 @@ flowchart TD
     end
 
     subgraph P3["3. Work"]
-        I["Each specialist writes an independent position"] --> J["QA adds tests to every proposed ticket"]
-        J --> K{"Disagreement that matters?"}
-        K -- "yes" --> L["Those involved respond to each other"]
-        L --> M["Lead drafts the decision"]
+        I["Everyone, lead included, explores the code in their area"] --> I2["Everyone writes an independent position"]
+        I2 --> J["QA adds tests to every proposed ticket"]
+        J --> K{"Ideas that conflict?"}
+        K -- "yes" --> L["Those involved, lead included, argue it out"]
+        L --> L2{"Still conflicting?"}
+        L2 -- "yes" --> L3["Lead makes the call"]
+        L2 -- "no" --> M
+        L3 --> M["Lead drafts the decision, taking on every point"]
         K -- "no" --> M
         M --> N["Reviewer checks the draft, lead fixes it"]
         N --> O{{"Checkpoint 2: you approve the plan"}}
@@ -47,7 +53,7 @@ There are three phases, and the lead runs all of them:
 
 1. **Brief.** The lead makes sure it understands what you want.
 2. **Lineup.** The lead decides who is needed, and you confirm it.
-3. **Work.** The team plans, the lead decides, you approve, and it's built.
+3. **Work.** The team, lead included, explores the code and debates. The lead settles what's still in conflict, you approve, and it's built.
 
 ## The problem it solves
 
@@ -59,7 +65,7 @@ Ask an assistant to plan a feature and you get one confident answer. It usually 
 - **Decisions vanish.** The reasoning lives in a chat history. A week later, nobody remembers why an approach was chosen or what was ruled out.
 - **You either micromanage or rubber-stamp.** You review every step yourself, or you approve a plan you haven't really checked.
 
-This skill brings back what a good team does in a planning session: a lead who picks the right people, a short, structured disagreement, one person accountable for the decision, an independent review, and a written record that becomes the tickets.
+This skill brings back what a good team does in a planning session: a lead who picks the right people and works alongside them, a short, structured disagreement grounded in the real code, one person accountable for the final call, an independent review, and a written record that becomes the tickets.
 
 ## Requirements
 
@@ -111,7 +117,7 @@ The lead reads your brief and checks it has what it needs: the goal, any constra
 
 ### Phase 2: Lineup
 
-**The lead reads the codebase.** It works out what the change touches: modules and boundaries, dependencies between services, data flow, API contracts, shared components, gaps in test coverage, and deployment. It uses Graphify if you have it, and reads the code if not.
+**The lead gets an overview of the codebase.** Just enough to see which areas the change touches (modules, services, data, APIs, shared components, tests, deployment), and so who it needs on the team. It uses Graphify if you have it, and searches the code if not. The detailed digging is the team's job.
 
 **The lead decides whether a team is worth it.** If the job turns out to be small with one obvious approach, it says so and does the work itself.
 
@@ -121,13 +127,15 @@ The lead reads your brief and checks it has what it needs: the goal, any constra
 
 ### Phase 3: Work
 
-**Independent positions.** Every specialist works alone, in parallel, and writes a recommendation, the reasoning, risks, assumptions, what would change its mind, any questions, and the tickets it would create for its area. If a specialist needs information, the lead finds the answer in the code or asks you. Nobody guesses.
+**Everyone explores the code.** Each member, the lead included, digs into the parts of the codebase its role covers: security traces the auth flow, data checks what reads the table, frontend finds the components to reuse. They query Graphify first, then open the files it points to. Nobody changes anything yet.
+
+**Independent positions.** Everyone works alone, in parallel, and writes a recommendation, the reasoning, risks, assumptions, what would change their mind, any questions, and the tickets they'd create. Every claim about existing code points to the file and line it comes from. The lead writes its own position before reading anyone else's, so it doesn't steer the others. If someone can't answer a question from the code, the lead finds out or asks you. Nobody guesses.
 
 **QA pass.** QA adds acceptance criteria and tests to every proposed ticket.
 
-**Disagreements.** If specialists disagree on something that matters, only those involved see each other's positions, word for word, and respond. At most four debate at a time, and there's only one such round.
+**Disagreements.** Where ideas conflict on something that matters, those involved, the lead included, see each other's positions word for word and argue it out. At most four debate at a time, and there's only one such round.
 
-**The lead drafts the decision.** It weighs the arguments rather than counting votes. Every point raised gets exactly one outcome: **adopted**, **rejected** (with a reason), **risk accepted** (with a reason) or **open question**.
+**The lead drafts the decision.** Where the team agrees, that's the decision. Where ideas still conflict, the lead makes the call, weighing the arguments rather than counting votes, and records why. The lead takes on every point raised, including ones it argued against. Every point gets exactly one outcome: **adopted**, **rejected** (with a reason), **risk accepted** (with a reason) or **open question**.
 
 **The reviewer checks the draft.** The reviewer hasn't taken part in the debate, so it has no position to defend. It looks for gaps, contradictions, overbuilding and points left without an outcome. The lead makes the fixes. If a fix reopens a specialist's area, the lead asks that specialist directly.
 
@@ -147,7 +155,7 @@ The lead reads your brief and checks it has what it needs: the goal, any constra
 | **Medium** | Normal feature work | 5 to 7 |
 | **Large** | Complex, high-risk or multi-area work | 9 to 11 |
 
-The lead isn't counted. Sizes stay odd where possible.
+Sizes don't count the lead, who is always on the team as well. Sizes stay odd where possible.
 
 ### Specialists
 
@@ -190,6 +198,7 @@ A role has one to three members. A junior is only ever the third member of a rol
 ## Nothing gets lost
 
 - **Every point has an ID**, such as `SEC-S1` (security, senior, point 1), so you can follow it from the debate to a ticket.
+- **Claims are backed by the code.** Anything said about existing code points to the file and line. Anything not checked is marked as unchecked.
 - **No second-hand summaries.** When specialists respond to each other, they see the opposing positions word for word.
 - **Short notes, full facts.** Specialists write terse structured notes to save tokens, but every field is filled in, and file paths and numbers are copied exactly.
 - **Every point ends with an outcome.** The decision isn't finished until it does, and the reviewer checks this.
@@ -214,7 +223,7 @@ engineering-team/
 ├── roles/                     one file per role
 ├── rules/team-composition.md  sizes, levels, debate, decision, reviewer, tickets
 └── companions/
-    ├── graphify.md            how the lead uses Graphify (or reads the code without it)
+    ├── graphify.md            how the team uses Graphify (or reads the code without it)
     └── ponytail.md            the reuse-first rules
 ```
 

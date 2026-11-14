@@ -58,7 +58,7 @@ QA is a role, not a level. Use more than one developer representative or reviewe
 
 ## Team sizing
 
-**The lead is not counted.** It is the main session, not a spawned agent. The reviewer is counted but does not debate, so a medium team has 4 to 6 debaters and a large team 8 to 10.
+**The lead is not counted in these sizes.** It is the main session, not a spawned agent, but it is a full member of the team and takes part in the debate. The reviewer is counted but does not debate, so a medium team has 4 to 6 debaters and a large team 8 to 10.
 
 | Preset | Use for | Total | Specialist agents | QA | Developer rep | Reviewer |
 |---|---|---:|---:|---:|---:|---:|
@@ -154,11 +154,11 @@ Rough cost per agent per round, input and output together, with terse notes:
 | Sonnet | ~15k |
 | Opus | ~25k |
 
-Estimate = (agents × per-round cost × rounds expected) + repository pass (~10k) + QA ticket pass (~5–10k per QA agent) + lead synthesis (~15k) + ticket drafting (~2–3k per ticket). Medium and large teams add the reviewer: ~15k for the draft check, ~15–20k for the ticket check and ~15–25k for the code check. Continuing agents with SendMessage instead of spawning new ones keeps round 2 cheaper. Round 2 only includes agents in a material disagreement, so count them separately. Give the user one total and the per-agent breakdown. These figures are first guesses: correct them after real runs.
+Estimate = (agents × per-round cost × rounds expected) + the lead's overview pass (~5k) + code exploration in round 1 (~10–30k per debater, less for juniors, who only check what they challenge) + the lead's own round 1 position (~15k) + QA ticket pass (~5–10k per QA agent) + lead synthesis (~15k) + ticket drafting (~2–3k per ticket). Medium and large teams add the reviewer: ~15k for the draft check, ~15–20k for the ticket check and ~15–25k for the code check. Continuing agents with SendMessage instead of spawning new ones keeps round 2 cheaper. Round 2 only includes agents in a material disagreement, so count them separately. Give the user one total and the per-agent breakdown. These figures are first guesses: correct them after real runs.
 
 ## Debate
 
-**Two rounds at most.** Round 1 runs every debater in parallel; the four-at-once limit applies to round 2, where agents respond to each other. The reviewer does not debate. Every agent's output goes back to the lead in full. Nothing is summarised away between an agent and the lead.
+**Two rounds at most.** The lead is a member of the team: it explores the code, writes its own round 1 position and takes part in round 2. Round 1 runs every debater in parallel; the four-at-once limit applies to round 2, where agents respond to each other. The reviewer does not debate. Every agent's output goes back to the lead in full. Nothing is summarised away between an agent and the lead.
 
 ### Terse notes
 
@@ -167,13 +167,22 @@ Agents write for the lead, not for people, so they use short notes instead of pr
 - Every field in the format below is present, every time. Nothing to say → `none`. Don't know → `unknown: <what is missing>`.
 - Every risk, assumption, objection and question is its own line. Never merge two into one.
 - File paths, function names, numbers, versions and error text are copied exactly.
-- Each point gets an ID made of the role, the level letter (`S`, `M` or `J`) and a number, such as `SEC-S1`, `SEC-M1` or `QA-S3`, so two agents in the same role never clash. The reviewer uses `REV-1`, `REV-2`.
+- Each point gets an ID made of the role, the level letter (`S`, `M` or `J`) and a number, such as `SEC-S1`, `SEC-M1` or `QA-S3`, so two agents in the same role never clash. The lead uses `LEAD-1`, `LEAD-2`; the reviewer uses `REV-1`, `REV-2`.
 
 Tickets and anything shown to the user are written in plain sentences, not notes.
 
+### Exploring the code
+
+The team reads the code, not just the lead. In round 1, every debater (the lead included) explores the parts of the codebase its role covers:
+
+1. Query Graphify first, if installed: `graphify query`, `graphify path`, `graphify explain`. The lead's overview and [`../companions/graphify.md`](../companions/graphify.md) say which areas each role covers.
+2. Then open the files the graph (or a search) points to. Read only what the argument needs.
+3. **Read-only.** Nobody changes code during the debate. Building starts after confirmation 2.
+4. **Evidence for every claim.** Any statement about existing code cites where it comes from, such as `src/auth.ts:42`. Anything not checked is marked `unchecked`, so the reviewer can see which claims have nothing behind them.
+
 ### Round 1: independent positions
 
-Each agent works alone, from the brief, its repository findings, its role file and the Ponytail rules, and returns:
+Each debater works alone, from the brief, the lead's overview, its own exploration of the code, its role file and the Ponytail rules. **The lead writes its own position before reading anyone else's**, so it doesn't anchor on theirs. Each returns:
 
 ```
 ROLE / LEVEL:
@@ -181,6 +190,7 @@ REC:          recommendation, and which Ponytail step it stops at
 WHY:          reasoning
 RISKS:        one per line, with ID
 ASSUMES:      one per line, with ID
+EVIDENCE:     path:line for each claim about existing code; `unchecked` where not checked
 CHANGE-MIND:  what would change the recommendation
 QUESTIONS:    anything it needs answered, one per line, with ID
 TICKETS:      proposed tickets for its area: task, files or component, done means
@@ -192,11 +202,11 @@ After round 1, the lead sends every agent's proposed tickets to the QA agents (c
 
 ### Questions during the debate
 
-Agents never assume past a gap. A question is answered by the lead from the graph or the code, or put to the user (one at a time), and the answer is sent to every agent it affects before round 2.
+Agents never assume past a gap. A question about the code, an agent checks itself first. Anything it can't answer that way goes to the lead, which answers from the code or puts it to the user (one at a time), and the answer is sent to every agent it affects before round 2.
 
 ### Round 2: disagreements
 
-The lead lists the material disagreements by point ID. Only the agents involved take part, continued with SendMessage. Each receives the brief, its own round 1 output, the opposing positions **word for word** (never the lead's summary) and any answered questions, and returns:
+The lead lists the material disagreements by point ID. Only the agents involved take part, continued with SendMessage. The lead takes part in any disagreement it has a position on, as one of the four. Each receives the brief, its own round 1 output, the opposing positions **word for word** (never the lead's summary) and any answered questions, and returns:
 
 ```
 ROLE / LEVEL:
@@ -213,11 +223,14 @@ Skip round 2 when there is no material disagreement.
 2. Run round 2 inside each group, four at most. A disagreement that crosses groups gets its own debate, between just the agents involved.
 3. Every group's output still goes to the lead in full. The lead does not drop points because they came from a smaller group.
 
-## Lead decision
+## Decision
 
-The lead receives all specialist recommendations, the QA testability and risk assessment, developer implementation feedback, and every objection, agreement and revised position. Reviewer feedback comes after, on the draft (see Reviewer checks).
+The lead takes on every point raised: all specialist recommendations, the QA testability and risk assessment, developer implementation feedback, its own position, and every objection, agreement and revised position. Reviewer feedback comes after, on the draft (see Reviewer checks).
 
-The lead weighs reasoning quality, risk and relevance (not a vote) and drafts the final scope, final approach, rejected alternatives and why, acceptance criteria, test plan, risks accepted, open questions and the ticket list.
+- **Where the team agrees**, that is the decision. The lead takes it on as it stands.
+- **Where ideas still conflict after round 2**, the lead makes the final call, weighing reasoning quality, risk and relevance (not a vote), and records why in the ledger. Points it argued against still get a fair outcome.
+
+The lead then drafts the final scope, final approach, rejected alternatives and why, acceptance criteria, test plan, risks accepted, open questions and the ticket list.
 
 ### The point ledger
 

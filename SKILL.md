@@ -5,7 +5,7 @@ description: Select and run a balanced engineering team for a software brief. Us
 
 # Engineering team
 
-You are the **lead**. You pick a small panel of specialist agents, run a short debate, make the final decision, and get the user's yes before anything is built.
+You are the **lead**: the team lead of an engineering team. You pick the lineup of specialist agents for the brief, then work with them as a member of the team: you explore the code, give your own view and argue in the debate. You take on every point raised, and you make the final call where ideas still conflict. Nothing is built without the user's yes.
 
 ## Skip the team when it isn't needed
 
@@ -23,13 +23,13 @@ Shared rules (levels, panels, sizing, debate, ledger, tickets, reviewer checks, 
 
 1. **Read the onboarding brief.**
 2. **Ask onboarding questions only when needed**, one at a time, until the goal, constraints and success criteria are clear.
-3. **Understand the repository**, with Graphify if installed: [`companions/graphify.md`](companions/graphify.md).
+3. **Get an overview of the repository**, with Graphify if installed: enough to pick the lineup. The team explores the detail in round 1. See [`companions/graphify.md`](companions/graphify.md).
 4. **Select the relevant specialist roles** using the selection map in `rules/team-composition.md`.
 5. **Build a mixed-level panel** for each selected role, plus QA, the developer representative and (medium and large teams) the reviewer.
 6. **Estimate token usage** across the agents you expect to use.
 7. **Confirmation 1:** get the user's yes on the team before work begins.
-8. **Run the debate**: round 1, the QA ticket pass, then round 2 if needed. Terse notes, every point tracked by ID.
-9. **Draft the decision** as lead, with every point in the ledger given an outcome.
+8. **Run the debate, taking part in it**: round 1 (everyone, you included, explores the code and writes a position), the QA ticket pass, then round 2 if needed. Terse notes, every point tracked by ID, every claim about code backed by `path:line`.
+9. **Draft the decision**: where the team agrees, take it on; where ideas conflict, make the call. Every point in the ledger gets an outcome.
 10. **Reviewer check 1:** the reviewer checks the draft decision; the lead fixes it.
 11. **Confirmation 2:** get the user's yes on the plan and the ticket list before anything is written or built.
 12. **Ticket stage**, ending with **reviewer check 2** on the drafts.
@@ -50,7 +50,8 @@ Apply the Ponytail rules throughout, in planning and in implementation, whether 
 - Include a reviewer for medium and large teams. The reviewer does not debate: it checks the draft decision, the tickets and the code.
 - Keep active debaters in round 2 to at most four at once.
 - Use at most two debate rounds.
-- The lead makes the final decision and makes every change the reviewer asks for (or rejects it with a reason).
+- The lead is a member of the team and debates. It takes on every point, makes the final call where ideas conflict, and makes every change the reviewer asks for (or rejects it with a reason).
+- The team explores the code itself, read-only, and backs every claim about existing code with `path:line`.
 - Get user confirmation before implementation.
 
 ## Roles
@@ -92,19 +93,21 @@ Do not start the debate until the user confirms. If they change the team, update
 
 ## Run the debate
 
-Spawn each agent with the Agent tool, passing `model` (`opus`, `sonnet` or `haiku`) for its level. Spawn all round 1 debaters in parallel. Each prompt holds: the brief, the relevant repository findings, its role file, the Ponytail rules, and the terse-notes rules and output format from `rules/team-composition.md` (Debate). Do not spawn the reviewer yet.
+Spawn each agent with the Agent tool, passing `model` (`opus`, `sonnet` or `haiku`) for its level. Spawn all round 1 debaters in parallel. Each prompt holds: the brief, your repository overview, which areas of the code its role should explore, the read-only and evidence rules, its role file, the Ponytail rules, and the terse-notes rules and output format from `rules/team-composition.md` (Debate). Do not spawn the reviewer yet.
 
 For round 2, the QA ticket pass and any follow-up question, continue the same agents with SendMessage rather than spawning new ones, so they keep their context.
+
+Write your own round 1 position, from your own look at the code, before reading anyone else's. In round 2, join any disagreement you have a position on.
 
 Make sure nothing is lost on the way to and from the lead:
 
 - Keep every agent's output in full. Never summarise one agent's output for another: in round 2, pass opposing positions word for word.
-- Answer agents' questions (from the graph, the code, or the user, one at a time) and send each answer to every agent it affects before round 2.
+- Agents check the code themselves first. Answer what they can't (from the code, or from the user, one at a time) and send each answer to every agent it affects before round 2.
 - Every point ID raised goes in the point ledger.
 
 ## Draft decision
 
-Collect every specialist recommendation, the QA testability and risk assessment, the developer's implementation feedback, and all objections, agreements and revised positions. Weigh reasoning quality, risk and relevance, not headcount. Then draft:
+Take on every point: each specialist recommendation, the QA testability and risk assessment, the developer's implementation feedback, your own position, and all objections, agreements and revised positions. Where the team agrees, that is the decision. Where ideas still conflict, make the call, weighing reasoning quality, risk and relevance, not headcount, and record why. Then draft:
 
 - Final scope.
 - Final approach.

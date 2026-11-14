@@ -4,7 +4,10 @@ Graphify is optional. If the **`graphify`** skill is installed, load it and foll
 
 ## When
 
-Before selecting specialist roles. The findings decide which roles are material, and each agent gets only the findings for its role.
+Twice, by different people:
+
+1. **The lead, before picking the lineup:** a quick overview, enough to see which areas the brief touches and so which roles are needed. Not a deep read.
+2. **Every debater, in round 1:** targeted queries into its own area, then the files the graph points to. The table below says which findings matter to which role. The lead explores too, for its own position.
 
 ## How
 
@@ -27,4 +30,5 @@ The product planner gets a short summary of what already exists, so the scope bu
 
 ## Output
 
-A short list of findings under the seven headings above, each naming the files or modules involved.
+- **The lead's overview:** a short list under the seven headings above, naming the areas involved. It goes to every debater as a starting point.
+- **A debater's exploration:** goes into its own round 1 position, with `path:line` evidence for each claim.
