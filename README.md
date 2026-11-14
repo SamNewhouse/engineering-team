@@ -117,18 +117,11 @@ The lead starts by working out what it needs to know to get the most accurate re
 
 - **It starts from what you've already said.** Anything your request, a linked ticket or earlier messages already answer goes straight into the brief.
 - **It learns your existing system first.** In a project that already has code, it works out the language, frameworks, structure, and what already exists in the area you're asking about, before asking anything. It never asks you what the code can answer.
-- **It asks what only you can answer.** Questions are about your intent and the decisions the code can't make for you, one at a time, most important first, usually with a suggested answer you can just accept.
+- **It asks what only you can answer.** It works out what you're really asking for, then asks about the intent and decisions the code can't settle, one at a time, most important first, usually with a suggested answer you can just accept.
 
 For example, ask for *"a new billing system"* in an existing app, and the lead first finds the current billing code, the payment provider and how plans and invoices are stored. Then it asks things like *"billing today is Stripe one-off charges in `src/billing/charge.ts`: are you adding subscriptions, or replacing this?"* and *"what should happen to existing customers' payment details?"*. It won't ask which language you use. In a brand-new project there's no code to read, so it asks about the stack as well.
 
-Questions are about how you want it done, when that matters for the request. For example:
-
-- *"Are you happy to use an outside package for this, or do you want it written in-house?"*
-- *"Should this replace what's there, or extend it?"*
-- *"What happens to existing customers or data?"*
-- *"Behind a feature flag, or straight live?"*
-
-Your answers go into the brief, and a stated preference, such as "no outside packages", overrides the team's defaults.
+There's no fixed list of questions. The lead reads what you're really asking for and decides what it still needs to know. If you state a preference, such as "no outside packages", it goes into the brief and overrides the team's defaults.
 - **Anything still uncertain becomes a stated assumption**, which the team can challenge, rather than another question.
 
 The brief covers your request in your own words, what the lead found in your existing system, your preferences, the goal, what "done" means, what's in and out of scope, the constraints, the risks, the assumptions made, and the answers you gave. You see it in full at the ready check, and once you confirm it, every member gets it word for word.

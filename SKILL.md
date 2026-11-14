@@ -78,18 +78,7 @@ Before choosing anyone, find out what you need to know to get the most accurate 
 
 1. **Take what the request already answers.** Read the user's request (and anything else they gave you: a ticket, a link, earlier messages) and fill in as much of the brief as it covers.
 2. **Learn the existing system before asking.** In a project that already has code, find out for yourself what the code can tell you: the language, frameworks and libraries, how the project is structured, what already exists in the area of the request (models, services, third-party providers, tests), and the patterns it follows. Never ask the user something the code answers. For "I want a new billing system", that means finding the current billing code, the payment provider, how plans and invoices are stored, and what depends on them, before saying a word.
-3. **Ask what only the user can answer.** With the existing system known, ask about intent and decisions: the things the code can't tell you and that would change the plan. For the billing example: replace the current billing or extend it? Keep the same payment provider? What happens to existing customers and their subscriptions? Make each question specific to what you found (for example "billing today is Stripe one-off charges in `src/billing/charge.ts`: are you adding subscriptions, or replacing this?"). In a new or empty project there is nothing to read, so ask about the stack too.
-
-   Questions often worth asking, when they matter for this request:
-
-   - **Build or reuse:** "Are you happy for us to use an outside package for this (for example a billing library), or do you want it written in-house?"
-   - **Replace or extend:** keep what exists and add to it, or replace it?
-   - **Existing data and users:** what happens to what's already there (records, customers, URLs) when this changes?
-   - **Look and feel:** match existing screens and components, or something new?
-   - **How careful to be:** behind a feature flag, staged rollout, or straight live? How much test coverage?
-   - **Limits:** budget for paid services, performance targets, anything that must not change.
-
-   Only ask the ones this request needs. Each answer goes into the brief, and a stated preference (such as "no outside packages") overrides the team's defaults. Ask one question at a time, most important first, and offer a likely answer or two short options so the user can just pick. Skip anything that wouldn't change what the team does.
+3. **Ask what only the user can answer.** Interpret what the user is really asking for, then decide for yourself what's still needed. There is no fixed list of questions: ask about the intent and decisions the code can't tell you, and only where the answer would change the plan. For the billing example: replace the current billing or extend it? Keep the same payment provider? What happens to existing customers and their subscriptions? Make each question specific to what you found (for example "billing today is Stripe one-off charges in `src/billing/charge.ts`: are you adding subscriptions, or replacing this?"). In a new or empty project there is nothing to read, so ask about the stack too. Ask one question at a time, most important first, and offer a likely answer or two short options so the user can just pick. Skip anything that wouldn't change what the team does.
 4. **Stop when the brief is clear enough to choose a lineup.** Anything still uncertain goes into the brief as a stated assumption, not another question.
 
 The brief must cover:
@@ -103,7 +92,7 @@ The brief must cover:
 | Scope | What is in, and anything explicitly out |
 | Constraints | What must not change, deadlines, required technology, patterns to follow |
 | Risk | Payments, personal data, permissions, migrations, or anything hard to undo; or `none` |
-| Preferences | How the user wants it done: outside packages or in-house code, replace or extend, rollout, look and feel; or `none stated` |
+| Preferences | How the user wants it done, where they said so; or `none stated`. A stated preference overrides the team's defaults |
 | Assumptions | What you assumed instead of asking, one per line, so the team can challenge them |
 | Answers | Each question you asked and the user's answer, reworded into one short line |
 
