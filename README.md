@@ -152,8 +152,8 @@ The lead reads your brief and checks it has what it needs: the goal, any constra
 | Size | For | Members |
 |---|---|---:|
 | **Lite** | Small, low-risk changes with one real design choice | 3 |
-| **Medium** | Normal feature work | 5 to 7 |
-| **Large** | Complex, high-risk or multi-area work | 9 to 11 |
+| **Medium** | Normal feature work | 4 to 7 |
+| **Large** | Complex, high-risk or multi-area work | 8 to 11 |
 
 Sizes don't count the lead, who is always on the team as well. Sizes stay odd where possible.
 

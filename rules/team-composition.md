@@ -58,13 +58,13 @@ QA is a role, not a level. Use more than one developer representative or reviewe
 
 ## Team sizing
 
-**The lead is not counted in these sizes.** It is the main session, not a spawned agent, but it is a full member of the team and takes part in the debate. The reviewer is counted but does not debate, so a medium team has 4 to 6 debaters and a large team 8 to 10.
+**The lead is not counted in these sizes.** It is the main session, not a spawned agent, but it is a full member of the team and takes part in the debate. The reviewer is counted but does not debate, so a medium team has 3 to 6 debating agents and a large team 7 to 10, plus the lead.
 
 | Preset | Use for | Total | Specialist agents | QA | Developer rep | Reviewer |
 |---|---|---:|---:|---:|---:|---:|
 | Lite | Small, low-risk changes with one real design choice | 3 | 1 | 1 | 1 | 0 |
-| Medium | Normal feature work | 5 to 7 | 2 to 4 | 1 or 2 | 1 | 1 |
-| Large | Complex, high-risk or multi-area work | 9 to 11 | 5 to 7 | 2 | 1 | 1 |
+| Medium | Normal feature work | 4 to 7 | 1 to 4 | 1 or 2 | 1 | 1 |
+| Large | Complex, high-risk or multi-area work | 8 to 11 | 4 to 7 | 2 | 1 | 1 |
 
 Pick the smallest preset that covers the brief. Work with no real design choice (a one-file fix, a clear bug, a small edit) gets no team at all. Keep the total odd: if a count lands on an even number, drop the least material agent, or add a junior challenger to a role that has room.
 

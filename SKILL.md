@@ -45,7 +45,7 @@ Apply the Ponytail rules throughout, in planning and in implementation, whether 
 - Choose senior, mid-level or junior based on risk, complexity and importance to the brief.
 - Always include QA. QA is a separate role, not a level.
 - Use at most two QA agents: one senior and one mid-level. No junior QA.
-- The lead is not counted in the team size (Lite 3, Medium 5 to 7, Large 9 to 11).
+- The lead is not counted in the team size (Lite 3, Medium 4 to 7, Large 8 to 11).
 - Always include a developer representative.
 - Include a reviewer for medium and large teams. The reviewer does not debate: it checks the draft decision, the tickets and the code.
 - Keep active debaters in round 2 to at most four at once.
