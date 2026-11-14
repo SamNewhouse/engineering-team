@@ -25,7 +25,7 @@ Shared rules (levels, panels, sizing, debate, ledger, tickets, reviewer checks, 
 2. **Clarify the brief:** build the team brief from what the user has already asked for, asking only the questions that get the most accurate result, one at a time. See Clarifying the brief below.
 3. **Brief check:** once you have what you need, describe what the user wants in a few sentences and ask them to confirm it. See Brief check below.
 4. **Get an overview of the repository**, with Graphify if installed: enough to pick the lineup. The team explores the detail in round 1. See [`companions/graphify.md`](companions/graphify.md).
-5. **Choose the lineup**: the roles you need, how many agents in each and at what level, plus QA and (medium and large teams) the reviewer. You decide; `rules/team-composition.md` gives the limits and some starting points.
+5. **Size the job, then choose the lineup.** From the confirmed brief and the overview, decide how big the job is (no team, Lite, Medium or Large; see Skip the team above), then choose the roles you need, how many agents in each and at what level, plus QA and (medium and large teams) the reviewer. You decide; `rules/team-composition.md` gives the limits and some starting points.
 6. **Ready check:** show the user the lineup, so they can judge the size and likely token cost, and get their yes before any work begins.
 7. **Run the debate, taking part in it**: round 1 (everyone, you included, explores the code and writes a position), the QA ticket pass, then round 2 if needed. Terse notes, every point tracked by ID, every claim about code backed by `path:line`.
 8. **Draft the decision**: where the team agrees, take it on; where ideas conflict, make the call. Every point in the ledger gets an outcome.

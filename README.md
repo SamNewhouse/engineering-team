@@ -22,9 +22,9 @@ flowchart TD
     end
 
     subgraph P2["2. Lineup"]
-        D["Lead gets an overview of the codebase"] --> E{"Is a team worth it?"}
+        D["Lead gets an overview of the codebase"] --> E{"Lead sizes the job: is a team worth it?"}
         E -- "no" --> F["Lead does the work directly"]
-        E -- "yes" --> G["Lead picks the lineup"]
+        E -- "yes: Lite, Medium or Large" --> G["Lead picks the lineup for that size"]
         G --> H{{"Ready check: you confirm the lineup and its size"}}
         H -- "change it" --> G
     end
@@ -135,9 +135,9 @@ The brief covers your request in your own words, what the lead found in your exi
 
 **The lead gets an overview of the codebase.** Just enough to see which areas the change touches (modules, services, data, APIs, shared components, tests, deployment), and so who it needs on the team. It notes the exact files and line ranges it finds, to hand out later. It uses Graphify if you have it, and searches the code if not. The detailed digging is the team's job.
 
-**The lead decides whether a team is worth it.** If the job turns out to be small with one obvious approach, it says so and does the work itself.
+**The lead sizes the job.** From the brief you confirmed and what it found in the code, it decides how big the job is. If it's small with one obvious approach, it says so and does the work itself. Otherwise it picks a size: Lite, Medium or Large.
 
-**The lead picks the lineup.** This is the lead's call. Based on the brief and what it found in the code, it decides which specialists it needs, how many of each and at what level, and adds QA (and a reviewer for bigger teams).
+**The lead picks the lineup for that size.** This is the lead's call. Based on the brief and what it found in the code, it decides which specialists it needs, how many of each and at what level, and adds QA (and a reviewer for bigger teams).
 
 **Ready check: you confirm the work can start.** This is where you decide how big the run should be. The lead shows you:
 
