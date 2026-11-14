@@ -145,7 +145,7 @@ Take on every point: each specialist recommendation, the QA testability and risk
 - Test plan.
 - Risks accepted.
 - Open questions.
-- Ticket list: titles, one line each, and the repo they go to.
+- Ticket list, after searching the open tickets: new tickets (title, one line each, and the repo they go to), and existing tickets to update (number, and one line on what changes).
 
 Give every point in the ledger exactly one outcome (adopted, rejected, risk accepted, open question). The draft is not finished while any point has none.
 
@@ -163,7 +163,7 @@ One fix-and-recheck loop at most per check. On Lite teams, which have no reviewe
 
 ## Plan approval: before tickets and implementation
 
-Show the user the decision items above, the ledger summary (count per outcome; rejected and accepted risks listed) and any reviewer disputes ("reviewer says X, lead says Y"), in plain sentences, and ask for a yes. That yes covers posting the listed tickets. If they change something, revise the decision and ask again.
+Show the user the decision items above, the ledger summary (count per outcome; rejected and accepted risks listed) and any reviewer disputes ("reviewer says X, lead says Y"), in plain sentences, and ask for a yes. That yes covers posting the listed new tickets and making the listed edits to existing ones, nothing more. If they change something, revise the decision and ask again.
 
 ## Ticket stage
 
