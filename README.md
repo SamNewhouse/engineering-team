@@ -209,7 +209,7 @@ There's no separate developer role, because the specialists are the developers. 
 |---|---|---|
 | Senior | Sonnet, or Opus for high-risk calls | Architecture, security, long-term trade-offs |
 | Mid-level | Sonnet | Practical planning and delivery |
-| Junior | Haiku | Challenging assumptions, spotting simple gaps |
+| Junior | Haiku | Cheap, broad coverage: scanning for simple gaps |
 
 A role has one to three members. A junior is only ever the third member of a role, never on its own.
 
@@ -246,7 +246,7 @@ The skill is built to keep token use down without losing anything:
 - **Members are continued, not restarted.** Follow-up rounds and the reviewer's checks pick up the same agents, so nothing is re-sent.
 - **Only the disputed points go round again.** Members who disagree see just those points, not everyone's full write-up.
 - **Notes, not essays.** Members report to the lead in short structured notes.
-- **Juniors stay focused.** A junior only checks the assumptions it challenges.
+- **Juniors are cheap.** A junior runs on Haiku and scans for simple gaps, so a role gets wider coverage for little extra cost.
 
 ## Customising
 
