@@ -106,7 +106,7 @@ Open Claude Code in your project and hand the lead a brief:
 /engineering-team Add CSV export to the orders page, keeping the current filters
 ```
 
-You can also just describe the work. The skill picks up planning and design work that has a real design choice.
+The skill only runs when you call it with `/engineering-team`. Claude won't start a team run on its own, because a run costs much more than a normal conversation.
 
 **When it's worth using:** anything with a real design choice. A small feature gets a Lite team (the lead, one specialist and QA). A feature that touches several parts of the system, or anything involving payments, personal data, permissions or migrations, gets a bigger lineup.
 

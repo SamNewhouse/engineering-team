@@ -1,6 +1,7 @@
 ---
 name: engineering-team
 description: Select and run a balanced engineering team for a software brief. Use when planning, designing, or making implementation decisions on work with a real design choice, from small features to multi-area or high-risk changes. Not for one-file fixes, clear bugs or small edits.
+disable-model-invocation: true
 ---
 
 # Engineering team
