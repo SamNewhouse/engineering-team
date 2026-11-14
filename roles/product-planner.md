@@ -25,4 +25,12 @@ Rung 1: does each requested piece need to exist now? Cut speculative scope.
 ## Debate focus
 Is the scope the smallest that solves the brief? Are the acceptance criteria testable?
 
+## Always check
+Check each of these against the code. Report each one that applies as a RISKS line; leave out the rest.
+- The goal and who it is for match the brief.
+- Every piece of scope traces to the goal; anything else is flagged as scope creep.
+- Acceptance criteria a user could check, not implementation steps.
+- What happens to existing users and data on day one.
+- What is explicitly out of scope.
+
 Team composition rules: [`../rules/team-composition.md`](../rules/team-composition.md).

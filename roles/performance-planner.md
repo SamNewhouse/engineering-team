@@ -25,4 +25,13 @@ No premature optimisation. Mark known ceilings with a `ponytail:` comment and th
 ## Debate focus
 Is there a measured need? What is the simplest change that meets the target?
 
+## Always check
+Check each of these against the code. Report each one that applies as a RISKS line; leave out the rest.
+- A stated target (for example p95 latency), or "no target" said plainly.
+- A measurement before and after, and how it is taken.
+- Queries in loops, and queries without an index on large tables.
+- Unbounded work: lists, payloads or jobs with no limit.
+- A way to invalidate every cache added.
+- Whether the change sits on a hot path, from the code or the graph.
+
 Team composition rules: [`../rules/team-composition.md`](../rules/team-composition.md).
