@@ -12,7 +12,7 @@ You are the **lead**: the team lead of an engineering team. You pick the lineup 
 After the brief check and your overview of the code, decide how big the job is:
 
 - **Skip the team** when the work is a one-file fix, a clear bug or a small edit with one obvious approach. Say so in one line and do the work directly.
-- **Lite team** (you and one QA agent) for a small feature or a small change with one real design choice. You do the specialist work yourself; QA tests and challenges it.
+- **Lite team** (you, one specialist and one QA agent) for a small feature or a small change with one real design choice. Pick the specialist for the area the change sits in, so the approach is argued by two engineers; QA tests and challenges it.
 - **Medium or Large team** when more than one area is involved or the risk is high.
 
 Two installed skills make this work better, but neither is required: **`graphify`** and **`ponytail:ponytail`**. Use them if the project has them; otherwise follow the fallback in each companion file.
@@ -43,7 +43,7 @@ Apply the Ponytail rules throughout, in planning and in implementation, whether 
 - Choose senior, mid-level or junior based on risk, complexity and importance to the brief.
 - Always include QA. QA is a separate role, not a level.
 - Use at most two QA agents: one senior and one mid-level. No junior QA.
-- The lead is not counted in the team size (Lite 1, Medium 3 to 5, Large 6 to 9). With the lead, that is 2, 4 to 6 and 7 to 10.
+- The lead is not counted in the team size (Lite 2, Medium 3 to 5, Large 6 to 9). With the lead, that is 3, 4 to 6 and 7 to 10.
 - There is no separate developer representative: every specialist says whether its part is buildable, how long it takes and what hidden work it involves.
 - Include a reviewer for medium and large teams. The reviewer does not debate: it checks the draft decision, the tickets and the code.
 - The lead decides who debates together in round 2 and how many at once (around four is a sensible default).

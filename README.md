@@ -108,7 +108,7 @@ Open Claude Code in your project and hand the lead a brief:
 
 You can also just describe the work. The skill picks up planning and design work that has a real design choice.
 
-**When it's worth using:** anything with a real design choice. A small feature gets a Lite team (just the lead and QA). A feature that touches several parts of the system, or anything involving payments, personal data, permissions or migrations, gets a bigger lineup.
+**When it's worth using:** anything with a real design choice. A small feature gets a Lite team (the lead, one specialist and QA). A feature that touches several parts of the system, or anything involving payments, personal data, permissions or migrations, gets a bigger lineup.
 
 **When it isn't:** a one-file fix, a clear bug or a small edit. The lead notices this, says so, and just does the work.
 
@@ -177,11 +177,11 @@ On a Lite team there's no reviewer: the lead does the plan and ticket checks its
 
 | Size | For | Members | With the lead |
 |---|---|---:|---:|
-| **Lite** | Small features and low-risk changes | 1 (QA) | 2 |
+| **Lite** | Small features and low-risk changes | 2 | 3 |
 | **Medium** | Normal feature work | 3 to 5 | 4 to 6 |
 | **Large** | Complex, high-risk or multi-area work | 6 to 9 | 7 to 10 |
 
-The lead picks the size that fits the brief. A Lite team is just the lead and QA: the lead does the specialist work itself, and QA tests and challenges it.
+The lead picks the size that fits the brief. A Lite team is the lead, one specialist picked for the area the change sits in, and QA. That way the approach is always argued by two engineers, and QA tests and challenges it.
 
 ### Specialists
 
@@ -217,7 +217,7 @@ A role has one to three members. A junior is only ever the third member of a rol
 
 | Brief | Size | Lineup |
 |---|---|---|
-| Add a filter to an existing list | Lite, 1 | QA |
+| Add a filter to an existing list | Lite, 2 | Frontend, QA (both mid-level) |
 | UI change across several screens | Medium, 4 to 5 | UX, 1 to 2 frontend, QA, reviewer (all mid-level) |
 | New API endpoint with data changes | Medium, 4 to 5 | Backend, data, architect if needed, QA, reviewer |
 | Complex backend migration | Large, 6 to 9 | 1 to 2 architects, 1 to 2 backend, 1 to 2 data, 2 QA, reviewer |

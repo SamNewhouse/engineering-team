@@ -44,11 +44,11 @@ QA is a role, not a level. Role files hold the details: [`../roles/qa.md`](../ro
 
 | Size | Use for | Agents | With the lead | Specialist agents | QA | Reviewer |
 |---|---|---:|---:|---:|---:|---:|
-| Lite | Small features and low-risk changes with one real design choice | 1 | 2 | 0 | 1 | 0 |
+| Lite | Small features and low-risk changes with one real design choice | 2 | 3 | 1 | 1 | 0 |
 | Medium | Normal feature work | 3 to 5 | 4 to 6 | 1 to 3 | 1 or 2 | 1 |
 | Large | Complex, high-risk or multi-area work | 6 to 9 | 7 to 10 | 3 to 6 | 2 | 1 |
 
-**Lite is the lead and one QA agent.** There are no specialist agents: the lead explores the code and writes the position itself, covering whichever specialist areas the change touches. QA writes its own position, adds tests to the tickets and challenges the lead's plan. If they conflict, they argue it out once and the lead makes the call.
+**Lite is the lead, one specialist and one QA agent.** The lead picks the specialist for the area the change sits in (for example backend for an API tweak, frontend for a UI one), usually at mid-level, so the approach is always argued by two engineers. QA tests and challenges the plan. Where they conflict, they argue it out once and the lead makes the call.
 
 The lead sizes the job after the brief check, from the confirmed brief and its overview of the code. Pick the smallest size that covers the brief. Work with no real design choice (a one-file fix, a clear bug, a small edit) gets no team at all.
 
@@ -101,11 +101,12 @@ A junior is only ever the third member of a panel, never one of the first two. *
 
 Starting points, not fixed lineups. Each count is a range: the lead picks where in it to land from what the code shows, and can add or drop roles. Every example stays inside its size.
 
-**Small feature** (add a filter to an existing list) — Lite, 1 agent plus the lead.
+**Small feature** (add a filter to an existing list) — Lite, 2 agents plus the lead.
 
 | Role | Level | Count |
 |---|---|---:|
-| QA | Mid-level or senior | 1 |
+| Frontend planner | Mid-level | 1 |
+| QA | Mid-level | 1 |
 
 **UI change across several screens** — Medium, 4 to 5 agents. No senior is needed when the risk is low.
 
