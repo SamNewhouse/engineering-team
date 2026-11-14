@@ -45,7 +45,7 @@ Apply the Ponytail rules throughout, in planning and in implementation, whether 
 - The lead is not counted in the team size (Lite 1, Medium 4 to 7, Large 8 to 11). With the lead, that is 2, 5 to 8 and 9 to 12.
 - There is no separate developer representative: every specialist says whether its part is buildable, how long it takes and what hidden work it involves.
 - Include a reviewer for medium and large teams. The reviewer does not debate: it checks the draft decision, the tickets and the code.
-- Keep active debaters in round 2 to at most four at once.
+- The lead decides who debates together in round 2 and how many at once (around four is a sensible default).
 - Use at most two debate rounds.
 - The lead is a member of the team and debates. It takes on every point, makes the final call where ideas conflict, and makes every change the reviewer asks for (or rejects it with a reason).
 - The team explores the code itself, read-only, and backs every claim about existing code with `path:line`.

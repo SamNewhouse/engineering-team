@@ -32,6 +32,8 @@ The lead decides who it needs: which roles, how many agents in each, and at what
 - At most one junior per specialist role, and only as the third member.
 - The total fits one of the sizes below.
 
+Within those limits, the lead also decides how many agents debate together in round 2 (see Grouping the debate).
+
 QA is a role, not a level. Role files hold the details: [`../roles/qa.md`](../roles/qa.md), [`../roles/reviewer.md`](../roles/reviewer.md).
 
 **Building it is everyone's concern.** There is no separate developer representative: the specialists are the developers. Each one says whether its part is buildable as written, how long it will take, and what hidden work it involves.
@@ -97,57 +99,59 @@ A junior is only ever the third member of a panel, never one of the first two. *
 
 ## Examples
 
+Starting points, not fixed lineups. Each count is a range: the lead picks where in it to land from what the code shows, and can add or drop roles. Every example stays inside its size.
+
 **Small feature** (add a filter to an existing list) — Lite, 1 agent plus the lead.
 
 | Role | Level | Count |
 |---|---|---:|
-| QA | Mid-level | 1 |
+| QA | Mid-level or senior | 1 |
 
-**Simple UI change** — Medium, 4 agents. No senior is needed when the work is simple.
+**Simple UI change** — Medium, 4 to 5 agents. No senior is needed when the work is simple.
 
 | Role | Level | Count |
 |---|---|---:|
 | UX planner | Mid-level | 1 |
-| Frontend planner | Mid-level | 1 |
+| Frontend planner | Mid-level | 1 to 2 |
 | QA | Mid-level | 1 |
 | Reviewer | Mid-level | 1 |
 
-**Backend API feature** (new endpoint with business rules and data changes) — Medium, 6 agents.
+**Backend API feature** (new endpoint with business rules and data changes) — Medium, 6 to 7 agents.
 
 | Role | Level | Count |
 |---|---|---:|
 | Product planner | Senior | 1 |
 | Systems architect | Mid-level | 1 |
-| Backend planner | Senior | 1 |
+| Backend planner | Senior, plus mid-level if needed | 1 to 2 |
 | Data planner | Mid-level | 1 |
 | QA | Senior | 1 |
 | Reviewer | Mid-level | 1 |
 
-**Complex backend migration** — Large, 8 agents, with strong architectural and data depth.
+**Complex backend migration** — Large, 8 to 10 agents, with strong architectural and data depth.
 
 | Role | Level | Count |
 |---|---|---:|
 | Systems architect | Senior (Opus) | 2 |
-| Backend planner | Senior, mid-level | 2 |
-| Data planner | Senior (Opus) | 1 |
+| Backend planner | Senior, mid-level, plus a junior challenger if useful | 2 to 3 |
+| Data planner | Senior (Opus), plus mid-level if needed | 1 to 2 |
 | QA | Senior, mid-level | 2 |
 | Reviewer | Senior | 1 |
 
-**Payments or sensitive data** (payments, personal data, permissions, regulated workflows) — Large, 8 agents.
+**Payments or sensitive data** (payments, personal data, permissions, regulated workflows) — Large, 8 to 10 agents.
 
 | Role | Level | Count |
 |---|---|---:|
 | Product planner | Senior | 1 |
 | Systems architect | Senior | 1 |
-| Backend planner | Mid-level | 1 |
+| Backend planner | Mid-level, plus senior if the logic is heavy | 1 to 2 |
 | Data planner | Senior (Opus) | 1 |
-| Security planner | Senior (Opus) | 1 |
+| Security planner | Senior (Opus), plus mid-level if needed | 1 to 2 |
 | QA | Senior, mid-level | 2 |
 | Reviewer | Senior | 1 |
 
 ## Debate
 
-**Two rounds at most.** The lead is a member of the team: it explores the code, writes its own round 1 position and takes part in round 2. Round 1 runs every debater in parallel; the four-at-once limit applies to round 2, where agents respond to each other. The reviewer does not debate. Every agent's output goes back to the lead in full. Nothing is summarised away between an agent and the lead.
+**Two rounds at most.** The lead is a member of the team: it explores the code, writes its own round 1 position and takes part in round 2. Round 1 runs every debater in parallel. In round 2, the lead decides who debates together and how many at once. The reviewer does not debate. Every agent's output goes back to the lead in full. Nothing is summarised away between an agent and the lead.
 
 ### Saving tokens
 
@@ -209,7 +213,7 @@ Agents never assume past a gap. A question about the code, an agent checks itsel
 
 ### Round 2: disagreements
 
-The lead lists the material disagreements by point ID. Only the agents involved take part, continued with SendMessage. The lead takes part in any disagreement it has a position on, as one of the four. Because each agent is continued, it already has the brief and its own round 1 output. It receives only the disputed point blocks from the opposing positions, with their evidence, **word for word** (never the lead's summary), plus any answered questions, and returns:
+The lead lists the material disagreements by point ID. Only the agents involved take part, continued with SendMessage. The lead takes part in any disagreement it has a position on. Because each agent is continued, it already has the brief and its own round 1 output. It receives only the disputed point blocks from the opposing positions, with their evidence, **word for word** (never the lead's summary), plus any answered questions, and returns:
 
 ```
 ROLE / LEVEL:
@@ -220,10 +224,12 @@ NEW RISKS:    any raised by the other positions, with ID
 
 Skip round 2 when there is no material disagreement.
 
-### More than four agents
+### Grouping the debate
+
+The lead decides how round 2 is grouped and how many agents debate at once. Small groups keep a debate focused, so around four at a time is a sensible default, but the lead can go higher or lower to fit the disagreement.
 
 1. Group agents by related role (for example product + UX + frontend; architect + backend + data; security + DevOps + performance; QA + the specialists whose tickets it is testing).
-2. Run round 2 inside each group, four at most. A disagreement that crosses groups gets its own debate, between just the agents involved.
+2. Run round 2 inside each group. A disagreement that crosses groups gets its own debate, between just the agents involved.
 3. Every group's output still goes to the lead in full. The lead does not drop points because they came from a smaller group.
 
 ## Decision
