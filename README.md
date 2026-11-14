@@ -21,7 +21,7 @@ flowchart TD
     subgraph P2["2. Lineup"]
         D["Lead gets an overview of the codebase"] --> E{"Is a team worth it?"}
         E -- "no" --> F["Lead does the work directly"]
-        E -- "yes" --> G["Lead picks the lineup and estimates the cost"]
+        E -- "yes" --> G["Lead picks the lineup"]
         G --> H{{"Checkpoint 1: you confirm the lineup"}}
         H -- "change it" --> G
     end
@@ -121,9 +121,9 @@ The lead reads your brief and checks it has what it needs: the goal, any constra
 
 **The lead decides whether a team is worth it.** If the job turns out to be small with one obvious approach, it says so and does the work itself.
 
-**The lead picks the lineup.** It chooses only the specialists the brief needs, sets a level for each member, adds the fixed roles (QA, a developer representative, and a reviewer for bigger teams), and estimates the token cost.
+**The lead picks the lineup.** This is the lead's call. It decides which specialists it needs, how many of each and at what level, and adds QA (and a reviewer for bigger teams).
 
-**Checkpoint 1: you confirm the lineup.** You see the team size, each role and its levels, and the estimated cost. Confirm it, or ask for changes. Nothing runs until you say yes.
+**Checkpoint 1: you confirm the lineup.** You see the team size, and each role and its levels. Confirm it, or ask for changes. Nothing runs until you say yes.
 
 ### Phase 3: Work
 
@@ -155,7 +155,7 @@ The lead reads your brief and checks it has what it needs: the goal, any constra
 | **Medium** | Normal feature work | 4 to 7 |
 | **Large** | Complex, high-risk or multi-area work | 8 to 11 |
 
-Sizes don't count the lead, who is always on the team as well. Sizes stay odd where possible.
+Sizes don't count the lead, who is always on the team as well. The lead picks the size that fits the brief.
 
 ### Specialists
 
@@ -173,7 +173,6 @@ A user-facing feature gets product, UX and frontend. A payments change gets secu
 ### Fixed roles
 
 - **QA** is always in the lineup: one or two members, never junior. It owns the acceptance criteria and the test plan.
-- **Developer representative** is always in the lineup. It speaks for whoever has to build and maintain the result.
 - **Reviewer** joins medium and large lineups. It doesn't debate. It checks the draft decision, the tickets and the code.
 
 ### Levels
@@ -190,10 +189,10 @@ A role has one to three members. A junior is only ever the third member of a rol
 
 | Brief | Size | Lineup |
 |---|---|---|
-| Simple UI change | Medium, 5 | UX, frontend, developer representative, QA, reviewer (all mid-level) |
-| New API endpoint with data changes | Medium, 7 | Product, architect, backend, data, developer representative, QA, reviewer |
-| Complex backend migration | Large, 9 | 2 architects, 2 backend, data, developer representative, 2 QA, reviewer |
-| Payments or personal data | Large, 9 | Product, architect, backend, data, security, developer representative, 2 QA, reviewer |
+| Simple UI change | Medium, 4 | UX, frontend, QA, reviewer (all mid-level) |
+| New API endpoint with data changes | Medium, 6 | Product, architect, backend, data, QA, reviewer |
+| Complex backend migration | Large, 8 | 2 architects, 2 backend, data, 2 QA, reviewer |
+| Payments or personal data | Large, 8 | Product, architect, backend, data, security, 2 QA, reviewer |
 
 ## Nothing gets lost
 
@@ -204,9 +203,9 @@ A role has one to three members. A junior is only ever the third member of a rol
 - **Every point ends with an outcome.** The decision isn't finished until it does, and the reviewer checks this.
 - **The reviewer only checks.** It reports what it finds, the lead makes the changes, and anything still disputed comes to you.
 
-## Cost
+## Token use
 
-A team run uses more tokens than a single conversation, and a bigger lineup uses more. At checkpoint 1 the lead gives a rough estimate for your brief, so you can shrink the lineup before anything runs. It's a guide, not a promise.
+A team run uses more tokens than a single conversation, and a bigger lineup uses more. To make a run cheaper, ask the lead for a smaller lineup at checkpoint 1.
 
 The skill is built to keep token use down without losing anything:
 
@@ -221,7 +220,7 @@ The skill is built to keep token use down without losing anything:
 ## Customising
 
 - **Roles** live in `roles/`, one short file each. Edit one to change its focus, or add a new role and list it in `SKILL.md`.
-- **Team rules** (sizes, levels, the debate format, reviewer checks, tickets, cost estimates) live in `rules/team-composition.md`.
+- **Team rules** (sizes, levels, the debate format, reviewer checks, tickets, token savings) live in `rules/team-composition.md`.
 
 ## Layout
 

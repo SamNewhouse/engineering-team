@@ -12,7 +12,7 @@ Shared rules for every engineering-team run. The entry point is [`../SKILL.md`](
 | Mid-level | Sonnet | Practical planning, implementation, assurance, review |
 | Junior | Haiku | Assumptions, simple gaps, direct challenge, broad coverage |
 
-Choose the mix from:
+The lead chooses the mix from:
 
 - The risk and complexity of the work.
 - The importance of the role to the brief.
@@ -21,9 +21,54 @@ Choose the mix from:
 
 Use Opus only for senior agents on high-risk decisions.
 
-## Specialist panels
+## The lead chooses the lineup
 
-For each selected specialist role, use one of:
+The lead decides who it needs: which roles, how many agents in each, and at what level. The rules below are the few limits it works within. Everything else in this section is guidance to help it choose, not a checklist.
+
+**Fixed limits:**
+
+- QA is always on the team: at most two agents, one senior and one mid-level. **No junior QA.**
+- A reviewer joins medium and large teams: one agent, mid-level normally, senior for high-risk, architectural or security-sensitive work. It does not debate (see Reviewer checks).
+- At most one junior per specialist role, and only as the third member.
+- The total fits one of the sizes below.
+
+QA is a role, not a level. Role files hold the details: [`../roles/qa.md`](../roles/qa.md), [`../roles/reviewer.md`](../roles/reviewer.md).
+
+**Building it is everyone's concern.** There is no separate developer representative: the specialists are the developers. Each one says whether its part is buildable as written, how long it will take, and what hidden work it involves.
+
+## Team sizing
+
+**The lead is not counted in these sizes.** It is the main session, not a spawned agent, but it is a full member of the team and takes part in the debate. The reviewer is counted but does not debate.
+
+| Size | Use for | Total | Specialist agents | QA | Reviewer |
+|---|---|---:|---:|---:|---:|
+| Lite | Small, low-risk changes with one real design choice | 3 | 2 | 1 | 0 |
+| Medium | Normal feature work | 4 to 7 | 2 to 5 | 1 or 2 | 1 |
+| Large | Complex, high-risk or multi-area work | 8 to 11 | 5 to 8 | 2 | 1 |
+
+Pick the smallest size that covers the brief. Work with no real design choice (a one-file fix, a clear bug, a small edit) gets no team at all.
+
+## Choosing roles
+
+Select only the roles that are material to the brief. These are common starting points, not rules; the lead adds or drops roles based on what its overview of the code shows:
+
+| If the brief involves… | Usually needs |
+|---|---|
+| User-facing feature | Product, UX, frontend |
+| Business logic or API | Product, systems architect, backend |
+| Database or reporting | Data planner, systems architect |
+| Third-party integration | Integration planner, backend |
+| Authentication or sensitive data | Security planner, systems architect |
+| Deployment or infrastructure | DevOps planner, systems architect |
+| Performance-sensitive work | Performance planner, systems architect |
+| Public-facing documentation | Documentation planner, product planner |
+| Success measurement | Analytics planner, product planner |
+
+QA is added to every team on top of these.
+
+## Choosing levels
+
+For each selected role, the lead picks one of:
 
 | Agents | Allowed mix |
 |---:|---|
@@ -31,7 +76,9 @@ For each selected specialist role, use one of:
 | 2 | Any mix of senior and mid-level |
 | 3 | Two senior or mid-level agents in any mix, plus one junior as the third member; or three senior or mid-level agents |
 
-A junior is only ever the third member of a panel, never one of the first two. Add more senior or mid-level agents only when more depth is needed. **Never more than one junior per specialist role.** Do not force every role to have both a senior and a mid-level agent: one mid-level agent is often enough.
+Do not force every role to have both a senior and a mid-level agent: one mid-level agent is often enough. Give a role more depth when it carries more of the risk.
+
+A junior is only ever the third member of a panel, never one of the first two. **Never more than one junior per specialist role.**
 
 | Senior | Mid-level | Junior | Valid? |
 |---:|---:|---:|---|
@@ -46,41 +93,18 @@ A junior is only ever the third member of a panel, never one of the first two. A
 | 0 | 0 | 2 | No: two juniors |
 | 0 | 1 | 2 | No: two juniors |
 
-## Always-present roles
-
-| Role | When | Composition |
-|---|---|---|
-| QA | Always | At most two: one senior and one mid-level. **No junior QA.** |
-| Developer representative | Always | One mid-level; senior for high-risk, architectural or security-sensitive work. |
-| Reviewer | Medium and large teams | One mid-level; senior for high-risk, architectural or security-sensitive work. Does not debate: see Reviewer checks. |
-
-QA is a role, not a level. Use more than one developer representative or reviewer only when the brief genuinely needs separate perspectives. Role files hold the details: [`../roles/qa.md`](../roles/qa.md), [`../roles/developer-representative.md`](../roles/developer-representative.md), [`../roles/reviewer.md`](../roles/reviewer.md).
-
-## Team sizing
-
-**The lead is not counted in these sizes.** It is the main session, not a spawned agent, but it is a full member of the team and takes part in the debate. The reviewer is counted but does not debate, so a medium team has 3 to 6 debating agents and a large team 7 to 10, plus the lead.
-
-| Preset | Use for | Total | Specialist agents | QA | Developer rep | Reviewer |
-|---|---|---:|---:|---:|---:|---:|
-| Lite | Small, low-risk changes with one real design choice | 3 | 1 | 1 | 1 | 0 |
-| Medium | Normal feature work | 4 to 7 | 1 to 4 | 1 or 2 | 1 | 1 |
-| Large | Complex, high-risk or multi-area work | 8 to 11 | 4 to 7 | 2 | 1 | 1 |
-
-Pick the smallest preset that covers the brief. Work with no real design choice (a one-file fix, a clear bug, a small edit) gets no team at all. Keep the total odd: if a count lands on an even number, drop the least material agent, or add a junior challenger to a role that has room.
-
 ## Examples
 
-**Simple UI change** — Medium, 5 agents. No senior is needed when the work is simple.
+**Simple UI change** — Medium, 4 agents. No senior is needed when the work is simple.
 
 | Role | Level | Count |
 |---|---|---:|
 | UX planner | Mid-level | 1 |
 | Frontend planner | Mid-level | 1 |
-| Developer representative | Mid-level | 1 |
 | QA | Mid-level | 1 |
 | Reviewer | Mid-level | 1 |
 
-**Backend API feature** (new endpoint with business rules and data changes) — Medium, 7 agents.
+**Backend API feature** (new endpoint with business rules and data changes) — Medium, 6 agents.
 
 | Role | Level | Count |
 |---|---|---:|
@@ -88,22 +112,20 @@ Pick the smallest preset that covers the brief. Work with no real design choice 
 | Systems architect | Mid-level | 1 |
 | Backend planner | Senior | 1 |
 | Data planner | Mid-level | 1 |
-| Developer representative | Mid-level | 1 |
 | QA | Senior | 1 |
 | Reviewer | Mid-level | 1 |
 
-**Complex backend migration** — Large, 9 agents, with strong architectural and data depth.
+**Complex backend migration** — Large, 8 agents, with strong architectural and data depth.
 
 | Role | Level | Count |
 |---|---|---:|
 | Systems architect | Senior (Opus) | 2 |
 | Backend planner | Senior, mid-level | 2 |
 | Data planner | Senior (Opus) | 1 |
-| Developer representative | Senior | 1 |
 | QA | Senior, mid-level | 2 |
 | Reviewer | Senior | 1 |
 
-**Payments or sensitive data** (payments, personal data, permissions, regulated workflows) — Large, 9 agents.
+**Payments or sensitive data** (payments, personal data, permissions, regulated workflows) — Large, 8 agents.
 
 | Role | Level | Count |
 |---|---|---:|
@@ -112,49 +134,8 @@ Pick the smallest preset that covers the brief. Work with no real design choice 
 | Backend planner | Mid-level | 1 |
 | Data planner | Senior (Opus) | 1 |
 | Security planner | Senior (Opus) | 1 |
-| Developer representative | Senior | 1 |
 | QA | Senior, mid-level | 2 |
 | Reviewer | Senior | 1 |
-
-## Role selection
-
-Select only the roles that are material to the brief.
-
-| If the brief involves… | Select |
-|---|---|
-| User-facing feature | Product, UX, frontend, QA |
-| Business logic or API | Product, systems architect, backend, QA |
-| Database or reporting | Data planner, systems architect, QA |
-| Third-party integration | Integration planner, backend, QA |
-| Authentication or sensitive data | Security planner, systems architect, QA |
-| Deployment or infrastructure | DevOps planner, systems architect, QA |
-| Performance-sensitive work | Performance planner, systems architect, QA |
-| Public-facing documentation | Documentation planner, product planner, QA |
-| Success measurement | Analytics planner, product planner, QA |
-
-When several rows match, merge them and drop duplicates. If the merged list is too big for the preset, keep the roles with the highest risk to the brief.
-
-## Selection order
-
-1. Read the approved brief and the repository findings.
-2. Select only the specialist roles the brief needs.
-3. Fill each one with a mixed-level panel, at most one junior each.
-4. Add the developer representative.
-5. Add QA: one or two agents, never junior.
-6. Add the reviewer for medium and large teams.
-7. Check the total fits a preset and is odd.
-
-## Token estimate
-
-Rough cost per agent per round, input and output together, with terse notes:
-
-| Model | Per round |
-|---|---:|
-| Haiku | ~5k |
-| Sonnet | ~15k |
-| Opus | ~25k |
-
-Estimate = (agents × per-round cost × rounds expected) + the lead's overview pass (~5k) + code exploration in round 1 (~5–15k per debater with a starting map, less for juniors, who only check what they challenge) + the lead's own round 1 position (~15k) + QA ticket pass (~5–10k per QA agent) + lead synthesis (~15k) + ticket drafting (~2–3k per ticket). Medium and large teams add the reviewer: ~15k for the draft check, ~15–20k for the ticket check and ~15–25k for the code check. Continuing agents with SendMessage instead of spawning new ones keeps round 2 cheaper. Round 2 only includes agents in a material disagreement, so count them separately. Give the user one total and the per-agent breakdown. These figures are first guesses: correct them after real runs.
 
 ## Debate
 
@@ -206,6 +187,7 @@ ASSUMES:      one per line, with ID
 EVIDENCE:     path:line for each claim about existing code; `unchecked` where not checked
 CHANGE-MIND:  what would change the recommendation
 QUESTIONS:    anything it needs answered, one per line, with ID
+BUILD:        is its part buildable as written; effort in concrete units; hidden work
 TICKETS:      proposed tickets for its area: task, files or component, done means
 ```
 
@@ -232,13 +214,13 @@ Skip round 2 when there is no material disagreement.
 
 ### More than four agents
 
-1. Group agents by related role (for example product + UX + frontend; architect + backend + data; security + DevOps + performance; QA + developer).
+1. Group agents by related role (for example product + UX + frontend; architect + backend + data; security + DevOps + performance; QA + the specialists whose tickets it is testing).
 2. Run round 2 inside each group, four at most. A disagreement that crosses groups gets its own debate, between just the agents involved.
 3. Every group's output still goes to the lead in full. The lead does not drop points because they came from a smaller group.
 
 ## Decision
 
-The lead takes on every point raised: all specialist recommendations, the QA testability and risk assessment, developer implementation feedback, its own position, and every objection, agreement and revised position. Reviewer feedback comes after, on the draft (see Reviewer checks).
+The lead takes on every point raised: all specialist recommendations, the QA testability and risk assessment, everyone's build and effort notes, its own position, and every objection, agreement and revised position. Reviewer feedback comes after, on the draft (see Reviewer checks).
 
 - **Where the team agrees**, that is the decision. The lead takes it on as it stands.
 - **Where ideas still conflict after round 2**, the lead makes the final call, weighing reasoning quality, risk and relevance (not a vote), and records why in the ledger. Points it argued against still get a fair outcome.
@@ -291,7 +273,7 @@ The debate itself never goes into a ticket: only the decision and its reasons. I
 
 ## Confirmation gates
 
-1. **Before the debate:** roles, agents per role, levels, QA, developer representative, reviewer, token estimate.
+1. **Before the debate:** size, roles, agents per role, levels, QA, reviewer.
 2. **Before the ticket stage and implementation:** the decision items above (after reviewer check 1), the point ledger summary, any reviewer disputes, and the ticket list (titles, one line each, and the repo they go to). This yes also covers posting those tickets.
 
 Nothing starts without the user's yes at each gate.

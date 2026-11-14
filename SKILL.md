@@ -17,36 +17,33 @@ After reading the brief (and the repository, if needed), decide whether a team i
 
 Two installed skills make this work better, but neither is required: **`graphify`** and **`ponytail:ponytail`**. Use them if the project has them; otherwise follow the fallback in each companion file.
 
-Shared rules (levels, panels, sizing, debate, ledger, tickets, reviewer checks, token estimate): [`rules/team-composition.md`](rules/team-composition.md).
+Shared rules (levels, panels, sizing, debate, ledger, tickets, reviewer checks, saving tokens): [`rules/team-composition.md`](rules/team-composition.md).
 
 ## Workflow
 
 1. **Read the onboarding brief.**
 2. **Ask onboarding questions only when needed**, one at a time, until the goal, constraints and success criteria are clear.
 3. **Get an overview of the repository**, with Graphify if installed: enough to pick the lineup. The team explores the detail in round 1. See [`companions/graphify.md`](companions/graphify.md).
-4. **Select the relevant specialist roles** using the selection map in `rules/team-composition.md`.
-5. **Build a mixed-level panel** for each selected role, plus QA, the developer representative and (medium and large teams) the reviewer.
-6. **Estimate token usage** across the agents you expect to use.
-7. **Confirmation 1:** get the user's yes on the team before work begins.
-8. **Run the debate, taking part in it**: round 1 (everyone, you included, explores the code and writes a position), the QA ticket pass, then round 2 if needed. Terse notes, every point tracked by ID, every claim about code backed by `path:line`.
-9. **Draft the decision**: where the team agrees, take it on; where ideas conflict, make the call. Every point in the ledger gets an outcome.
-10. **Reviewer check 1:** the reviewer checks the draft decision; the lead fixes it.
-11. **Confirmation 2:** get the user's yes on the plan and the ticket list before anything is written or built.
-12. **Ticket stage**, ending with **reviewer check 2** on the drafts.
-13. **Implementation**, ending with **reviewer check 3** on the code.
+4. **Choose the lineup**: the roles you need, how many agents in each and at what level, plus QA and (medium and large teams) the reviewer. You decide; `rules/team-composition.md` gives the limits and some starting points.
+5. **Confirmation 1:** get the user's yes on the team before work begins.
+6. **Run the debate, taking part in it**: round 1 (everyone, you included, explores the code and writes a position), the QA ticket pass, then round 2 if needed. Terse notes, every point tracked by ID, every claim about code backed by `path:line`.
+7. **Draft the decision**: where the team agrees, take it on; where ideas conflict, make the call. Every point in the ledger gets an outcome.
+8. **Reviewer check 1:** the reviewer checks the draft decision; the lead fixes it.
+9. **Confirmation 2:** get the user's yes on the plan and the ticket list before anything is written or built.
+10. **Ticket stage**, ending with **reviewer check 2** on the drafts.
+11. **Implementation**, ending with **reviewer check 3** on the code.
 
 Apply the Ponytail rules throughout, in planning and in implementation, whether or not the plugin is installed: [`companions/ponytail.md`](companions/ponytail.md).
 
 ## Core rules
 
-- Select only relevant specialist roles.
-- Give each selected specialist role a mixed-level panel.
+- The lead chooses the lineup: only the roles the brief needs, each with the depth it needs.
 - Use at most one junior agent per specialist role, and only as the third member. Do not force every role to have both a senior and a mid-level agent.
 - Choose senior, mid-level or junior based on risk, complexity and importance to the brief.
 - Always include QA. QA is a separate role, not a level.
 - Use at most two QA agents: one senior and one mid-level. No junior QA.
 - The lead is not counted in the team size (Lite 3, Medium 4 to 7, Large 8 to 11).
-- Always include a developer representative.
+- There is no separate developer representative: every specialist says whether its part is buildable, how long it takes and what hidden work it involves.
 - Include a reviewer for medium and large teams. The reviewer does not debate: it checks the draft decision, the tickets and the code.
 - Keep active debaters in round 2 to at most four at once.
 - Use at most two debate rounds.
@@ -73,21 +70,18 @@ Each role has one short spec in `roles/`. Give an agent its role file as part of
 | Documentation planner | [`roles/documentation-planner.md`](roles/documentation-planner.md) |
 | Analytics planner | [`roles/analytics-planner.md`](roles/analytics-planner.md) |
 | QA (always) | [`roles/qa.md`](roles/qa.md) |
-| Developer representative (always) | [`roles/developer-representative.md`](roles/developer-representative.md) |
 | Reviewer (medium and large) | [`roles/reviewer.md`](roles/reviewer.md) |
 
 ## Confirmation 1: before the debate
 
-After selecting the team and estimating tokens, show the user and ask for a yes:
+After choosing the lineup, show the user and ask for a yes:
 
 - The preset (Lite, Medium or Large) and why.
-- The selected specialist roles.
+- The specialist roles you chose.
 - The number of agents per role.
 - The capability level (and model) of each agent.
 - The QA composition.
-- The developer representative.
 - The reviewer, if included.
-- The estimated token usage.
 
 Do not start the debate until the user confirms. If they change the team, update it and ask again.
 
@@ -107,7 +101,7 @@ Make sure nothing is lost on the way to and from the lead:
 
 ## Draft decision
 
-Take on every point: each specialist recommendation, the QA testability and risk assessment, the developer's implementation feedback, your own position, and all objections, agreements and revised positions. Where the team agrees, that is the decision. Where ideas still conflict, make the call, weighing reasoning quality, risk and relevance, not headcount, and record why. Then draft:
+Take on every point: each specialist recommendation, the QA testability and risk assessment, everyone's build and effort notes, your own position, and all objections, agreements and revised positions. Where the team agrees, that is the decision. Where ideas still conflict, make the call, weighing reasoning quality, risk and relevance, not headcount, and record why. Then draft:
 
 - Final scope.
 - Final approach.

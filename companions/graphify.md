@@ -18,12 +18,12 @@ Twice, by different people:
 
 | Finding | Informs |
 |---|---|
-| Existing modules and boundaries | Systems architect, backend planner, frontend planner, developer representative |
+| Existing modules and boundaries | Systems architect, backend planner, frontend planner |
 | Dependencies between services | Systems architect, integration planner, DevOps planner, performance planner |
 | Data flow | Data planner, security planner, analytics planner, backend planner |
 | API contracts | Backend planner, integration planner, frontend planner, documentation planner |
-| Shared components | Frontend planner, UX planner, developer representative, reviewer |
-| Test coverage gaps | QA, reviewer, developer representative |
+| Shared components | Frontend planner, UX planner, reviewer |
+| Test coverage gaps | QA, reviewer |
 | Deployment and infrastructure relationships | DevOps planner, security planner, performance planner |
 
 The product planner gets a short summary of what already exists, so the scope builds on it.

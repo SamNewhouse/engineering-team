@@ -16,7 +16,7 @@ Stop at the first step that holds:
 ## Where it applies
 
 - **Every agent's prompt** includes the Ponytail rules. Each recommendation says which step of the ladder it stops at (reuse, standard library, platform, installed dependency, or new code), and anyone may challenge a proposal by naming an earlier step that already solves it.
-- **The developer representative** challenges any part of the plan that adds code it doesn't need.
+- **Every specialist** challenges any part of the plan that adds code it doesn't need, including other specialists' parts.
 - **The reviewer** checks the plan for overbuilding, and reviews the diff after implementation for the same (with **`ponytail:ponytail-review`**, if installed).
 - **The lead** applies it to the final decision before confirmation 2.
 
