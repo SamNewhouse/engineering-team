@@ -279,7 +279,7 @@ At each check:
 Runs after plan approval, before implementation. Only the lead writes to GitHub. Agents only draft.
 
 1. **The lead drafts each approved ticket in full**, in plain sentences: the problem and the plan, the files or component to change, acceptance criteria and tests (from QA), risks accepted, "Needs first" for tickets that depend on another, and a link to the main ticket that holds the decision. The main ticket is the one the request came from; if there wasn't one, the lead creates it first, holding the decision and its reasons.
-2. **The lead searches the open tickets** first and updates a matching one instead of creating a copy. One task per ticket.
+2. **The lead updates the existing tickets approved at plan approval** instead of creating copies, and edits no others. A match it finds only now goes to the user before it is edited. One task per ticket.
 3. **Reviewer check 2:** the reviewer checks the drafts against the decision and the point ledger, and the lead fixes them (see Reviewer checks).
 4. **The lead posts the tickets** to the repo approved at plan approval, turns each open question into a decision ticket, and gives the user the links.
 
@@ -289,6 +289,6 @@ The debate itself never goes into a ticket: only the decision and its reasons. I
 
 1. **Brief check, before choosing the lineup:** a few sentences on what the user wants (goal, done, key assumptions), confirmed as a yes/no.
 2. **Ready check, before any work:** a reminder of the confirmed brief, the size, the lineup (roles, agents per role, levels, QA, reviewer), what drives the cost (agent count and models), and a smaller option where one fits. No token figures.
-3. **Plan approval, before the ticket stage and implementation:** the decision items above (after reviewer check 1), the point ledger summary, any reviewer disputes, and the ticket list (titles, one line each, and the repo they go to). This yes also covers posting those tickets.
+3. **Plan approval, before the ticket stage and implementation:** the decision items above (after reviewer check 1), the point ledger summary, any reviewer disputes, and the ticket list: new tickets (titles, one line each, and the repo they go to) and existing tickets to update (number and what changes). This yes also covers posting those tickets and making those edits.
 
 Nothing starts without the user's yes at each gate.
