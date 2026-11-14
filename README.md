@@ -149,13 +149,13 @@ The lead reads your brief and checks it has what it needs: the goal, any constra
 
 ### Sizes
 
-| Size | For | Members |
-|---|---|---:|
-| **Lite** | Small, low-risk changes with one real design choice | 3 |
-| **Medium** | Normal feature work | 4 to 7 |
-| **Large** | Complex, high-risk or multi-area work | 8 to 11 |
+| Size | For | Members | With the lead |
+|---|---|---:|---:|
+| **Lite** | Small features and low-risk changes | 1 (QA) | 2 |
+| **Medium** | Normal feature work | 4 to 7 | 5 to 8 |
+| **Large** | Complex, high-risk or multi-area work | 8 to 11 | 9 to 12 |
 
-Sizes don't count the lead, who is always on the team as well. The lead picks the size that fits the brief.
+The lead picks the size that fits the brief. A Lite team is just the lead and QA: the lead does the specialist work itself, and QA tests and challenges it.
 
 ### Specialists
 
@@ -191,6 +191,7 @@ A role has one to three members. A junior is only ever the third member of a rol
 
 | Brief | Size | Lineup |
 |---|---|---|
+| Add a filter to an existing list | Lite, 1 | QA (mid-level) |
 | Simple UI change | Medium, 4 | UX, frontend, QA, reviewer (all mid-level) |
 | New API endpoint with data changes | Medium, 6 | Product, architect, backend, data, QA, reviewer |
 | Complex backend migration | Large, 8 | 2 architects, 2 backend, data, 2 QA, reviewer |

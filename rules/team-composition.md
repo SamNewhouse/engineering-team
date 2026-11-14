@@ -40,11 +40,13 @@ QA is a role, not a level. Role files hold the details: [`../roles/qa.md`](../ro
 
 **The lead is not counted in these sizes.** It is the main session, not a spawned agent, but it is a full member of the team and takes part in the debate. The reviewer is counted but does not debate.
 
-| Size | Use for | Total | Specialist agents | QA | Reviewer |
-|---|---|---:|---:|---:|---:|
-| Lite | Small, low-risk changes with one real design choice | 3 | 2 | 1 | 0 |
-| Medium | Normal feature work | 4 to 7 | 2 to 5 | 1 or 2 | 1 |
-| Large | Complex, high-risk or multi-area work | 8 to 11 | 5 to 8 | 2 | 1 |
+| Size | Use for | Agents | With the lead | Specialist agents | QA | Reviewer |
+|---|---|---:|---:|---:|---:|---:|
+| Lite | Small features and low-risk changes with one real design choice | 1 | 2 | 0 | 1 | 0 |
+| Medium | Normal feature work | 4 to 7 | 5 to 8 | 2 to 5 | 1 or 2 | 1 |
+| Large | Complex, high-risk or multi-area work | 8 to 11 | 9 to 12 | 5 to 8 | 2 | 1 |
+
+**Lite is the lead and one QA agent.** There are no specialist agents: the lead explores the code and writes the position itself, covering whichever specialist areas the change touches. QA writes its own position, adds tests to the tickets and challenges the lead's plan. If they conflict, they argue it out once and the lead makes the call.
 
 Pick the smallest size that covers the brief. Work with no real design choice (a one-file fix, a clear bug, a small edit) gets no team at all.
 
@@ -94,6 +96,12 @@ A junior is only ever the third member of a panel, never one of the first two. *
 | 0 | 1 | 2 | No: two juniors |
 
 ## Examples
+
+**Small feature** (add a filter to an existing list) — Lite, 1 agent plus the lead.
+
+| Role | Level | Count |
+|---|---|---:|
+| QA | Mid-level | 1 |
 
 **Simple UI change** — Medium, 4 agents. No senior is needed when the work is simple.
 
