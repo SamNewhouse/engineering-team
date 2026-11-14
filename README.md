@@ -105,9 +105,14 @@ A role can have up to three members, with at most one junior, and a junior never
 engineering-team/
 ├── SKILL.md                   the workflow and core rules
 ├── README.md
+├── LICENSE
 ├── roles/                     one file per role
 ├── rules/team-composition.md  sizes, levels, debate, decision, tickets
 └── companions/
     ├── graphify.md            how the team uses Graphify
     └── ponytail.md            how the team uses Ponytail
 ```
+
+## Licence
+
+[MIT](LICENSE)
