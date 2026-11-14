@@ -152,8 +152,8 @@ The lead reads your brief and checks it has what it needs: the goal, any constra
 | Size | For | Members | With the lead |
 |---|---|---:|---:|
 | **Lite** | Small features and low-risk changes | 1 (QA) | 2 |
-| **Medium** | Normal feature work | 4 to 7 | 5 to 8 |
-| **Large** | Complex, high-risk or multi-area work | 8 to 11 | 9 to 12 |
+| **Medium** | Normal feature work | 3 to 5 | 4 to 6 |
+| **Large** | Complex, high-risk or multi-area work | 6 to 9 | 7 to 10 |
 
 The lead picks the size that fits the brief. A Lite team is just the lead and QA: the lead does the specialist work itself, and QA tests and challenges it.
 
@@ -193,9 +193,9 @@ A role has one to three members. A junior is only ever the third member of a rol
 |---|---|---|
 | Add a filter to an existing list | Lite, 1 | QA |
 | Simple UI change | Medium, 4 to 5 | UX, 1 to 2 frontend, QA, reviewer (all mid-level) |
-| New API endpoint with data changes | Medium, 6 to 7 | Product, architect, 1 to 2 backend, data, QA, reviewer |
-| Complex backend migration | Large, 8 to 10 | 2 architects, 2 to 3 backend, 1 to 2 data, 2 QA, reviewer |
-| Payments or personal data | Large, 8 to 10 | Product, architect, 1 to 2 backend, data, 1 to 2 security, 2 QA, reviewer |
+| New API endpoint with data changes | Medium, 4 to 5 | Backend, data, architect if needed, QA, reviewer |
+| Complex backend migration | Large, 6 to 9 | 1 to 2 architects, 1 to 2 backend, 1 to 2 data, 2 QA, reviewer |
+| Payments or personal data | Large, 7 to 9 | Product if needed, architect, backend, data, 1 to 2 security, 2 QA, reviewer |
 
 These are starting points. The lead picks where in each range to land, and can add or drop roles, based on what it finds in the code.
 

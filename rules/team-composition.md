@@ -45,8 +45,8 @@ QA is a role, not a level. Role files hold the details: [`../roles/qa.md`](../ro
 | Size | Use for | Agents | With the lead | Specialist agents | QA | Reviewer |
 |---|---|---:|---:|---:|---:|---:|
 | Lite | Small features and low-risk changes with one real design choice | 1 | 2 | 0 | 1 | 0 |
-| Medium | Normal feature work | 4 to 7 | 5 to 8 | 2 to 5 | 1 or 2 | 1 |
-| Large | Complex, high-risk or multi-area work | 8 to 11 | 9 to 12 | 5 to 8 | 2 | 1 |
+| Medium | Normal feature work | 3 to 5 | 4 to 6 | 1 to 3 | 1 or 2 | 1 |
+| Large | Complex, high-risk or multi-area work | 6 to 9 | 7 to 10 | 3 to 6 | 2 | 1 |
 
 **Lite is the lead and one QA agent.** There are no specialist agents: the lead explores the code and writes the position itself, covering whichever specialist areas the change touches. QA writes its own position, adds tests to the tickets and challenges the lead's plan. If they conflict, they argue it out once and the lead makes the call.
 
@@ -116,34 +116,33 @@ Starting points, not fixed lineups. Each count is a range: the lead picks where 
 | QA | Mid-level | 1 |
 | Reviewer | Mid-level | 1 |
 
-**Backend API feature** (new endpoint with business rules and data changes) — Medium, 6 to 7 agents.
+**Backend API feature** (new endpoint with business rules and data changes) — Medium, 4 to 5 agents.
 
 | Role | Level | Count |
 |---|---|---:|
-| Product planner | Senior | 1 |
-| Systems architect | Mid-level | 1 |
-| Backend planner | Senior, plus mid-level if needed | 1 to 2 |
+| Backend planner | Senior | 1 |
 | Data planner | Mid-level | 1 |
+| Systems architect | Mid-level, if the endpoint crosses service boundaries | 0 to 1 |
 | QA | Senior | 1 |
 | Reviewer | Mid-level | 1 |
 
-**Complex backend migration** — Large, 8 to 10 agents, with strong architectural and data depth.
+**Complex backend migration** — Large, 6 to 9 agents, with strong architectural and data depth.
 
 | Role | Level | Count |
 |---|---|---:|
-| Systems architect | Senior (Opus) | 2 |
-| Backend planner | Senior, mid-level, plus a junior challenger if useful | 2 to 3 |
+| Systems architect | Senior (Opus), plus a second senior if needed | 1 to 2 |
+| Backend planner | Senior, plus mid-level if needed | 1 to 2 |
 | Data planner | Senior (Opus), plus mid-level if needed | 1 to 2 |
 | QA | Senior, mid-level | 2 |
 | Reviewer | Senior | 1 |
 
-**Payments or sensitive data** (payments, personal data, permissions, regulated workflows) — Large, 8 to 10 agents.
+**Payments or sensitive data** (payments, personal data, permissions, regulated workflows) — Large, 7 to 9 agents.
 
 | Role | Level | Count |
 |---|---|---:|
-| Product planner | Senior | 1 |
+| Product planner | Senior, if scope or user impact is unclear | 0 to 1 |
 | Systems architect | Senior | 1 |
-| Backend planner | Mid-level, plus senior if the logic is heavy | 1 to 2 |
+| Backend planner | Mid-level | 1 |
 | Data planner | Senior (Opus) | 1 |
 | Security planner | Senior (Opus), plus mid-level if needed | 1 to 2 |
 | QA | Senior, mid-level | 2 |

@@ -42,7 +42,7 @@ Apply the Ponytail rules throughout, in planning and in implementation, whether 
 - Choose senior, mid-level or junior based on risk, complexity and importance to the brief.
 - Always include QA. QA is a separate role, not a level.
 - Use at most two QA agents: one senior and one mid-level. No junior QA.
-- The lead is not counted in the team size (Lite 1, Medium 4 to 7, Large 8 to 11). With the lead, that is 2, 5 to 8 and 9 to 12.
+- The lead is not counted in the team size (Lite 1, Medium 3 to 5, Large 6 to 9). With the lead, that is 2, 4 to 6 and 7 to 10.
 - There is no separate developer representative: every specialist says whether its part is buildable, how long it takes and what hidden work it involves.
 - Include a reviewer for medium and large teams. The reviewer does not debate: it checks the draft decision, the tickets and the code.
 - The lead decides who debates together in round 2 and how many at once (around four is a sensible default).
@@ -76,7 +76,7 @@ Each role has one short spec in `roles/`. Give an agent its role file as part of
 
 After choosing the lineup, show the user and ask for a yes:
 
-- The preset (Lite, Medium or Large) and why.
+- The size (Lite, Medium or Large) and why.
 - The specialist roles you chose.
 - The number of agents per role.
 - The capability level (and model) of each agent.
