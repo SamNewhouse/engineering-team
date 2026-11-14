@@ -13,7 +13,7 @@ What you get back is a decision you can act on: the scope, the approach, what wa
 ```mermaid
 flowchart TD
     subgraph P1["1. Brief"]
-        A["You give the lead a brief"] --> B{"Onboarding: does the brief need anything else?"}
+        A["You give the lead a brief"] --> B{"Does the lead need anything else for an accurate result?"}
         B -- "yes" --> C["Lead asks the questions this request needs, one at a time"]
         C --> B
     end
@@ -51,7 +51,7 @@ flowchart TD
 
 There are three phases, and the lead runs all of them:
 
-1. **Brief.** The lead onboards you, turning your request into a team brief that everyone works from.
+1. **Brief.** The lead finds out what it needs for an accurate result, and turns your request into a team brief that everyone works from.
 2. **Lineup.** The lead decides who is needed. At the ready check you confirm the lineup, and with it how big (and how costly) the run will be.
 3. **Work.** The team, lead included, explores the code and debates. The lead settles what's still in conflict, you approve, and it's built.
 
@@ -113,16 +113,25 @@ You can also just describe the work. The skill picks up planning and design work
 
 ### Phase 1: Brief
 
-The lead starts with onboarding. Its job is to turn your request into a **team brief**: the single document every member of the team will work from.
+The lead starts by working out what it needs to know to get the most accurate result. It turns your request into a **team brief**: the single document every member of the team will work from. It isn't a questionnaire: it asks only what would change the result.
 
 - **It starts from what you've already said.** Anything your request, a linked ticket or earlier messages already answer goes straight into the brief.
 - **It learns your existing system first.** In a project that already has code, it works out the language, frameworks, structure, and what already exists in the area you're asking about, before asking anything. It never asks you what the code can answer.
 - **It asks what only you can answer.** Questions are about your intent and the decisions the code can't make for you, one at a time, most important first, usually with a suggested answer you can just accept.
 
 For example, ask for *"a new billing system"* in an existing app, and the lead first finds the current billing code, the payment provider and how plans and invoices are stored. Then it asks things like *"billing today is Stripe one-off charges in `src/billing/charge.ts`: are you adding subscriptions, or replacing this?"* and *"what should happen to existing customers' payment details?"*. It won't ask which language you use. In a brand-new project there's no code to read, so it asks about the stack as well.
+
+Questions are about how you want it done, when that matters for the request. For example:
+
+- *"Are you happy to use an outside package for this, or do you want it written in-house?"*
+- *"Should this replace what's there, or extend it?"*
+- *"What happens to existing customers or data?"*
+- *"Behind a feature flag, or straight live?"*
+
+Your answers go into the brief, and a stated preference, such as "no outside packages", overrides the team's defaults.
 - **Anything still uncertain becomes a stated assumption**, which the team can challenge, rather than another question.
 
-The brief covers your request in your own words, what the lead found in your existing system, the goal, what "done" means, what's in and out of scope, the constraints, the risks, the assumptions made, and the answers you gave. You see it in full at the ready check, and once you confirm it, every member gets it word for word.
+The brief covers your request in your own words, what the lead found in your existing system, your preferences, the goal, what "done" means, what's in and out of scope, the constraints, the risks, the assumptions made, and the answers you gave. You see it in full at the ready check, and once you confirm it, every member gets it word for word.
 
 ### Phase 2: Lineup
 
