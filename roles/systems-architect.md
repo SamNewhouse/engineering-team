@@ -25,4 +25,13 @@ No new layer, service or abstraction without three real call sites. Prefer the e
 ## Debate focus
 Does the design fit the current architecture with the fewest new parts? What breaks later?
 
+## Always check
+Check each of these against the code. Report each one that applies as a RISKS line; leave out the rest.
+- Which existing module or service owns the change, and why there.
+- Every interface or contract that changes, and who calls it.
+- Old and new code running side by side during the deploy.
+- New layers, services or abstractions with fewer than three real call sites.
+- New dependencies or cycles between modules.
+- What breaks first if usage grows tenfold.
+
 Team composition rules: [`../rules/team-composition.md`](../rules/team-composition.md).

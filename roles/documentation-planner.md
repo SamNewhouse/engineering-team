@@ -25,4 +25,12 @@ Update existing docs before adding new pages.
 ## Debate focus
 Can the reader succeed with these docs alone?
 
+## Always check
+Check each of these against the code. Report each one that applies as a RISKS line; leave out the rest.
+- Every doc that describes behaviour this change alters.
+- Examples still run after the change.
+- Config, environment variables and commands named exactly as the code has them.
+- Breaking changes come with upgrade steps for existing users.
+- Docs for removed behaviour are removed too.
+
 Team composition rules: [`../rules/team-composition.md`](../rules/team-composition.md).

@@ -25,4 +25,14 @@ Rung 5: use the provider's official SDK or an installed client before writing on
 ## Debate focus
 What happens when the third party is slow, down or changes?
 
+## Always check
+Check each of these against the code. Report each one that applies as a RISKS line; leave out the rest.
+- A timeout on every call to the third party.
+- Retries with backoff only where the call is safe to repeat.
+- What the user sees when the provider is slow or down.
+- Webhooks: signature checked, duplicates and out-of-order events handled.
+- Secrets read from config, never in code or logs.
+- Rate limits, and what happens when they are hit.
+- Tests use the provider's sandbox or test mode.
+
 Team composition rules: [`../rules/team-composition.md`](../rules/team-composition.md).

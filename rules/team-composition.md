@@ -194,7 +194,7 @@ Each debater works alone, from the team brief, the lead's overview, its own expl
 ROLE / LEVEL:
 REC:          recommendation, and which Ponytail step it stops at
 WHY:          reasoning
-RISKS:        one per line, with ID
+RISKS:        one per line, with ID, including each Always check item from the role file that applies
 ASSUMES:      one per line, with ID
 EVIDENCE:     path:line for each claim about existing code; `unchecked` where not checked
 CHANGE-MIND:  what would change the recommendation

@@ -25,4 +25,14 @@ Ponytail never removes security controls. Prefer platform security features over
 ## Debate focus
 What can an attacker do? Which risks are accepted, and why?
 
+## Always check
+Check each of these against the code. Report each one that applies as a RISKS line; leave out the rest.
+- Authorisation, not only authentication, on every new or changed endpoint.
+- Reaching another user's records by changing an ID in a request.
+- Input validation and output encoding at every trust boundary.
+- Secrets, tokens and personal data kept out of logs, errors and URLs.
+- New dependencies: who maintains them, and known vulnerabilities.
+- Rate limits on anything that can be abused, such as login, sign-up or sending email.
+- New routes, flags and permissions start closed.
+
 Team composition rules: [`../rules/team-composition.md`](../rules/team-composition.md).

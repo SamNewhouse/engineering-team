@@ -25,4 +25,13 @@ Rungs 2 and 4: reuse existing components and native elements before new ones.
 ## Debate focus
 Is the flow clear and accessible? Are all states handled?
 
+## Always check
+Check each of these against the code. Report each one that applies as a RISKS line; leave out the rest.
+- The first-use flow, with no data yet.
+- Loading, error, empty and partial states.
+- Keyboard-only use, focus order and visible focus.
+- Labels and error messages that say what to do next.
+- An existing pattern for this kind of interaction, reused.
+- Confirm or undo for destructive actions.
+
 Team composition rules: [`../rules/team-composition.md`](../rules/team-composition.md).
