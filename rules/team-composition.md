@@ -10,14 +10,14 @@ Shared rules for every engineering-team run. The entry point is [`../SKILL.md`](
 |---|---|---|
 | Senior | Sonnet, or Opus for high-risk decisions | Deep reasoning, architecture, security, long-term trade-offs |
 | Mid-level | Sonnet | Practical planning, implementation, assurance, review |
-| Junior | Haiku | Assumptions, simple gaps, direct challenge, broad coverage |
+| Junior | Haiku | Cheap, broad coverage: scanning a wide area for simple gaps |
 
 The lead chooses the mix from:
 
 - The risk and complexity of the work.
 - The importance of the role to the brief.
 - The need for architectural depth versus practical delivery input.
-- The need for simple challenge and assumption-checking (the case for a junior).
+- The need for cheap, broad coverage of a wide area (the case for a junior).
 
 Use Opus only for senior agents on high-risk decisions.
 
@@ -72,30 +72,9 @@ QA is added to every team on top of these.
 
 ## Choosing levels
 
-For each selected role, the lead picks one of:
+For each selected role, the lead picks one to three agents: senior or mid-level in any mix, with a junior allowed only as the third (below). Do not force every role to have both a senior and a mid-level agent: one mid-level agent is often enough. Give a role more depth when it carries more of the risk.
 
-| Agents | Allowed mix |
-|---:|---|
-| 1 | Senior or mid-level |
-| 2 | Any mix of senior and mid-level |
-| 3 | Two senior or mid-level agents in any mix, plus one junior as the third member; or three senior or mid-level agents |
-
-Do not force every role to have both a senior and a mid-level agent: one mid-level agent is often enough. Give a role more depth when it carries more of the risk.
-
-A junior is only ever the third member of a panel, never one of the first two. **Never more than one junior per specialist role.**
-
-| Senior | Mid-level | Junior | Valid? |
-|---:|---:|---:|---|
-| 1 | 0 | 0 | Yes |
-| 0 | 1 | 0 | Yes |
-| 1 | 1 | 0 | Yes |
-| 2 | 0 | 0 | Yes |
-| 1 | 1 | 1 | Yes |
-| 0 | 2 | 1 | Yes |
-| 0 | 0 | 1 | No: a junior never works alone |
-| 0 | 1 | 1 | No: a junior is only the third member |
-| 0 | 0 | 2 | No: two juniors |
-| 0 | 1 | 2 | No: two juniors |
+**Juniors:** at most one per role, and only as the third member, never alone or as one of the first two.
 
 ## Examples
 
@@ -163,7 +142,7 @@ Ways the team keeps its token use down, without losing any facts:
 - **Continued agents**: round 2, the QA pass and the reviewer checks continue the same agents with SendMessage, so nothing is re-sent.
 - **A shared prompt opening, for caching.** Every debater's prompt starts with the same shared part, identical word for word and in the same order: the confirmed team brief, the lead's overview, then the shared rules. The role-specific part (role file, starting map, output format) comes after. Repeated openings can be served from the prompt cache on requests to the same model. How much this saves is not measured.
 - **Terse notes** (below) between agents and the lead.
-- **Juniors check only what they challenge**, rather than exploring a whole area.
+- **Juniors for breadth**: a junior runs on Haiku and scans its area for simple gaps, rather than reasoning deeply about it.
 
 ### Terse notes
 
