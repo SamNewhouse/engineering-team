@@ -1,6 +1,6 @@
 # Graphify for the engineering team
 
-This file does not replace Graphify. Load the installed **`graphify`** skill and follow it for building and querying the graph. This file only says how the team uses the results.
+Graphify is optional. If the **`graphify`** skill is installed, load it and follow it for building and querying the graph. If it isn't, read the code directly to find the same things. Either way, this file says what the team needs to know.
 
 ## When
 
@@ -8,7 +8,8 @@ Before selecting specialist roles. The findings decide which roles are material,
 
 ## How
 
-Use the installed skill's commands: `graphify query "<question>"`, `graphify path "<A>" "<B>"`, `graphify explain "<concept>"`. If the project has no graph yet, build one with that skill first. Read the code directly only when the graph doesn't answer the question.
+- **With Graphify:** use `graphify query "<question>"`, `graphify path "<A>" "<B>"` and `graphify explain "<concept>"`. If the project has no graph yet, build one first. Read the code directly only when the graph doesn't answer the question.
+- **Without Graphify:** search and read the code that the brief touches, and fill in the same table below. Say in the findings that they come from reading the code, so gaps are expected.
 
 ## What to find, and which roles it informs
 
