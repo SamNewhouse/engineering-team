@@ -30,5 +30,6 @@ The product planner gets a short summary of what already exists, so the scope bu
 
 ## Output
 
-- **The lead's overview:** a short list under the seven headings above, naming the areas involved. It goes to every debater as a starting point.
+- **The lead's overview:** a short list under the seven headings above, naming the areas involved. It goes to every debater.
+- **A starting map for each debater:** the exact file paths, line ranges and Graphify node or community names for that debater's area, taken from the overview, so it can start reading straight away instead of searching.
 - **A debater's exploration:** goes into its own round 1 position, with `path:line` evidence for each claim.

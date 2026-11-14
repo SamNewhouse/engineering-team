@@ -117,7 +117,7 @@ The lead reads your brief and checks it has what it needs: the goal, any constra
 
 ### Phase 2: Lineup
 
-**The lead gets an overview of the codebase.** Just enough to see which areas the change touches (modules, services, data, APIs, shared components, tests, deployment), and so who it needs on the team. It uses Graphify if you have it, and searches the code if not. The detailed digging is the team's job.
+**The lead gets an overview of the codebase.** Just enough to see which areas the change touches (modules, services, data, APIs, shared components, tests, deployment), and so who it needs on the team. It notes the exact files and line ranges it finds, to hand out later. It uses Graphify if you have it, and searches the code if not. The detailed digging is the team's job.
 
 **The lead decides whether a team is worth it.** If the job turns out to be small with one obvious approach, it says so and does the work itself.
 
@@ -127,7 +127,7 @@ The lead reads your brief and checks it has what it needs: the goal, any constra
 
 ### Phase 3: Work
 
-**Everyone explores the code.** Each member, the lead included, digs into the parts of the codebase its role covers: security traces the auth flow, data checks what reads the table, frontend finds the components to reuse. They query Graphify first, then open the files it points to. Nobody changes anything yet.
+**Everyone explores the code.** Each member, the lead included, digs into the parts of the codebase its role covers: security traces the auth flow, data checks what reads the table, frontend finds the components to reuse. Each starts from a map the lead hands over: the exact files and line ranges for its area. They read those lines first, and query Graphify or search only for what the map doesn't cover. Nobody changes anything yet.
 
 **Independent positions.** Everyone works alone, in parallel, and writes a recommendation, the reasoning, risks, assumptions, what would change their mind, any questions, and the tickets they'd create. Every claim about existing code points to the file and line it comes from. The lead writes its own position before reading anyone else's, so it doesn't steer the others. If someone can't answer a question from the code, the lead finds out or asks you. Nobody guesses.
 
@@ -206,7 +206,17 @@ A role has one to three members. A junior is only ever the third member of a rol
 
 ## Cost
 
-A team run uses many more tokens than a single conversation. Lite is cheapest and Large costs the most. You see an estimate for your brief at checkpoint 1, before anything runs. The figures the estimate is based on are in `rules/team-composition.md` and are worth adjusting once you've done a few runs.
+A team run uses more tokens than a single conversation, and a bigger lineup uses more. At checkpoint 1 the lead gives a rough estimate for your brief, so you can shrink the lineup before anything runs. It's a guide, not a promise.
+
+The skill is built to keep token use down without losing anything:
+
+- **The lead hands out exact file paths.** Each member gets the files and line ranges for its area, instead of searching the codebase from scratch.
+- **Members read line ranges, not whole files**, and only search for what they weren't given.
+- **Prompts share the same opening.** Every member's prompt starts with an identical shared part, so repeated text can be served from the prompt cache.
+- **Members are continued, not restarted.** Follow-up rounds and the reviewer's checks pick up the same agents, so nothing is re-sent.
+- **Only the disputed points go round again.** Members who disagree see just those points, not everyone's full write-up.
+- **Notes, not essays.** Members report to the lead in short structured notes.
+- **Juniors stay focused.** A junior only checks the assumptions it challenges.
 
 ## Customising
 

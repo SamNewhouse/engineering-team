@@ -154,11 +154,23 @@ Rough cost per agent per round, input and output together, with terse notes:
 | Sonnet | ~15k |
 | Opus | ~25k |
 
-Estimate = (agents × per-round cost × rounds expected) + the lead's overview pass (~5k) + code exploration in round 1 (~10–30k per debater, less for juniors, who only check what they challenge) + the lead's own round 1 position (~15k) + QA ticket pass (~5–10k per QA agent) + lead synthesis (~15k) + ticket drafting (~2–3k per ticket). Medium and large teams add the reviewer: ~15k for the draft check, ~15–20k for the ticket check and ~15–25k for the code check. Continuing agents with SendMessage instead of spawning new ones keeps round 2 cheaper. Round 2 only includes agents in a material disagreement, so count them separately. Give the user one total and the per-agent breakdown. These figures are first guesses: correct them after real runs.
+Estimate = (agents × per-round cost × rounds expected) + the lead's overview pass (~5k) + code exploration in round 1 (~5–15k per debater with a starting map, less for juniors, who only check what they challenge) + the lead's own round 1 position (~15k) + QA ticket pass (~5–10k per QA agent) + lead synthesis (~15k) + ticket drafting (~2–3k per ticket). Medium and large teams add the reviewer: ~15k for the draft check, ~15–20k for the ticket check and ~15–25k for the code check. Continuing agents with SendMessage instead of spawning new ones keeps round 2 cheaper. Round 2 only includes agents in a material disagreement, so count them separately. Give the user one total and the per-agent breakdown. These figures are first guesses: correct them after real runs.
 
 ## Debate
 
 **Two rounds at most.** The lead is a member of the team: it explores the code, writes its own round 1 position and takes part in round 2. Round 1 runs every debater in parallel; the four-at-once limit applies to round 2, where agents respond to each other. The reviewer does not debate. Every agent's output goes back to the lead in full. Nothing is summarised away between an agent and the lead.
+
+### Saving tokens
+
+Ways the team keeps its token use down, without losing any facts:
+
+- **A starting map from the lead**: exact paths and line ranges for each debater, so nobody searches for what the lead has already found.
+- **Line ranges, not whole files**, when reading code.
+- **Only the disputed points in round 2**, word for word, instead of everyone's full round 1 output.
+- **Continued agents**: round 2, the QA pass and the reviewer checks continue the same agents with SendMessage, so nothing is re-sent.
+- **A shared prompt opening, for caching.** Every debater's prompt starts with the same shared part, identical word for word and in the same order: the brief, the lead's overview, then the shared rules. The role-specific part (role file, starting map, output format) comes after. Repeated openings can be served from the prompt cache on requests to the same model. How much this saves is not measured.
+- **Terse notes** (below) between agents and the lead.
+- **Juniors check only what they challenge**, rather than exploring a whole area.
 
 ### Terse notes
 
@@ -175,10 +187,11 @@ Tickets and anything shown to the user are written in plain sentences, not notes
 
 The team reads the code, not just the lead. In round 1, every debater (the lead included) explores the parts of the codebase its role covers:
 
-1. Query Graphify first, if installed: `graphify query`, `graphify path`, `graphify explain`. The lead's overview and [`../companions/graphify.md`](../companions/graphify.md) say which areas each role covers.
-2. Then open the files the graph (or a search) points to. Read only what the argument needs.
-3. **Read-only.** Nobody changes code during the debate. Building starts after confirmation 2.
-4. **Evidence for every claim.** Any statement about existing code cites where it comes from, such as `src/auth.ts:42`. Anything not checked is marked `unchecked`, so the reviewer can see which claims have nothing behind them.
+1. **Start from the starting map.** From its overview, the lead gives each debater the exact file paths, line ranges and Graphify node or community names for its area (for example `src/auth/session.ts:20-80` and the `auth` community). Debaters begin there instead of searching.
+2. Query Graphify (if installed) or search only for what the map doesn't cover: `graphify query`, `graphify path`, `graphify explain`. [`../companions/graphify.md`](../companions/graphify.md) says which areas each role covers.
+3. **Read line ranges, not whole files.** Open the lines the map or the graph points to, and read further only when the argument needs it.
+4. **Read-only.** Nobody changes code during the debate. Building starts after confirmation 2.
+5. **Evidence for every claim.** Any statement about existing code cites where it comes from, such as `src/auth.ts:42`. Anything not checked is marked `unchecked`, so the reviewer can see which claims have nothing behind them.
 
 ### Round 1: independent positions
 
@@ -206,7 +219,7 @@ Agents never assume past a gap. A question about the code, an agent checks itsel
 
 ### Round 2: disagreements
 
-The lead lists the material disagreements by point ID. Only the agents involved take part, continued with SendMessage. The lead takes part in any disagreement it has a position on, as one of the four. Each receives the brief, its own round 1 output, the opposing positions **word for word** (never the lead's summary) and any answered questions, and returns:
+The lead lists the material disagreements by point ID. Only the agents involved take part, continued with SendMessage. The lead takes part in any disagreement it has a position on, as one of the four. Because each agent is continued, it already has the brief and its own round 1 output. It receives only the disputed point blocks from the opposing positions, with their evidence, **word for word** (never the lead's summary), plus any answered questions, and returns:
 
 ```
 ROLE / LEVEL:

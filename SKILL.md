@@ -93,7 +93,7 @@ Do not start the debate until the user confirms. If they change the team, update
 
 ## Run the debate
 
-Spawn each agent with the Agent tool, passing `model` (`opus`, `sonnet` or `haiku`) for its level. Spawn all round 1 debaters in parallel. Each prompt holds: the brief, your repository overview, which areas of the code its role should explore, the read-only and evidence rules, its role file, the Ponytail rules, and the terse-notes rules and output format from `rules/team-composition.md` (Debate). Do not spawn the reviewer yet.
+Spawn each agent with the Agent tool, passing `model` (`opus`, `sonnet` or `haiku`) for its level. Spawn all round 1 debaters in parallel. Each prompt starts with the shared part, identical for every debater and in the same order: the brief, your repository overview, the read-only and evidence rules, the Ponytail rules, and the terse-notes rules. After it comes the role-specific part: its role file, its **starting map** (the exact file paths, line ranges and Graphify names for its area) and the output format from `rules/team-composition.md` (Debate). Do not spawn the reviewer yet. See `rules/team-composition.md` (Saving tokens).
 
 For round 2, the QA ticket pass and any follow-up question, continue the same agents with SendMessage rather than spawning new ones, so they keep their context.
 
@@ -101,7 +101,7 @@ Write your own round 1 position, from your own look at the code, before reading 
 
 Make sure nothing is lost on the way to and from the lead:
 
-- Keep every agent's output in full. Never summarise one agent's output for another: in round 2, pass opposing positions word for word.
+- Keep every agent's output in full. Never summarise one agent's output for another: in round 2, pass each agent only the disputed point blocks from the opposing positions, with their evidence, word for word.
 - Agents check the code themselves first. Answer what they can't (from the code, or from the user, one at a time) and send each answer to every agent it affects before round 2.
 - Every point ID raised goes in the point ledger.
 
