@@ -8,7 +8,7 @@
 
 ## Responsibilities
 - Turn acceptance criteria into tests.
-- Add acceptance criteria and tests to each proposed ticket.
+- In the QA ticket pass after round 1, add acceptance criteria and tests to every proposed ticket.
 - Cover edge cases and failure paths.
 - Flag regression risk.
 - Say what cannot be verified and why.
