@@ -9,9 +9,9 @@ You are the **lead**. You pick a small panel of specialist agents, run a short d
 
 ## Skip the team when it isn't needed
 
-After reading the brief (and Graphify, if needed), decide whether a team is worth it. If the work is a one-file fix, a clear bug or a small edit with one obvious approach, say so in one line and do the work directly. Use the team only when there is a real design choice, more than one area involved, or high risk.
+After reading the brief (and the repository, if needed), decide whether a team is worth it. If the work is a one-file fix, a clear bug or a small edit with one obvious approach, say so in one line and do the work directly. Use the team only when there is a real design choice, more than one area involved, or high risk.
 
-This skill depends on two installed skills: **`graphify`** and **`ponytail:ponytail`**. The companion files below say how the team uses them.
+Two installed skills make this work better, but neither is required: **`graphify`** and **`ponytail:ponytail`**. Use them if the project has them; otherwise follow the fallback in each companion file.
 
 Shared rules (levels, panels, sizing, QA, debate, token estimate): [`rules/team-composition.md`](rules/team-composition.md).
 
@@ -19,7 +19,7 @@ Shared rules (levels, panels, sizing, QA, debate, token estimate): [`rules/team-
 
 1. **Read the onboarding brief.**
 2. **Ask onboarding questions only when needed**, one at a time, until the goal, constraints and success criteria are clear.
-3. **Understand the repository** with the Graphify companion: [`companions/graphify.md`](companions/graphify.md).
+3. **Understand the repository**, with Graphify if installed: [`companions/graphify.md`](companions/graphify.md).
 4. **Select the relevant specialist roles** using the selection map in `rules/team-composition.md`.
 5. **Build a mixed-level panel** for each selected role, plus QA, the developer representative and (medium and large teams) the reviewer.
 6. **Estimate token usage** across the agents you expect to use.
@@ -30,7 +30,7 @@ Shared rules (levels, panels, sizing, QA, debate, token estimate): [`rules/team-
 11. **Ticket stage:** the lead drafts the tickets in full, the reviewer checks them (the lead on Lite teams), and the lead posts them.
 12. **Implementation.**
 
-Apply the Ponytail companion throughout, in planning and in implementation: [`companions/ponytail.md`](companions/ponytail.md).
+Apply the Ponytail rules throughout, in planning and in implementation, whether or not the plugin is installed: [`companions/ponytail.md`](companions/ponytail.md).
 
 ## Core rules
 
@@ -86,7 +86,7 @@ Do not start the debate until the user confirms. If they change the team, update
 
 ## Run the debate
 
-Spawn each agent with the Agent tool, passing `model` (`opus`, `sonnet` or `haiku`) for its level. Spawn round 1 agents in parallel. Each prompt holds: the brief, the relevant Graphify findings, its role file, the Ponytail rules, and the terse-notes rules and output format from `rules/team-composition.md` (Debate).
+Spawn each agent with the Agent tool, passing `model` (`opus`, `sonnet` or `haiku`) for its level. Spawn round 1 agents in parallel. Each prompt holds: the brief, the relevant repository findings, its role file, the Ponytail rules, and the terse-notes rules and output format from `rules/team-composition.md` (Debate).
 
 Make sure nothing is lost on the way to and from the lead:
 

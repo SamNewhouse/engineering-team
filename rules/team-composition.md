@@ -153,7 +153,7 @@ Rough cost per agent per round, input and output together, with terse notes:
 | Sonnet | ~15k |
 | Opus | ~25k |
 
-Estimate = (agents × per-round cost × rounds expected) + Graphify pass (~10k) + lead synthesis (~15k) + ticket stage (~2–3k per ticket, plus ~15–20k for the reviewer check on medium and large teams). Round 2 only includes agents in a material disagreement, so count them separately. Give the user one total and the per-agent breakdown. These figures are first guesses: correct them after real runs.
+Estimate = (agents × per-round cost × rounds expected) + repository pass (~10k) + lead synthesis (~15k) + ticket stage (~2–3k per ticket, plus ~15–20k for the reviewer check on medium and large teams). Round 2 only includes agents in a material disagreement, so count them separately. Give the user one total and the per-agent breakdown. These figures are first guesses: correct them after real runs.
 
 ## Debate
 

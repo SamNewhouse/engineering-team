@@ -16,10 +16,15 @@ Asking one assistant for a plan gets you one point of view. Asking a crowd gets 
 
 ## Requirements
 
-- [Claude Code](https://docs.claude.com/en/docs/claude-code).
-- [Graphify](https://pypi.org/project/graphifyy/) (`pip install graphifyy`), installed as a Claude Code skill. It maps the repository before the team is chosen.
-- [Ponytail](https://github.com/DietrichGebert/ponytail), installed as a Claude Code plugin. It keeps plans and code small.
+- [Claude Code](https://docs.claude.com/en/docs/claude-code). That's all it needs.
 - [GitHub CLI](https://cli.github.com/) (`gh`), signed in, if you want tickets written to GitHub issues. Without it, the plan stays in the conversation.
+
+### Recommended
+
+Both are optional, but worth setting up in the projects where you use this skill:
+
+- [Graphify](https://pypi.org/project/graphifyy/) (`pip install graphifyy`) builds a map of the repository, so the team starts from how the code actually fits together. Without it, the lead reads the code directly.
+- [Ponytail](https://github.com/DietrichGebert/ponytail) pushes plans and code towards the smallest thing that works. Without it, the team still follows the same reuse-first rules, which are written into the skill.
 
 ## Install
 
@@ -44,7 +49,7 @@ Or just describe a piece of work that spans several areas or carries real risk. 
 ### What happens
 
 1. **Brief.** It reads your brief and asks follow-up questions only if something important is unclear, one at a time.
-2. **Repository map.** Graphify maps the modules, data flow, API contracts, shared components, test gaps and infrastructure that the change touches.
+2. **Repository map.** It maps (with Graphify, if you have it) the modules, data flow, API contracts, shared components, test gaps and infrastructure that the change touches.
 3. **Team.** It picks the roles the brief needs, gives each one a mix of levels, and estimates the token cost.
 4. **Checkpoint 1.** You see the team and the cost estimate, and approve or adjust them.
 5. **Debate.** Each member writes an independent position. Where they disagree on something that matters, the people involved get one round to respond to each other.
