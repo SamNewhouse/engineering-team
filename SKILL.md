@@ -22,7 +22,7 @@ Shared rules (levels, panels, sizing, debate, ledger, tickets, reviewer checks, 
 ## Workflow
 
 1. **Read the user's request.**
-2. **Clarify the request:** build the team brief from what the user has already asked for, asking only the questions that get the most accurate result, one at a time. See Clarifying the brief below.
+2. **Clarify the request:** build the team brief from what the user has already asked for, asking only the questions that get the most accurate result, up to four at once. See Clarifying the brief below.
 3. **Brief check:** once you have what you need, describe what the user wants in a few sentences and ask them to confirm it. See Brief check below.
 4. **Get an overview of the repository**, with Graphify if installed: enough to size the job, pick the lineup and give each agent a starting map. The team explores the detail in round 1. See [`companions/graphify.md`](companions/graphify.md).
 5. **Size the job, then choose the lineup.** From the confirmed brief and the overview, decide how big the job is (no team, Lite, Medium or Large; see Sizing the job above), then choose the roles you need, how many agents in each and at what level, plus QA and (medium and large teams) the reviewer. You decide; `rules/team-composition.md` gives the limits and some starting points.
@@ -79,7 +79,7 @@ Before choosing anyone, find out what you need to know to get the most accurate 
 
 1. **Take what the request already answers.** Read the user's request (and anything else they gave you: a ticket, a link, earlier messages) and fill in as much of the brief as it covers.
 2. **Learn the existing system before asking.** In a project that already has code, find out for yourself what the code can tell you: the language, frameworks and libraries, how the project is structured, what already exists in the area of the request (models, services, third-party providers, tests), and the patterns it follows. Never ask the user something the code answers. For "I want a new billing system", that means finding the current billing code, the payment provider, how plans and invoices are stored, and what depends on them, before saying a word.
-3. **Ask what only the user can answer.** Interpret what the user is really asking for, then decide for yourself what's still needed. There is no fixed list of questions: ask about the intent and decisions the code can't tell you, and only where the answer would change the plan. For the billing example: replace the current billing or extend it? Keep the same payment provider? What happens to existing customers and their subscriptions? Make each question specific to what you found (for example "billing today is Stripe one-off charges in `src/billing/charge.ts`: are you adding subscriptions, or replacing this?"). In a new or empty project there is nothing to read, so ask about the stack too. Ask one question at a time, most important first, and offer a likely answer or two short options so the user can just pick. Skip anything that wouldn't change what the team does.
+3. **Ask what only the user can answer.** Interpret what the user is really asking for, then decide for yourself what's still needed. There is no fixed list of questions: ask about the intent and decisions the code can't tell you, and only where the answer would change the plan. For the billing example: replace the current billing or extend it? Keep the same payment provider? What happens to existing customers and their subscriptions? Make each question specific to what you found (for example "billing today is Stripe one-off charges in `src/billing/charge.ts`: are you adding subscriptions, or replacing this?"). In a new or empty project there is nothing to read, so ask about the stack too. Ask them with the AskUserQuestion tool, up to four at once, most important first, each as a multiple-choice question with the likely answer as the first option so the user can just pick. If more remain once these are answered, ask the next batch. Where the tool isn't available, ask the same questions in one numbered message. Skip anything that wouldn't change what the team does.
 4. **Stop when you have what you need for an accurate result.** Anything still uncertain goes into the brief as a stated assumption, not another question.
 
 The brief must cover:
@@ -131,7 +131,7 @@ Write your own round 1 position, from your own look at the code, before reading 
 Make sure nothing is lost on the way to and from the lead:
 
 - Keep every agent's output in full. Never summarise one agent's output for another: in round 2, pass each agent only the disputed point blocks from the opposing positions, with their evidence, word for word.
-- Agents check the code themselves first. Answer what they can't (from the code, or from the user, one at a time) and send each answer to every agent it affects before round 2.
+- Agents check the code themselves first. Answer what they can't (from the code, or from the user, batched as in Clarifying the brief) and send each answer to every agent it affects before round 2.
 - Every point ID raised goes in the point ledger.
 
 ## Draft decision

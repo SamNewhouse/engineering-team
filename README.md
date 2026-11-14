@@ -14,7 +14,7 @@ What you get back is a decision you can act on: the scope, the approach, what wa
 flowchart TD
     subgraph P1["1. Brief"]
         A["You give the lead a brief"] --> B{"Does the lead need anything else for an accurate result?"}
-        B -- "yes" --> C["Lead asks the questions this request needs, one at a time"]
+        B -- "yes" --> C["Lead asks the questions this request needs, up to four at once"]
         C --> B
         B -- "no" --> BC["Lead sums up what you want"]
         BC --> BQ{{"Brief check: you confirm it"}}
@@ -120,7 +120,7 @@ The lead starts by working out what it needs to know to get the most accurate re
 
 - **It starts from what you've already said.** Anything your request, a linked ticket or earlier messages already answer goes straight into the brief.
 - **It learns your existing system first.** In a project that already has code, it works out the language, frameworks, structure, and what already exists in the area you're asking about, before asking anything. It never asks you what the code can answer.
-- **It asks what only you can answer.** It works out what you're really asking for, then asks about the intent and decisions the code can't settle, one at a time, most important first, usually with a suggested answer you can just accept.
+- **It asks what only you can answer.** It works out what you're really asking for, then asks about the intent and decisions the code can't settle, up to four at once as multiple-choice questions, most important first, with the likely answer offered first so you can just accept it.
 - **Anything still uncertain becomes a stated assumption**, which the team can challenge, rather than another question.
 
 For example, ask for *"a new billing system"* in an existing app, and the lead first finds the current billing code, the payment provider and how plans and invoices are stored. Then it asks things like *"billing today is Stripe one-off charges in `src/billing/charge.ts`: are you adding subscriptions, or replacing this?"* and *"what should happen to existing customers' payment details?"*. It won't ask which language you use. In a brand-new project there's no code to read, so it asks about the stack as well.
