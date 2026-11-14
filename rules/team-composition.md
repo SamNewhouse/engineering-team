@@ -160,7 +160,7 @@ Ways the team keeps its token use down, without losing any facts:
 - **Line ranges, not whole files**, when reading code.
 - **Only the disputed points in round 2**, word for word, instead of everyone's full round 1 output.
 - **Continued agents**: round 2, the QA pass and the reviewer checks continue the same agents with SendMessage, so nothing is re-sent.
-- **A shared prompt opening, for caching.** Every debater's prompt starts with the same shared part, identical word for word and in the same order: the brief, the lead's overview, then the shared rules. The role-specific part (role file, starting map, output format) comes after. Repeated openings can be served from the prompt cache on requests to the same model. How much this saves is not measured.
+- **A shared prompt opening, for caching.** Every debater's prompt starts with the same shared part, identical word for word and in the same order: the confirmed team brief, the lead's overview, then the shared rules. The role-specific part (role file, starting map, output format) comes after. Repeated openings can be served from the prompt cache on requests to the same model. How much this saves is not measured.
 - **Terse notes** (below) between agents and the lead.
 - **Juniors check only what they challenge**, rather than exploring a whole area.
 
@@ -187,7 +187,7 @@ The team reads the code, not just the lead. In round 1, every debater (the lead 
 
 ### Round 1: independent positions
 
-Each debater works alone, from the brief, the lead's overview, its own exploration of the code, its role file and the Ponytail rules. **The lead writes its own position before reading anyone else's**, so it doesn't anchor on theirs. Each returns:
+Each debater works alone, from the team brief, the lead's overview, its own exploration of the code, its role file and the Ponytail rules. **The lead writes its own position before reading anyone else's**, so it doesn't anchor on theirs. Each returns:
 
 ```
 ROLE / LEVEL:
@@ -286,7 +286,7 @@ The debate itself never goes into a ticket: only the decision and its reasons. I
 
 ## Confirmation gates
 
-1. **Ready check, before any work:** the brief as the lead understands it, the size, the lineup (roles, agents per role, levels, QA, reviewer), what drives the cost (agent count and models), and a smaller option where one fits. No token figures.
+1. **Ready check, before any work:** the team brief in full, the size, the lineup (roles, agents per role, levels, QA, reviewer), what drives the cost (agent count and models), and a smaller option where one fits. No token figures.
 2. **Before the ticket stage and implementation:** the decision items above (after reviewer check 1), the point ledger summary, any reviewer disputes, and the ticket list (titles, one line each, and the repo they go to). This yes also covers posting those tickets.
 
 Nothing starts without the user's yes at each gate.

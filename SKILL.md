@@ -22,7 +22,7 @@ Shared rules (levels, panels, sizing, debate, ledger, tickets, reviewer checks, 
 ## Workflow
 
 1. **Read the brief.**
-2. **Onboarding:** check the brief against the onboarding list below, and ask the user only what it leaves open, one question at a time.
+2. **Onboarding:** build the team brief from what the user has already asked for, asking only the questions this request needs, one at a time. See Onboarding below.
 3. **Get an overview of the repository**, with Graphify if installed: enough to pick the lineup. The team explores the detail in round 1. See [`companions/graphify.md`](companions/graphify.md).
 4. **Choose the lineup**: the roles you need, how many agents in each and at what level, plus QA and (medium and large teams) the reviewer. You decide; `rules/team-composition.md` gives the limits and some starting points.
 5. **Ready check (confirmation 1):** show the user the brief as you understand it and the lineup, so they can judge the size and likely token cost, and get their yes before any work begins.
@@ -72,23 +72,35 @@ Each role has one short spec in `roles/`. Give an agent its role file as part of
 | QA (always) | [`roles/qa.md`](roles/qa.md) |
 | Reviewer (medium and large) | [`roles/reviewer.md`](roles/reviewer.md) |
 
-## Onboarding
+## Onboarding: building the team brief
 
-Before choosing anyone, make sure you understand what the user needs. Check the brief covers:
+Onboarding turns what the user asked for into the **team brief**: the one document every agent works from. Start from what the user has already said, not from a blank form.
 
-1. **Goal:** what problem this solves, and for whom.
-2. **Done:** how the user will know it worked.
-3. **Scope:** what is in, and anything explicitly out.
-4. **Constraints:** what must not change, deadlines, required technology, existing patterns to follow.
-5. **Risk:** whether it touches payments, personal data, permissions, migrations or anything hard to undo.
+1. **Take what the request already answers.** Read the user's request (and anything else they gave you: a ticket, a link, earlier messages) and fill in as much of the brief as it covers.
+2. **Check the code before asking.** Take a quick look at the parts of the code the request mentions. Don't ask anything the code can answer, and use what you find to make questions specific (for example "there's already an export in `src/orders/export.ts`: extend it, or build a new one?").
+3. **Ask the questions this request needs.** Look at what's still missing or ambiguous for *this* piece of work, and ask about the gaps that would change the plan. Ask one question at a time, most important first, and offer a likely answer or two short options so the user can just pick. Skip anything that wouldn't change what the team does.
+4. **Stop when the brief is clear enough to choose a lineup.** Anything still uncertain goes into the brief as a stated assumption, not another question.
 
-Ask only about what the brief leaves open, one question at a time, and offer a likely answer or two short options where you can. If the brief already covers an item, don't ask. Stop when all five are clear enough to choose a lineup.
+The brief must cover:
+
+| Section | What it holds |
+|---|---|
+| Request | The user's own words, quoted |
+| Goal | What problem this solves, and for whom |
+| Done | How the user will know it worked |
+| Scope | What is in, and anything explicitly out |
+| Constraints | What must not change, deadlines, required technology, patterns to follow |
+| Risk | Payments, personal data, permissions, migrations, or anything hard to undo; or `none` |
+| Assumptions | What you assumed instead of asking, one per line, so the team can challenge them |
+| Answers | Each question you asked and the user's answer, reworded into one short line |
+
+Write it in plain sentences. The user sees it at the ready check, and once they confirm it, **every agent gets it word for word** as the start of its prompt. Never paraphrase it per agent.
 
 ## Ready check (confirmation 1): before any work
 
 Once you have chosen the lineup, check the user is ready for the work to start. This is where they decide whether the size, and so the likely token cost, is right for the job. Show, in plain sentences:
 
-- **The brief as you understand it:** the goal, what done means, the scope and the constraints, in a few lines.
+- **The team brief**, in full: this is exactly what every agent will be given, so the user can correct it before anyone starts.
 - **The size** (Lite, Medium or Large) and why.
 - **The lineup:** each role, how many agents and at what level, including QA and the reviewer if there is one.
 - **What drives the cost:** the number of agents, how many run on each model (Opus, Sonnet, Haiku), and that round 2 only runs if there are conflicts. Do not give token figures: they can't be promised.
@@ -98,7 +110,7 @@ Then ask one question: start with this lineup, start with the smaller one, or ch
 
 ## Run the debate
 
-Spawn each agent with the Agent tool, passing `model` (`opus`, `sonnet` or `haiku`) for its level. Spawn all round 1 debaters in parallel. Each prompt starts with the shared part, identical for every debater and in the same order: the brief, your repository overview, the read-only and evidence rules, the Ponytail rules, and the terse-notes rules. After it comes the role-specific part: its role file, its **starting map** (the exact file paths, line ranges and Graphify names for its area) and the output format from `rules/team-composition.md` (Debate). Do not spawn the reviewer yet. See `rules/team-composition.md` (Saving tokens).
+Spawn each agent with the Agent tool, passing `model` (`opus`, `sonnet` or `haiku`) for its level. Spawn all round 1 debaters in parallel. Each prompt starts with the shared part, identical for every debater and in the same order: the confirmed team brief, your repository overview, the read-only and evidence rules, the Ponytail rules, and the terse-notes rules. After it comes the role-specific part: its role file, its **starting map** (the exact file paths, line ranges and Graphify names for its area) and the output format from `rules/team-composition.md` (Debate). Do not spawn the reviewer yet. See `rules/team-composition.md` (Saving tokens).
 
 For round 2, the QA ticket pass and any follow-up question, continue the same agents with SendMessage rather than spawning new ones, so they keep their context.
 

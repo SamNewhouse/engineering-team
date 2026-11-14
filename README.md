@@ -13,8 +13,8 @@ What you get back is a decision you can act on: the scope, the approach, what wa
 ```mermaid
 flowchart TD
     subgraph P1["1. Brief"]
-        A["You give the lead a brief"] --> B{"Onboarding: anything left open?"}
-        B -- "yes" --> C["Lead asks you, one question at a time"]
+        A["You give the lead a brief"] --> B{"Onboarding: does the brief need anything else?"}
+        B -- "yes" --> C["Lead asks the questions this request needs, one at a time"]
         C --> B
     end
 
@@ -51,7 +51,7 @@ flowchart TD
 
 There are three phases, and the lead runs all of them:
 
-1. **Brief.** The lead onboards you: it makes sure it understands what you need.
+1. **Brief.** The lead onboards you, turning your request into a team brief that everyone works from.
 2. **Lineup.** The lead decides who is needed. At the ready check you confirm the lineup, and with it how big (and how costly) the run will be.
 3. **Work.** The team, lead included, explores the code and debates. The lead settles what's still in conflict, you approve, and it's built.
 
@@ -113,15 +113,14 @@ You can also just describe the work. The skill picks up planning and design work
 
 ### Phase 1: Brief
 
-The lead starts with onboarding. It checks your brief covers five things:
+The lead starts with onboarding. Its job is to turn your request into a **team brief**: the single document every member of the team will work from.
 
-1. **Goal:** what problem this solves, and for whom.
-2. **Done:** how you'll know it worked.
-3. **Scope:** what's in, and anything that's out.
-4. **Constraints:** what mustn't change, deadlines, required technology, patterns to follow.
-5. **Risk:** whether it touches payments, personal data, permissions, migrations or anything hard to undo.
+- **It starts from what you've already said.** Anything your request, a linked ticket or earlier messages already answer goes straight into the brief.
+- **It checks the code before asking.** It won't ask what the code can answer, and it uses what it finds to make questions specific, such as *"there's already an export in `src/orders/export.ts`: extend it, or build a new one?"*
+- **It asks only what this request needs.** One question at a time, most important first, usually with a suggested answer you can just accept. Questions that wouldn't change the plan are skipped.
+- **Anything still uncertain becomes a stated assumption**, which the team can challenge, rather than another question.
 
-It asks only about what your brief leaves open, one question at a time, usually with a suggested answer you can just accept. If your brief already covers something, it doesn't ask.
+The brief covers your request in your own words, the goal, what "done" means, what's in and out of scope, the constraints, the risks, the assumptions made, and the answers you gave. You see it in full at the ready check, and once you confirm it, every member gets it word for word.
 
 ### Phase 2: Lineup
 
@@ -133,7 +132,7 @@ It asks only about what your brief leaves open, one question at a time, usually 
 
 **Ready check: you confirm the work can start.** This is where you decide how big the run should be. The lead shows you:
 
-- Your brief as it understands it, in a few lines.
+- The team brief, in full: exactly what every member will be given, so you can correct it first.
 - The size it picked, and why.
 - The lineup: each role, how many agents and at what level.
 - What drives the cost: how many agents, and how many run on each model (Opus, Sonnet, Haiku).
