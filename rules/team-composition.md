@@ -209,7 +209,7 @@ After round 1, the lead sends every agent's proposed tickets to the QA agents (c
 
 ### Questions during the debate
 
-Agents never assume past a gap. A question about the code, an agent checks itself first. Anything it can't answer that way goes to the lead, which answers from the code or puts it to the user (one at a time), and the answer is sent to every agent it affects before round 2.
+Agents never assume past a gap. A question about the code, an agent checks itself first. Anything it can't answer that way goes to the lead, which answers from the code or puts it to the user (up to four at once, as in Clarifying the brief), and the answer is sent to every agent it affects before round 2.
 
 ### Round 2: disagreements
 
