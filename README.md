@@ -13,7 +13,7 @@ What you get back is a decision you can act on: the scope, the approach, what wa
 ```mermaid
 flowchart TD
     subgraph P1["1. Brief"]
-        A["You give the lead a brief"] --> B{"Anything left open?"}
+        A["You give the lead a brief"] --> B{"Onboarding: anything left open?"}
         B -- "yes" --> C["Lead asks you, one question at a time"]
         C --> B
     end
@@ -22,7 +22,7 @@ flowchart TD
         D["Lead gets an overview of the codebase"] --> E{"Is a team worth it?"}
         E -- "no" --> F["Lead does the work directly"]
         E -- "yes" --> G["Lead picks the lineup"]
-        G --> H{{"Checkpoint 1: you confirm the lineup"}}
+        G --> H{{"Ready check: you confirm the brief, the lineup and its size"}}
         H -- "change it" --> G
     end
 
@@ -51,8 +51,8 @@ flowchart TD
 
 There are three phases, and the lead runs all of them:
 
-1. **Brief.** The lead makes sure it understands what you want.
-2. **Lineup.** The lead decides who is needed, and you confirm it.
+1. **Brief.** The lead onboards you: it makes sure it understands what you need.
+2. **Lineup.** The lead decides who is needed. At the ready check you confirm the lineup, and with it how big (and how costly) the run will be.
 3. **Work.** The team, lead included, explores the code and debates. The lead settles what's still in conflict, you approve, and it's built.
 
 ## The problem it solves
@@ -113,7 +113,15 @@ You can also just describe the work. The skill picks up planning and design work
 
 ### Phase 1: Brief
 
-The lead reads your brief and checks it has what it needs: the goal, any constraints, and what "done" means. If something is missing, it asks you, one question at a time. If the brief already covers it, it doesn't ask.
+The lead starts with onboarding. It checks your brief covers five things:
+
+1. **Goal:** what problem this solves, and for whom.
+2. **Done:** how you'll know it worked.
+3. **Scope:** what's in, and anything that's out.
+4. **Constraints:** what mustn't change, deadlines, required technology, patterns to follow.
+5. **Risk:** whether it touches payments, personal data, permissions, migrations or anything hard to undo.
+
+It asks only about what your brief leaves open, one question at a time, usually with a suggested answer you can just accept. If your brief already covers something, it doesn't ask.
 
 ### Phase 2: Lineup
 
@@ -123,7 +131,15 @@ The lead reads your brief and checks it has what it needs: the goal, any constra
 
 **The lead picks the lineup.** This is the lead's call. Based on the brief and what it found in the code, it decides which specialists it needs, how many of each and at what level, and adds QA (and a reviewer for bigger teams).
 
-**Checkpoint 1: you confirm the lineup.** You see the team size, and each role and its levels. Confirm it, or ask for changes. Nothing runs until you say yes.
+**Ready check: you confirm the work can start.** This is where you decide how big the run should be. The lead shows you:
+
+- Your brief as it understands it, in a few lines.
+- The size it picked, and why.
+- The lineup: each role, how many agents and at what level.
+- What drives the cost: how many agents, and how many run on each model (Opus, Sonnet, Haiku).
+- A smaller option, if one would still do the job, and what it would risk.
+
+You start with that lineup, take the smaller one, or change it. Nothing runs until you say yes.
 
 ### Phase 3: Work
 
@@ -210,7 +226,7 @@ These are starting points. The lead picks where in each range to land, and can a
 
 ## Token use
 
-A team run uses more tokens than a single conversation, and a bigger lineup uses more. To make a run cheaper, ask the lead for a smaller lineup at checkpoint 1.
+A team run uses more tokens than a single conversation, and a bigger lineup uses more. The ready check is where you control this: you see how many agents will run and on which models, and you can take a smaller lineup before anything starts. The skill doesn't give token figures, because they can't be promised.
 
 The skill is built to keep token use down without losing anything:
 

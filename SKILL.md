@@ -21,11 +21,11 @@ Shared rules (levels, panels, sizing, debate, ledger, tickets, reviewer checks, 
 
 ## Workflow
 
-1. **Read the onboarding brief.**
-2. **Ask onboarding questions only when needed**, one at a time, until the goal, constraints and success criteria are clear.
+1. **Read the brief.**
+2. **Onboarding:** check the brief against the onboarding list below, and ask the user only what it leaves open, one question at a time.
 3. **Get an overview of the repository**, with Graphify if installed: enough to pick the lineup. The team explores the detail in round 1. See [`companions/graphify.md`](companions/graphify.md).
 4. **Choose the lineup**: the roles you need, how many agents in each and at what level, plus QA and (medium and large teams) the reviewer. You decide; `rules/team-composition.md` gives the limits and some starting points.
-5. **Confirmation 1:** get the user's yes on the team before work begins.
+5. **Ready check (confirmation 1):** show the user the brief as you understand it and the lineup, so they can judge the size and likely token cost, and get their yes before any work begins.
 6. **Run the debate, taking part in it**: round 1 (everyone, you included, explores the code and writes a position), the QA ticket pass, then round 2 if needed. Terse notes, every point tracked by ID, every claim about code backed by `path:line`.
 7. **Draft the decision**: where the team agrees, take it on; where ideas conflict, make the call. Every point in the ledger gets an outcome.
 8. **Reviewer check 1:** the reviewer checks the draft decision; the lead fixes it.
@@ -72,18 +72,29 @@ Each role has one short spec in `roles/`. Give an agent its role file as part of
 | QA (always) | [`roles/qa.md`](roles/qa.md) |
 | Reviewer (medium and large) | [`roles/reviewer.md`](roles/reviewer.md) |
 
-## Confirmation 1: before the debate
+## Onboarding
 
-After choosing the lineup, show the user and ask for a yes:
+Before choosing anyone, make sure you understand what the user needs. Check the brief covers:
 
-- The size (Lite, Medium or Large) and why.
-- The specialist roles you chose.
-- The number of agents per role.
-- The capability level (and model) of each agent.
-- The QA composition.
-- The reviewer, if included.
+1. **Goal:** what problem this solves, and for whom.
+2. **Done:** how the user will know it worked.
+3. **Scope:** what is in, and anything explicitly out.
+4. **Constraints:** what must not change, deadlines, required technology, existing patterns to follow.
+5. **Risk:** whether it touches payments, personal data, permissions, migrations or anything hard to undo.
 
-Do not start the debate until the user confirms. If they change the team, update it and ask again.
+Ask only about what the brief leaves open, one question at a time, and offer a likely answer or two short options where you can. If the brief already covers an item, don't ask. Stop when all five are clear enough to choose a lineup.
+
+## Ready check (confirmation 1): before any work
+
+Once you have chosen the lineup, check the user is ready for the work to start. This is where they decide whether the size, and so the likely token cost, is right for the job. Show, in plain sentences:
+
+- **The brief as you understand it:** the goal, what done means, the scope and the constraints, in a few lines.
+- **The size** (Lite, Medium or Large) and why.
+- **The lineup:** each role, how many agents and at what level, including QA and the reviewer if there is one.
+- **What drives the cost:** the number of agents, how many run on each model (Opus, Sonnet, Haiku), and that round 2 only runs if there are conflicts. Do not give token figures: they can't be promised.
+- **A smaller option**, where one would still cover the brief: which agents you would drop and what that would risk.
+
+Then ask one question: start with this lineup, start with the smaller one, or change it. Do not start until the user says yes. If they change the brief or the lineup, update both and ask again.
 
 ## Run the debate
 

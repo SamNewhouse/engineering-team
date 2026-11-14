@@ -286,7 +286,7 @@ The debate itself never goes into a ticket: only the decision and its reasons. I
 
 ## Confirmation gates
 
-1. **Before the debate:** size, roles, agents per role, levels, QA, reviewer.
+1. **Ready check, before any work:** the brief as the lead understands it, the size, the lineup (roles, agents per role, levels, QA, reviewer), what drives the cost (agent count and models), and a smaller option where one fits. No token figures.
 2. **Before the ticket stage and implementation:** the decision items above (after reviewer check 1), the point ledger summary, any reviewer disputes, and the ticket list (titles, one line each, and the repo they go to). This yes also covers posting those tickets.
 
 Nothing starts without the user's yes at each gate.
