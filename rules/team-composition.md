@@ -36,7 +36,7 @@ Within those limits, the lead also decides how many agents debate together in ro
 
 QA is a role, not a level. Role files hold the details: [`../roles/qa.md`](../roles/qa.md), [`../roles/reviewer.md`](../roles/reviewer.md).
 
-**Building it is everyone's concern.** There is no separate developer representative: the specialists are the developers. Each one says whether its part is buildable as written, how long it will take, and what hidden work it involves.
+**Building it is everyone's concern.** There is no separate developer representative: the specialists are the developers. Each one says whether its part is buildable as written, which files it touches, roughly how many lines change, and what unknowns or hidden work it involves. No time estimates: they sound precise but are guesses.
 
 ## Team sizing
 
@@ -199,7 +199,7 @@ ASSUMES:      one per line, with ID
 EVIDENCE:     path:line for each claim about existing code; `unchecked` where not checked
 CHANGE-MIND:  what would change the recommendation
 QUESTIONS:    anything it needs answered, one per line, with ID
-BUILD:        is its part buildable as written; effort in concrete units; hidden work
+BUILD:        is its part buildable as written; files touched; rough lines changed; unknowns and hidden work
 TICKETS:      proposed tickets for its area: task, files or component, done means
 ```
 
@@ -234,7 +234,7 @@ The lead decides how round 2 is grouped and how many agents debate at once. Smal
 
 ## Decision
 
-The lead takes on every point raised: all specialist recommendations, the QA testability and risk assessment, everyone's build and effort notes, its own position, and every objection, agreement and revised position. Reviewer feedback comes after, on the draft (see Reviewer checks).
+The lead takes on every point raised: all specialist recommendations, the QA testability and risk assessment, everyone's build notes, its own position, and every objection, agreement and revised position. Reviewer feedback comes after, on the draft (see Reviewer checks).
 
 - **Where the team agrees**, that is the decision. The lead takes it on as it stands.
 - **Where ideas still conflict after round 2**, the lead makes the final call, weighing reasoning quality, risk and relevance (not a vote), and records why in the ledger. Points it argued against still get a fair outcome.

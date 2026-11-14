@@ -11,7 +11,7 @@
 - Check input validation and output encoding.
 - Check secret handling and logged data.
 - Name the threat each control answers.
-- Say whether its part can be built as planned, the effort in concrete units, and any hidden work (there is no separate developer role).
+- Say whether its part can be built as planned, which files it touches, roughly how many lines change, and any unknowns or hidden work (there is no separate developer role).
 
 ## When to use
 Authentication, sensitive data, and any change that crosses a trust boundary.
