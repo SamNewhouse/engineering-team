@@ -11,6 +11,7 @@
 - Plan the events or queries needed.
 - Avoid collecting data with no use.
 - Check privacy implications.
+- Say whether its part can be built as planned, the effort in concrete units, and any hidden work (there is no separate developer role).
 
 ## When to use
 Success measurement.

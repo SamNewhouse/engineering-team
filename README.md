@@ -2,7 +2,7 @@
 
 A [Claude Code](https://docs.claude.com/en/docs/claude-code) skill that runs your software planning like an engineering team.
 
-You bring a brief, such as *"add magic-link login"* or *"move reporting off the main database"*. A **team lead** takes it on. It asks you only what the brief leaves open, looks over your codebase, and picks the right lineup of specialists for the job. You confirm the lineup before anyone starts.
+You bring a brief, such as *"add magic-link login"* or *"move reporting off the main database"*. A **team lead** takes it on. It learns your existing code, asks only what it still needs to know, and sums up what you want for you to confirm. Then it sizes the job and picks the right lineup of specialists, and you confirm that before anyone starts.
 
 Then the team gets to work, like a real engineering team in a planning session. Everyone, the lead included, digs into the code in their own area and brings their view, and they argue it out. Where the team agrees, that's the plan. Where ideas still conflict, the lead makes the call. An independent reviewer checks the result, and nothing is built until you approve the plan.
 
@@ -106,9 +106,9 @@ Open Claude Code in your project and hand the lead a brief:
 /engineering-team Add CSV export to the orders page, keeping the current filters
 ```
 
-You can also just describe the work. The skill picks up planning and design work that spans several areas or carries real risk.
+You can also just describe the work. The skill picks up planning and design work that has a real design choice.
 
-**When it's worth using:** a feature that touches several parts of the system, anything involving payments, personal data, permissions or migrations, or a change with more than one sensible approach.
+**When it's worth using:** anything with a real design choice. A small feature gets a Lite team (just the lead and QA). A feature that touches several parts of the system, or anything involving payments, personal data, permissions or migrations, gets a bigger lineup.
 
 **When it isn't:** a one-file fix, a clear bug or a small edit. The lead notices this, says so, and just does the work.
 
@@ -121,11 +121,11 @@ The lead starts by working out what it needs to know to get the most accurate re
 - **It starts from what you've already said.** Anything your request, a linked ticket or earlier messages already answer goes straight into the brief.
 - **It learns your existing system first.** In a project that already has code, it works out the language, frameworks, structure, and what already exists in the area you're asking about, before asking anything. It never asks you what the code can answer.
 - **It asks what only you can answer.** It works out what you're really asking for, then asks about the intent and decisions the code can't settle, one at a time, most important first, usually with a suggested answer you can just accept.
+- **Anything still uncertain becomes a stated assumption**, which the team can challenge, rather than another question.
 
 For example, ask for *"a new billing system"* in an existing app, and the lead first finds the current billing code, the payment provider and how plans and invoices are stored. Then it asks things like *"billing today is Stripe one-off charges in `src/billing/charge.ts`: are you adding subscriptions, or replacing this?"* and *"what should happen to existing customers' payment details?"*. It won't ask which language you use. In a brand-new project there's no code to read, so it asks about the stack as well.
 
 There's no fixed list of questions. The lead reads what you're really asking for and decides what it still needs to know. If you state a preference, such as "no outside packages", it goes into the brief and overrides the team's defaults.
-- **Anything still uncertain becomes a stated assumption**, which the team can challenge, rather than another question.
 
 **Brief check: you confirm what you want.** When the lead has what it needs, it tells you in a few sentences what it understands you want: the goal, what done looks like, and anything important it has assumed. You confirm it or correct it. Then it writes up the full team brief.
 
@@ -168,6 +168,8 @@ You start with that lineup, take the smaller one, or change it. Nothing runs unt
 **Tickets.** The lead writes each ticket in full: the problem, the plan, which files to change, acceptance criteria and tests, and what it depends on. The reviewer checks that nothing from the decision was lost, then the tickets are posted as GitHub issues. Open questions become tickets of their own. The debate itself never goes into a ticket, only the decision and its reasons.
 
 **Build.** The work is built on a new branch and the project's tests are run. The reviewer checks the pull request against the acceptance criteria. You get the pull request link to review and merge.
+
+On a Lite team there's no reviewer: the lead does the plan and ticket checks itself, and the project's tests check the code.
 
 ## The lineup
 
@@ -216,7 +218,7 @@ A role has one to three members. A junior is only ever the third member of a rol
 | Brief | Size | Lineup |
 |---|---|---|
 | Add a filter to an existing list | Lite, 1 | QA |
-| Simple UI change | Medium, 4 to 5 | UX, 1 to 2 frontend, QA, reviewer (all mid-level) |
+| UI change across several screens | Medium, 4 to 5 | UX, 1 to 2 frontend, QA, reviewer (all mid-level) |
 | New API endpoint with data changes | Medium, 4 to 5 | Backend, data, architect if needed, QA, reviewer |
 | Complex backend migration | Large, 6 to 9 | 1 to 2 architects, 1 to 2 backend, 1 to 2 data, 2 QA, reviewer |
 | Payments or personal data | Large, 7 to 9 | Product if needed, architect, backend, data, 1 to 2 security, 2 QA, reviewer |

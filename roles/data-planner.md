@@ -11,6 +11,7 @@
 - Use the existing query layer; no string-built SQL.
 - Protect data integrity.
 - Plan rollback.
+- Say whether its part can be built as planned, the effort in concrete units, and any hidden work (there is no separate developer role).
 
 ## When to use
 Databases or reporting.

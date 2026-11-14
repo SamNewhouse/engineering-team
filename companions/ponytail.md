@@ -22,6 +22,8 @@ Stop at the first step that holds:
 
 ## Rules the team holds to
 
+- **A preference in the team brief comes first.** If the user said, for example, "no outside packages" or "use library X", that overrides the ladder.
+
 - A shared abstraction needs at least three real, behaviour-identical call sites.
 - Prefer a small local helper over a new generic module.
 - Never cut input validation, security, data-loss protection, accessibility, or anything the user asked for.

@@ -4,15 +4,16 @@ Graphify is optional. If the **`graphify`** skill is installed, load it and foll
 
 ## When
 
-Twice, by different people:
+Three times:
 
-1. **The lead, before picking the lineup:** a quick overview, enough to see which areas the brief touches and so which roles are needed. Not a deep read.
-2. **Every debater, in round 1:** targeted queries into its own area, then the files the graph points to. The table below says which findings matter to which role. The lead explores too, for its own position.
+1. **The lead, while clarifying the request:** a quick look at the area the user is asking about (language, frameworks, existing code, providers), so it never asks what the code can answer.
+2. **The lead, after the brief check:** an overview, enough to size the job, pick the lineup and write each debater's starting map. Not a deep read.
+3. **Every debater, in round 1:** targeted queries into its own area, then the files the graph points to. The table below says which findings matter to which role. The lead explores too, for its own position.
 
 ## How
 
 - **With Graphify:** use `graphify query "<question>"`, `graphify path "<A>" "<B>"` and `graphify explain "<concept>"`. If the project has no graph yet, build one first. Read the code directly only when the graph doesn't answer the question.
-- **Without Graphify:** search and read the code that the brief touches, and fill in the same table below. Say in the findings that they come from reading the code, so gaps are expected.
+- **Without Graphify:** search and read the code that the request touches, and fill in the same table below. Say in the findings that they come from reading the code, so gaps are expected.
 
 ## What to find, and which roles it informs
 

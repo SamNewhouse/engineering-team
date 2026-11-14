@@ -50,7 +50,7 @@ QA is a role, not a level. Role files hold the details: [`../roles/qa.md`](../ro
 
 **Lite is the lead and one QA agent.** There are no specialist agents: the lead explores the code and writes the position itself, covering whichever specialist areas the change touches. QA writes its own position, adds tests to the tickets and challenges the lead's plan. If they conflict, they argue it out once and the lead makes the call.
 
-Pick the smallest size that covers the brief. Work with no real design choice (a one-file fix, a clear bug, a small edit) gets no team at all.
+The lead sizes the job after the brief check, from the confirmed brief and its overview of the code. Pick the smallest size that covers the brief. Work with no real design choice (a one-file fix, a clear bug, a small edit) gets no team at all.
 
 ## Choosing roles
 
@@ -107,7 +107,7 @@ Starting points, not fixed lineups. Each count is a range: the lead picks where 
 |---|---|---:|
 | QA | Mid-level or senior | 1 |
 
-**Simple UI change** — Medium, 4 to 5 agents. No senior is needed when the work is simple.
+**UI change across several screens** — Medium, 4 to 5 agents. No senior is needed when the risk is low.
 
 | Role | Level | Count |
 |---|---|---:|
@@ -277,7 +277,7 @@ At each check:
 
 Runs after plan approval, before implementation. Only the lead writes to GitHub. Agents only draft.
 
-1. **The lead drafts each approved ticket in full**, in plain sentences: the problem and the plan, the files or component to change, acceptance criteria and tests (from QA), risks accepted, "Needs first" for tickets that depend on another, and a link to the main ticket that holds the decision. The main ticket is the one the brief came from; if there wasn't one, the lead creates it first, holding the decision and its reasons.
+1. **The lead drafts each approved ticket in full**, in plain sentences: the problem and the plan, the files or component to change, acceptance criteria and tests (from QA), risks accepted, "Needs first" for tickets that depend on another, and a link to the main ticket that holds the decision. The main ticket is the one the request came from; if there wasn't one, the lead creates it first, holding the decision and its reasons.
 2. **The lead searches the open tickets** first and updates a matching one instead of creating a copy. One task per ticket.
 3. **Reviewer check 2:** the reviewer checks the drafts against the decision and the point ledger, and the lead fixes them (see Reviewer checks).
 4. **The lead posts the tickets** to the repo approved at plan approval, turns each open question into a decision ticket, and gives the user the links.

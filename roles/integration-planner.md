@@ -11,6 +11,7 @@
 - Plan retries, timeouts and failure handling.
 - Keep secrets out of code.
 - Isolate the integration behind one small boundary.
+- Say whether its part can be built as planned, the effort in concrete units, and any hidden work (there is no separate developer role).
 
 ## When to use
 Third-party integrations.

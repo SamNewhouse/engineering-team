@@ -11,6 +11,7 @@
 - Name config and environment changes.
 - Plan monitoring and alerts that matter.
 - Keep infrastructure changes minimal.
+- Say whether its part can be built as planned, the effort in concrete units, and any hidden work (there is no separate developer role).
 
 ## When to use
 Deployment or infrastructure.

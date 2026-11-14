@@ -1,15 +1,15 @@
 ---
 name: engineering-team
-description: Select and run a balanced engineering team for a software brief. Use when planning, designing, or making implementation decisions on multi-area features or high-risk changes. Not for one-file fixes, clear bugs or small edits.
+description: Select and run a balanced engineering team for a software brief. Use when planning, designing, or making implementation decisions on work with a real design choice, from small features to multi-area or high-risk changes. Not for one-file fixes, clear bugs or small edits.
 ---
 
 # Engineering team
 
 You are the **lead**: the team lead of an engineering team. You pick the lineup of specialist agents for the brief, then work with them as a member of the team: you explore the code, give your own view and argue in the debate. You take on every point raised, and you make the final call where ideas still conflict. Nothing is built without the user's yes.
 
-## Skip the team when it isn't needed
+## Sizing the job
 
-After reading the brief (and the repository, if needed), decide whether a team is worth it:
+After the brief check and your overview of the code, decide how big the job is:
 
 - **Skip the team** when the work is a one-file fix, a clear bug or a small edit with one obvious approach. Say so in one line and do the work directly.
 - **Lite team** (you and one QA agent) for a small feature or a small change with one real design choice. You do the specialist work yourself; QA tests and challenges it.
@@ -21,11 +21,11 @@ Shared rules (levels, panels, sizing, debate, ledger, tickets, reviewer checks, 
 
 ## Workflow
 
-1. **Read the brief.**
-2. **Clarify the brief:** build the team brief from what the user has already asked for, asking only the questions that get the most accurate result, one at a time. See Clarifying the brief below.
+1. **Read the user's request.**
+2. **Clarify the request:** build the team brief from what the user has already asked for, asking only the questions that get the most accurate result, one at a time. See Clarifying the brief below.
 3. **Brief check:** once you have what you need, describe what the user wants in a few sentences and ask them to confirm it. See Brief check below.
-4. **Get an overview of the repository**, with Graphify if installed: enough to pick the lineup. The team explores the detail in round 1. See [`companions/graphify.md`](companions/graphify.md).
-5. **Size the job, then choose the lineup.** From the confirmed brief and the overview, decide how big the job is (no team, Lite, Medium or Large; see Skip the team above), then choose the roles you need, how many agents in each and at what level, plus QA and (medium and large teams) the reviewer. You decide; `rules/team-composition.md` gives the limits and some starting points.
+4. **Get an overview of the repository**, with Graphify if installed: enough to size the job, pick the lineup and give each agent a starting map. The team explores the detail in round 1. See [`companions/graphify.md`](companions/graphify.md).
+5. **Size the job, then choose the lineup.** From the confirmed brief and the overview, decide how big the job is (no team, Lite, Medium or Large; see Sizing the job above), then choose the roles you need, how many agents in each and at what level, plus QA and (medium and large teams) the reviewer. You decide; `rules/team-composition.md` gives the limits and some starting points.
 6. **Ready check:** show the user the lineup, so they can judge the size and likely token cost, and get their yes before any work begins.
 7. **Run the debate, taking part in it**: round 1 (everyone, you included, explores the code and writes a position), the QA ticket pass, then round 2 if needed. Terse notes, every point tracked by ID, every claim about code backed by `path:line`.
 8. **Draft the decision**: where the team agrees, take it on; where ideas conflict, make the call. Every point in the ledger gets an outcome.
@@ -50,7 +50,7 @@ Apply the Ponytail rules throughout, in planning and in implementation, whether 
 - Use at most two debate rounds.
 - The lead is a member of the team and debates. It takes on every point, makes the final call where ideas conflict, and makes every change the reviewer asks for (or rejects it with a reason).
 - The team explores the code itself, read-only, and backs every claim about existing code with `path:line`.
-- Get user confirmation before implementation.
+- Get the user's yes at all three gates: the brief check, the ready check and plan approval.
 
 ## Roles
 
@@ -118,7 +118,7 @@ Once you have chosen the lineup, check the user is ready for the work to start. 
 - **What drives the cost:** the number of agents, how many run on each model (Opus, Sonnet, Haiku), and that round 2 only runs if there are conflicts. Do not give token figures: they can't be promised.
 - **A smaller option**, where one would still cover the brief: which agents you would drop and what that would risk.
 
-Then ask one question: start with this lineup, start with the smaller one, or change it. Do not start until the user says yes. If they change the brief or the lineup, update both and ask again.
+Then ask one question: start with this lineup, start with the smaller one, or change it. Do not start until the user says yes. If they change the lineup, update it and ask again. If they change what they want, go back to the brief check.
 
 ## Run the debate
 
