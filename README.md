@@ -116,11 +116,13 @@ You can also just describe the work. The skill picks up planning and design work
 The lead starts with onboarding. Its job is to turn your request into a **team brief**: the single document every member of the team will work from.
 
 - **It starts from what you've already said.** Anything your request, a linked ticket or earlier messages already answer goes straight into the brief.
-- **It checks the code before asking.** It won't ask what the code can answer, and it uses what it finds to make questions specific, such as *"there's already an export in `src/orders/export.ts`: extend it, or build a new one?"*
-- **It asks only what this request needs.** One question at a time, most important first, usually with a suggested answer you can just accept. Questions that wouldn't change the plan are skipped.
+- **It learns your existing system first.** In a project that already has code, it works out the language, frameworks, structure, and what already exists in the area you're asking about, before asking anything. It never asks you what the code can answer.
+- **It asks what only you can answer.** Questions are about your intent and the decisions the code can't make for you, one at a time, most important first, usually with a suggested answer you can just accept.
+
+For example, ask for *"a new billing system"* in an existing app, and the lead first finds the current billing code, the payment provider and how plans and invoices are stored. Then it asks things like *"billing today is Stripe one-off charges in `src/billing/charge.ts`: are you adding subscriptions, or replacing this?"* and *"what should happen to existing customers' payment details?"*. It won't ask which language you use. In a brand-new project there's no code to read, so it asks about the stack as well.
 - **Anything still uncertain becomes a stated assumption**, which the team can challenge, rather than another question.
 
-The brief covers your request in your own words, the goal, what "done" means, what's in and out of scope, the constraints, the risks, the assumptions made, and the answers you gave. You see it in full at the ready check, and once you confirm it, every member gets it word for word.
+The brief covers your request in your own words, what the lead found in your existing system, the goal, what "done" means, what's in and out of scope, the constraints, the risks, the assumptions made, and the answers you gave. You see it in full at the ready check, and once you confirm it, every member gets it word for word.
 
 ### Phase 2: Lineup
 

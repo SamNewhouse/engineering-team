@@ -77,8 +77,8 @@ Each role has one short spec in `roles/`. Give an agent its role file as part of
 Onboarding turns what the user asked for into the **team brief**: the one document every agent works from. Start from what the user has already said, not from a blank form.
 
 1. **Take what the request already answers.** Read the user's request (and anything else they gave you: a ticket, a link, earlier messages) and fill in as much of the brief as it covers.
-2. **Check the code before asking.** Take a quick look at the parts of the code the request mentions. Don't ask anything the code can answer, and use what you find to make questions specific (for example "there's already an export in `src/orders/export.ts`: extend it, or build a new one?").
-3. **Ask the questions this request needs.** Look at what's still missing or ambiguous for *this* piece of work, and ask about the gaps that would change the plan. Ask one question at a time, most important first, and offer a likely answer or two short options so the user can just pick. Skip anything that wouldn't change what the team does.
+2. **Learn the existing system before asking.** In a project that already has code, find out for yourself what the code can tell you: the language, frameworks and libraries, how the project is structured, what already exists in the area of the request (models, services, third-party providers, tests), and the patterns it follows. Never ask the user something the code answers. For "I want a new billing system", that means finding the current billing code, the payment provider, how plans and invoices are stored, and what depends on them, before saying a word.
+3. **Ask what only the user can answer.** With the existing system known, ask about intent and decisions: the things the code can't tell you and that would change the plan. For the billing example: replace the current billing or extend it? Keep the same payment provider? What happens to existing customers and their subscriptions? Make each question specific to what you found (for example "billing today is Stripe one-off charges in `src/billing/charge.ts`: are you adding subscriptions, or replacing this?"). In a new or empty project there is nothing to read, so ask about the stack too. Ask one question at a time, most important first, and offer a likely answer or two short options so the user can just pick. Skip anything that wouldn't change what the team does.
 4. **Stop when the brief is clear enough to choose a lineup.** Anything still uncertain goes into the brief as a stated assumption, not another question.
 
 The brief must cover:
@@ -86,6 +86,7 @@ The brief must cover:
 | Section | What it holds |
 |---|---|
 | Request | The user's own words, quoted |
+| Existing system | What the code shows that matters to this request: language and frameworks, the relevant existing code (with paths), providers and patterns; or `new project` |
 | Goal | What problem this solves, and for whom |
 | Done | How the user will know it worked |
 | Scope | What is in, and anything explicitly out |
